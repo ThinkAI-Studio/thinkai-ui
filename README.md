@@ -11,15 +11,25 @@
 
 ### **ThinkAI Studio — Official UI Component Registry**
 
-*0px Sharp Architectural Geometry · Obsidian Monochromatic Depth · Infrastructure-Grade Motion*
+*0px Sharp Architectural Geometry · Obsidian Monochromatic Depth · Infrastructure-Grade Motion Physics*
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-white.svg?style=flat-square)](LICENSE)
-[![Next.js](https://img.shields.io/badge/Next.js-15%2B%20%2F%2016%2B-black?style=flat-square&logo=next.js)](https://nextjs.org)
-[![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-v4-06B6D4?style=flat-square&logo=tailwindcss)](https://tailwindcss.com)
-[![TypeScript](https://img.shields.io/badge/TypeScript-Strict_5.x-3178C6?style=flat-square&logo=typescript)](https://www.typescriptlang.org)
-[![React 19](https://img.shields.io/badge/React-19-61DAFB?style=flat-square&logo=react)](https://react.dev)
-[![Motion](https://img.shields.io/badge/Motion-v12%2B%20%2F%20v13%2B-FF0055?style=flat-square)](https://motion.dev)
-[![Accessibility](https://img.shields.io/badge/A11y-WCAG_AAA_Compliant-4ADE80?style=flat-square)](DESIGN.md)
+[![License: MIT](https://img.shields.io/badge/License-MIT-08080a?style=flat-square&logoColor=white)](LICENSE)
+[![Next.js 16](https://img.shields.io/badge/Next.js-16.2+-08080a?style=flat-square&logo=next.js&logoColor=white)](https://nextjs.org)
+[![Tailwind CSS 4](https://img.shields.io/badge/Tailwind-v4.0-08080a?style=flat-square&logo=tailwindcss&logoColor=white)](https://tailwindcss.com)
+[![TypeScript 5](https://img.shields.io/badge/TypeScript-Strict_5.x-08080a?style=flat-square&logo=typescript&logoColor=white)](https://www.typescriptlang.org)
+[![React 19](https://img.shields.io/badge/React-19.2+-08080a?style=flat-square&logo=react&logoColor=white)](https://react.dev)
+[![Motion 13](https://img.shields.io/badge/Motion-13.1+-08080a?style=flat-square&logo=framer&logoColor=white)](https://motion.dev)
+[![A11y WCAG AAA](https://img.shields.io/badge/A11y-WCAG_AAA_Compliant-4ade80?style=flat-square&logoColor=08080a)](DESIGN.md)
+
+<p align="center">
+  <a href="#-executive-summary">Overview</a> •
+  <a href="#-quick-start--cli-usage">Quick Start</a> •
+  <a href="#%EF%B8%8F-core-architectural-pillars">Pillars</a> •
+  <a href="#-the-production-hallmark-contrast-matrix">Comparison Matrix</a> •
+  <a href="#-production-component-catalog-16-primitives">Component Catalog</a> •
+  <a href="#-design-tokens--global-configuration">Design Tokens</a> •
+  <a href="#%EF%B8%8F-registry-architecture">Architecture</a>
+</p>
 
 ---
 
@@ -27,13 +37,34 @@
 
 ## 📌 Executive Summary
 
-**`thinkai-ui`** is an **infrastructure-grade, copy-pasteable UI component registry** engineered for high-performance applications that demand **technical luxury, architectural rigor, and deliberate physical motion**.
+**`thinkai-ui`** is an **infrastructure-grade, registry-first component collection** engineered for technical luxury and high-conviction digital products.
 
-Unlike generic component libraries that rely on rounded pill buttons and hyper-saturated gradients, `thinkai-ui` is built on **4 anti-AI-slop design pillars**:
-1. **Obsidian Monochromatic Depth:** Deep gray layers (`#08080a`, `#0d0d10`) with top-inset light reflections and dynamic alpha borders (`rgba(255, 255, 255, 0.07)`).
-2. **Sharp Architectural Geometry:** Strict **0px border-radius** and a mathematically rigid **4px baseline grid**.
-3. **Analog Micro-Grain Tactility:** SVG micro-noise texture eliminating the sterile coldness of standard digital interfaces.
-4. **Tectonic Motion Mechanics:** Frictionless heavy spring physics (`damping: 32, stiffness: 280`) and luxury easing curves (`cubic-bezier(0.16, 1, 0.3, 1)`).
+Instead of an opaque, immutable NPM dependency, **`thinkai-ui` distributes code directly into your repository**. You retain 100% source ownership, zero lock-in, and instant customizability over every pixel, curve, and shader.
+
+> **Design Tenet:** *"Infrastructure-Grade Craft & Technical Luxury"* — Interfaces engineered with the precision, reliability, and tactile weight of distributed server infrastructure.
+
+---
+
+## 🏛️ Core Architectural Pillars
+
+```
+┌───────────────────────────────┬───────────────────────────────┐
+│  01. OBSIDIAN MONOCHROME      │  02. 0px ARCHITECTURAL FORM   │
+│  Layered #08080a / #131316    │  Strict 90° corners, 0px rad  │
+│  Top-inset 1px alpha highlights│  Rigid 4px mathematical grid  │
+│  LED nominal status `#4ade80` │  High-contrast crisp focus    │
+├───────────────────────────────┼───────────────────────────────┤
+│  03. TECTONIC MOTION PHYSICS  │  04. REGISTRY DECENTRALIZATION│
+│  Frictionless mechanical mass │  Direct code ownership in src │
+│  Luxury `[0.16, 1, 0.3, 1]`   │  shadcn-compatible manifests  │
+│  Full WCAG AAA reduced motion │  Zero bloated node_modules    │
+└───────────────────────────────┴───────────────────────────────┘
+```
+
+1. **Obsidian Monochromatic Depth:** Avoids flat pure black `#000000`. Employs deep obsidian canvases (`#08080a`, `#0d0d10`, `#131316`), linear-grade top-inset highlights (`shadow-[inset_0_1px_0_0_rgba(255,255,255,0.08)]`), and dynamic alpha hairlines (`border-white/[0.07]`).
+2. **Sharp Architectural Geometry:** Universal **`border-radius: 0px`**. Sharp 90° rectangular forms aligned to an unyielding 4px mathematical grid with high-visibility tactile focus rings.
+3. **Tectonic Motion Mechanics:** Physical mass and friction (`{ damping: 32, stiffness: 280, mass: 1 }`), mechanical active compression (`active:scale-[0.98]`), and multi-layer parallax reveals.
+4. **Decentralized Distribution:** Pure registry distribution. Every component is completely typed, treeshakeable, polymorphic (`asChild`), and tailored for Next.js 16 App Router & React 19.
 
 ---
 
@@ -53,26 +84,16 @@ Unlike generic component libraries that rely on rounded pill buttons and hyper-s
 
 ---
 
-## 🏗️ Architecture & Registry Flow
+## 🏗️ Registry Architecture
 
-`thinkai-ui` adopts the modern **Registry-First Paradigm** (pioneered by `shadcn/ui`). You do not import compiled CSS or blackbox npm packages; our CLI pulls typed, production-ready TypeScript components directly into your project's workspace.
-
-```text
-┌─────────────────────────────────────────────────────────────┐
-│             ThinkAI Studio Decentralized Registry           │
-│        (https://raw.githubusercontent.com/.../registry/)    │
-└──────────────────────────────┬──────────────────────────────┘
-                               │
-                      npx thinkai-ui add
-                               │
-                               ▼
-┌─────────────────────────────────────────────────────────────┐
-│                      Your Next.js App                       │
-│  ├── src/components/tai-ui/   ◄── (Zero-Bloat .tsx Primitives)│
-│  ├── src/lib/utils.ts         ◄── (clsx + tailwind-merge)   │
-│  ├── src/lib/motion.ts        ◄── (Springs & Luxury Easing) │
-│  └── components.json          ◄── (Import Alias Manifest)   │
-└─────────────────────────────────────────────────────────────┘
+```mermaid
+flowchart LR
+    A["Component Source<br/>(src/components/tai-ui/*.tsx)"] --> B["Registry Builder<br/>(scripts/build-registry.mjs)"]
+    B --> C["Registry Manifests<br/>(registry/ui/*.json)"]
+    B --> D["Registry Index<br/>(registry/registry.json)"]
+    C & D --> E["Public Registry Endpoint<br/>(https://ui.thinkai.studio/...)"]
+    E --> F["Developer Project<br/>(npx thinkai-ui add ...)"]
+    F --> G["Local Codebase<br/>(@/components/tai-ui/*)"]
 ```
 
 ---
@@ -108,6 +129,9 @@ npx thinkai-ui add halftone-banner
 # Add Navigation & Overlays
 npx thinkai-ui add tai-header
 npx thinkai-ui add about-drawer
+
+# Or Install All 16 Components At Once
+npx thinkai-ui add --all
 ```
 
 ### 3. List All Available Primitives
@@ -124,10 +148,10 @@ Every component is written in **TypeScript Strict Mode**, supports polymorphic *
 
 | Primitive | CLI Command | Category | Key Capabilities & Highlights |
 | :--- | :--- | :--- | :--- |
-| **TaiButton** | `npx thinkai-ui add tai-button` | *Action* | CVA variants, `asChild` Slot, top-inset light sweep, `active:scale-[0.98]` click compression |
-| **WipeButton** | `npx thinkai-ui add wipe-button` | *Action* | Signature Forward-Wipe interactive fill, luxury easing `[0.16, 1, 0.3, 1]` |
+| **TaiButton** | `npx thinkai-ui add tai-button` | *Interactive* | CVA variants, `asChild` Slot, top-inset light sweep, `active:scale-[0.98]` click compression |
+| **WipeButton** | `npx thinkai-ui add wipe-button` | *Interactive* | Signature Forward-Wipe interactive fill, luxury easing `[0.16, 1, 0.3, 1]` |
 | **ProductMockup** | `npx thinkai-ui add product-mockup` | *Display* | Studio browser/laptop frame, SSL capsule, LED telemetry glow, clip-path reveals |
-| **HalftoneBanner** | `npx thinkai-ui add halftone-banner` | *Visual* | Three.js ocean caustics WebGL canvas integrated with ThinkAI Studio vector mark |
+| **HalftoneBanner** | `npx thinkai-ui add halftone-banner` | *Visual / 3D* | Three.js ocean caustics WebGL canvas integrated with ThinkAI Studio vector mark |
 | **ThreeHalftoneCanvas** | `npx thinkai-ui add three-halftone-canvas` | *Engine* | Procedural WebGL ocean shader, 60/120fps throttle, auto-cleanup on unmount |
 | **TaiHeader** | `npx thinkai-ui add tai-header` | *Navigation* | Translucent sticky header, zero-border architectural layout, full-bleed mobile drawer |
 | **AboutDrawer** | `npx thinkai-ui add about-drawer` | *Overlay* | High-contrast spring sliding sheet, Lenis scroll prevention, ESC keyboard trapping |
@@ -143,26 +167,35 @@ Every component is written in **TypeScript Strict Mode**, supports polymorphic *
 
 ---
 
-## 📐 Design Tokens Reference
+## 🎨 Design Tokens & Global Configuration
 
-### Obsidian Dark Surfaces (Tailwind v4 `@theme`)
+`thinkai-ui` is built natively on **Tailwind CSS v4** token architecture.
+
+### Color Tokens (`globals.css`)
 
 ```css
 @theme {
-  --color-tai-bg: #08080a;             /* Deepest canvas backdrop */
-  --color-tai-sheet: #0d0d10;          /* Primary content cards & sections */
-  --color-tai-card: #131316;           /* Elevated interactive cards */
-  --color-tai-border: rgba(255, 255, 255, 0.07);        /* Subtle alpha hairline */
-  --color-tai-border-strong: rgba(255, 255, 255, 0.18); /* Hover & active boundary */
-  --color-tai-green: #4ade80;          /* Verified status LED accent */
+  --color-tai-bg: #08080a;             /* Deep obsidian canvas */
+  --color-tai-sheet: #0d0d10;          /* Raised surface layer */
+  --color-tai-card: #131316;           /* Card surface / Bezel mockup */
+  --color-tai-border: rgba(255, 255, 255, 0.07);        /* Alpha hairline border */
+  --color-tai-border-strong: rgba(255, 255, 255, 0.18); /* Active/hover border */
+  --color-tai-green: #4ade80;          /* Nominal LED status glow */
+
   --ease-spring: cubic-bezier(0.32, 0.72, 0, 1);
   --ease-luxury: cubic-bezier(0.16, 1, 0.3, 1);
 }
 ```
 
-### Spring Physics Constants
+### Motion Curves (`src/lib/motion.ts`)
 
-```typescript
+```ts
+export const TAI_EASE = {
+  luxury: [0.16, 1, 0.3, 1] as const,     // Reveal, dialog, sheet transitions
+  snappy: [0.19, 1, 0.22, 1] as const,    // Button hover, tab indicators
+  spring: [0.32, 0.72, 0, 1] as const,   // Viewport entry transitions
+};
+
 export const TAI_SPRING = {
   default: { type: "spring", damping: 32, stiffness: 280, mass: 1 },
   stiff:   { type: "spring", damping: 30, stiffness: 400, mass: 0.8 },
@@ -172,12 +205,14 @@ export const TAI_SPRING = {
 
 ---
 
-## ♿ Accessibility & Reduced Motion (WCAG AAA)
+## ♿ WCAG AAA Accessibility & Reduced Motion
 
-Every interactive component automatically listens to `prefers-reduced-motion`:
-- **Bail Strategy:** Ambient particles and background WebGL caustics reduce complexity or freeze.
-- **Snap Strategy:** Motion transitions drop duration to `0.01ms`, resolving directly to their final states.
-- **High-Contrast Focus:** Key navigation displays a sharp 2px solid square focus ring (`outline: 2px solid rgba(255, 255, 255, 0.85)`).
+All components strictly honor `prefers-reduced-motion: reduce` through four deterministic strategies:
+
+1. **Bail (GPU Offloading):** Ambient particle canvas & WebGL drift immediately halt, releasing GPU threads.
+2. **Snap to End State:** Scroll-driven typography rolls and reveals render at `opacity: 1` and `transform: none`.
+3. **Collapse Transitions:** Button wipes and drawer sliding times collapse to instant updates (`0.01ms`).
+4. **Contrast Integrity:** Monochromatic borders maintain minimum 4.5:1 text-to-background contrast with crisp 2px focus outlines (`outline: 2px solid rgba(255, 255, 255, 0.85)`).
 
 ---
 
@@ -189,5 +224,10 @@ For complete mathematical clamp formulas, architectural diagrams, and font track
 
 ## 📄 License & Attribution
 
-Distributed under the **MIT License**.  
-Authored & Maintained by **ThinkAI Studio / Nguyen Huu Binh Minh** (c) 2026.
+- **Design Lineage:** Inspired by the contemporary dark-mode editorial precision pioneered by *Linear*, *Vercel*, and *SoraLabs*.
+- **Implementation:** Clean-room implementation built from scratch with React 19, Motion, Three.js, and Tailwind CSS v4.
+- **License:** Open-source under the [MIT License](./LICENSE).
+
+<div align="center">
+  <sub>Engineered with precision by <strong>ThinkAI Studio / Nguyen Huu Binh Minh</strong> © 2026.</sub>
+</div>
