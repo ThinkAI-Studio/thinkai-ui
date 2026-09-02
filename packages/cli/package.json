@@ -1,0 +1,23 @@
+{
+  "name": "thinkai-ui",
+  "version": "1.0.0",
+  "description": "CLI to install 0px sharp architectural components from ThinkAI Studio UI registry.",
+  "bin": {
+    "thinkai-ui": "./bin/index.js",
+    "tai": "./bin/index.js"
+  },
+  "type": "module",
+  "keywords": [
+    "thinkai",
+    "cli",
+    "component-registry",
+    "shadcn",
+    "zero-radius"
+  ],
+  "author": "ThinkAI Studio / Nguyen Huu Binh Minh",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ThinkAI-Studio/thinkai-ui.git"
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "name": "@thinkai-studio/ui",
+  "version": "1.0.0",
+  "description": "0px sharp architectural UI registry crafted for technical luxury, obsidian monochromatic depth, and precision motion physics.",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "registry:build": "node scripts/build-registry.mjs",
+    "test": "echo \"No tests specified\" && exit 0"
+  },
+  "keywords": [
+    "thinkai",
+    "design-system",
+    "ui-registry",
+    "zero-radius",
+    "dark-mode",
+    "tailwind",
+    "motion",
+    "framer-motion",
+    "nextjs",
+    "react"
+  ],
+  "author": "ThinkAI Studio / Nguyen Huu Binh Minh",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ThinkAI-Studio/thinkai-ui.git"
+  },
+  "bugs": {
+    "url": "https://github.com/ThinkAI-Studio/thinkai-ui/issues"
+  },
+  "homepage": "https://ui.thinkai.studio",
+  "peerDependencies": {
+    "@radix-ui/react-slot": "^1.1.0",
+    "class-variance-authority": "^0.7.1",
+    "clsx": "^2.1.1",
+    "motion": "^12.0.0 || ^13.0.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "tailwind-merge": "^3.0.0",
+    "three": "^0.180.0"
+  }
+}
