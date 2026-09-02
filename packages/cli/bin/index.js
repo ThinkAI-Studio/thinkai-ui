@@ -27,30 +27,32 @@ async function main() {
     console.log(`Usage:
   npx thinkai-ui init               Initialize ThinkAI design tokens and utils in your project
   npx thinkai-ui add <component>   Add a component to your project
+  npx thinkai-ui add --all          Install all 16 production components at once
   npx thinkai-ui list               List all available components in the registry
   npx thinkai-ui --help             Show this help message
 
 Examples:
   npx thinkai-ui add tai-button
-  npx thinkai-ui add wipe-button
-  npx thinkai-ui add product-mockup
+  npx thinkai-ui add wipe-button product-mockup
+  npx thinkai-ui add --all
 `);
     return;
   }
 
   if (command === "list") {
     console.log(BANNER);
-    console.log("Fetching registry catalog...\n");
+    console.log("Fetching ThinkAI Studio registry catalog...\n");
     try {
       const registry = await fetchRegistry();
-      console.log("Available ThinkAI UI Components:\n");
+      console.log(`Available ThinkAI UI Components (\x1b[32m${registry.items.length} Primitives\x1b[0m):\n`);
       for (const item of registry.items) {
-        console.log(`  ● \x1b[1m${item.name}\x1b[0m — ${item.description}`);
+        console.log(`  ● \x1b[1m\x1b[37m${item.name.padEnd(20)}\x1b[0m \x1b[90m│\x1b[0m ${item.description}`);
         if (item.dependencies && item.dependencies.length > 0) {
-          console.log(`    \x1b[2mDependencies: ${item.dependencies.join(", ")}\x1b[0m`);
+          console.log(`    \x1b[2m\x1b[36m└─ pkgs: ${item.dependencies.join(", ")}\x1b[0m`);
         }
       }
-      console.log("\nInstall any component using: npx thinkai-ui add <name>");
+      console.log("\nInstall any component using: \x1b[32mnpx thinkai-ui add <name>\x1b[0m");
+      console.log("Install all components using: \x1b[32mnpx thinkai-ui add --all\x1b[0m");
     } catch (err) {
       console.error("\x1b[31mFailed to fetch registry:\x1b[0m", err.message);
     }
@@ -78,7 +80,7 @@ export function cn(...inputs: ClassValue[]) {
 }
 `;
       fs.writeFileSync(utilsPath, utilsContent, "utf-8");
-      console.log("  ✓ Created \x1b[32msrc/lib/utils.ts\x1b[0m");
+      console.log("  ✓ Created \x1b[32msrc/lib/utils.ts\x1b[0m (clsx + tailwind-merge helper)");
     } else {
       console.log("  ℹ \x1b[33msrc/lib/utils.ts\x1b[0m already exists.");
     }
@@ -99,7 +101,7 @@ export const TAI_SPRING = {
 } as const;
 `;
       fs.writeFileSync(motionPath, motionContent, "utf-8");
-      console.log("  ✓ Created \x1b[32msrc/lib/motion.ts\x1b[0m");
+      console.log("  ✓ Created \x1b[32msrc/lib/motion.ts\x1b[0m (TAI_SPRING & TAI_EASE)");
     }
 
     // 3. Create components.json
@@ -123,29 +125,44 @@ export const TAI_SPRING = {
     fs.writeFileSync(configPath, JSON.stringify(configContent, null, 2), "utf-8");
     console.log("  ✓ Created \x1b[32mcomponents.json\x1b[0m");
 
-    console.log("\n\x1b[32mThinkAI UI successfully initialized!\x1b[0m");
-    console.log("Recommended dependencies to install:");
-    console.log("  npm install clsx tailwind-merge class-variance-authority @radix-ui/react-slot motion\n");
+    console.log("\n\x1b[32m✔ ThinkAI UI foundation successfully initialized!\x1b[0m");
+    console.log("\x1b[1mNext Step: Install recommended dependencies:\x1b[0m");
+    console.log("  \x1b[36mnpm install clsx tailwind-merge class-variance-authority @radix-ui/react-slot motion\x1b[0m\n");
     return;
   }
 
   if (command === "add") {
-    const componentNames = args.slice(1);
+    let componentNames = args.slice(1);
     if (componentNames.length === 0) {
-      console.error("\x1b[31mPlease specify at least one component to add.\x1b[0m");
+      console.error("\x1b[31mPlease specify at least one component to add, or use --all.\x1b[0m");
       console.log("Example: npx thinkai-ui add tai-button");
       return;
     }
 
+    if (componentNames.includes("--all")) {
+      const registry = await fetchRegistry();
+      componentNames = registry.items.map(item => item.name);
+      console.log(`\x1b[35mInstalling all ${componentNames.length} components...\x1b[0m`);
+    }
+
     console.log(BANNER);
+    const collectedDeps = new Set();
     for (const name of componentNames) {
-      await addComponent(name);
+      const deps = await addComponent(name);
+      if (deps) {
+        deps.forEach(d => collectedDeps.add(d));
+      }
+    }
+
+    if (collectedDeps.size > 0) {
+      console.log("\x1b[1m\x1b[32m✔ Installation complete!\x1b[0m");
+      console.log(`Ensure you have installed the required packages:`);
+      console.log(`  \x1b[36mnpm install ${Array.from(collectedDeps).join(" ")}\x1b[0m\n`);
     }
   }
 }
 
 async function fetchRegistry() {
-  // Check local root registry first
   const candidates = [
     path.resolve(__dirname, "../../../registry/registry.json"),
     path.resolve(__dirname, "../../registry/registry.json"),
@@ -166,7 +183,7 @@ async function fetchRegistry() {
 }
 
 async function addComponent(name) {
-  console.log(`Installing \x1b[1m${name}\x1b[0m...`);
+  console.log(`\x1b[34m➤\x1b[0m Installing \x1b[1m\x1b[37m${name}\x1b[0m...`);
   const cwd = process.cwd();
   const targetDir = path.join(cwd, "src", "components", "tai-ui");
 
@@ -192,8 +209,8 @@ async function addComponent(name) {
     if (!manifest) {
       const res = await fetch(`${GITHUB_RAW_BASE}/registry/ui/${name}.json`);
       if (!res.ok) {
-        console.error(`  \x1b[31mComponent "${name}" not found in registry.\x1b[0m`);
-        return;
+        console.error(`  \x1b[31m✖ Component "${name}" not found in registry.\x1b[0m`);
+        return null;
       }
       manifest = await res.json();
     }
@@ -209,15 +226,13 @@ async function addComponent(name) {
     for (const file of manifest.files) {
       const targetFilePath = path.join(targetDir, file.name);
       fs.writeFileSync(targetFilePath, file.content, "utf-8");
-      console.log(`  ✓ Wrote \x1b[32msrc/components/tai-ui/${file.name}\x1b[0m`);
+      console.log(`  \x1b[32m✓\x1b[0m Wrote \x1b[37msrc/components/tai-ui/${file.name}\x1b[0m`);
     }
 
-    if (manifest.dependencies && manifest.dependencies.length > 0) {
-      console.log(`  ℹ Required packages: \x1b[36m${manifest.dependencies.join(" ")}\x1b[0m`);
-    }
-    console.log(`\x1b[32mSuccessfully added ${manifest.title}!\x1b[0m\n`);
+    return manifest.dependencies || [];
   } catch (err) {
-    console.error(`  \x1b[31mFailed to install ${name}:\x1b[0m`, err.message);
+    console.error(`  \x1b[31m✖ Failed to install ${name}:\x1b[0m`, err.message);
+    return null;
   }
 }
 
