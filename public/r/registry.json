@@ -275,6 +275,226 @@
           "target": "components/tai-ui/TechLogos.tsx"
         }
       ]
+    },
+    {
+      "name": "tai-input",
+      "type": "registry:ui",
+      "title": "Tai Input",
+      "description": "Labelled text input with description and error states.",
+      "dependencies": [],
+      "files": [
+        {
+          "path": "ui/TaiInput.tsx",
+          "type": "registry:ui",
+          "target": "components/tai-ui/TaiInput.tsx"
+        }
+      ]
+    },
+    {
+      "name": "tai-select",
+      "type": "registry:ui",
+      "title": "Tai Select",
+      "description": "Native select with focused visual shell and explicit options.",
+      "dependencies": [
+        "lucide-react"
+      ],
+      "files": [
+        {
+          "path": "ui/TaiSelect.tsx",
+          "type": "registry:ui",
+          "target": "components/tai-ui/TaiSelect.tsx"
+        }
+      ]
+    },
+    {
+      "name": "tai-checkbox",
+      "type": "registry:ui",
+      "title": "Tai Checkbox",
+      "description": "Labelled binary choice with native checkbox semantics.",
+      "dependencies": [
+        "lucide-react"
+      ],
+      "files": [
+        {
+          "path": "ui/TaiCheckbox.tsx",
+          "type": "registry:ui",
+          "target": "components/tai-ui/TaiCheckbox.tsx"
+        }
+      ]
+    },
+    {
+      "name": "tai-switch",
+      "type": "registry:ui",
+      "title": "Tai Switch",
+      "description": "Immediate on/off control with a native switch role.",
+      "dependencies": [],
+      "files": [
+        {
+          "path": "ui/TaiSwitch.tsx",
+          "type": "registry:ui",
+          "target": "components/tai-ui/TaiSwitch.tsx"
+        }
+      ]
+    },
+    {
+      "name": "tai-tabs",
+      "type": "registry:ui",
+      "title": "Tai Tabs",
+      "description": "Tablist with roving keyboard navigation and explicit panels.",
+      "dependencies": [],
+      "files": [
+        {
+          "path": "ui/TaiTabs.tsx",
+          "type": "registry:ui",
+          "target": "components/tai-ui/TaiTabs.tsx"
+        }
+      ]
+    },
+    {
+      "name": "tai-accordion",
+      "type": "registry:ui",
+      "title": "Tai Accordion",
+      "description": "Single-open disclosure list for progressive information density.",
+      "dependencies": [
+        "lucide-react"
+      ],
+      "files": [
+        {
+          "path": "ui/TaiAccordion.tsx",
+          "type": "registry:ui",
+          "target": "components/tai-ui/TaiAccordion.tsx"
+        }
+      ]
+    },
+    {
+      "name": "tai-dialog",
+      "type": "registry:ui",
+      "title": "Tai Dialog",
+      "description": "Restrained modal surface with Escape and backdrop dismissal.",
+      "dependencies": [
+        "motion",
+        "lucide-react"
+      ],
+      "files": [
+        {
+          "path": "ui/TaiDialog.tsx",
+          "type": "registry:ui",
+          "target": "components/tai-ui/TaiDialog.tsx"
+        }
+      ]
+    },
+    {
+      "name": "tai-toast",
+      "type": "registry:ui",
+      "title": "Tai Toast",
+      "description": "Quiet live notification for completed or recoverable actions.",
+      "dependencies": [
+        "motion",
+        "lucide-react"
+      ],
+      "files": [
+        {
+          "path": "ui/TaiToast.tsx",
+          "type": "registry:ui",
+          "target": "components/tai-ui/TaiToast.tsx"
+        }
+      ]
+    },
+    {
+      "name": "text-scramble",
+      "type": "registry:ui",
+      "title": "Text Scramble",
+      "description": "Finite character scramble for known display text transitions.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "ui/TextScramble.tsx",
+          "type": "registry:ui",
+          "target": "components/tai-ui/TextScramble.tsx"
+        }
+      ]
+    },
+    {
+      "name": "text-morph",
+      "type": "registry:ui",
+      "title": "Text Morph",
+      "description": "Small crossfade and settle for changing a single text value.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "ui/TextMorph.tsx",
+          "type": "registry:ui",
+          "target": "components/tai-ui/TextMorph.tsx"
+        }
+      ]
+    },
+    {
+      "name": "text-reveal-block",
+      "type": "registry:ui",
+      "title": "Text Reveal Block",
+      "description": "One-shot block reveal for short headings entering the viewport.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "ui/TextRevealBlock.tsx",
+          "type": "registry:ui",
+          "target": "components/tai-ui/TextRevealBlock.tsx"
+        }
+      ]
+    },
+    {
+      "name": "draw-underline",
+      "type": "registry:ui",
+      "title": "Draw Underline",
+      "description": "Restrained underline draw for a text link or phrase.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "ui/DrawUnderline.tsx",
+          "type": "registry:ui",
+          "target": "components/tai-ui/DrawUnderline.tsx"
+        }
+      ]
+    },
+    {
+      "name": "border-trail",
+      "type": "registry:ui",
+      "title": "Border Trail",
+      "description": "Sparse border highlight for an active showcase surface.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "ui/BorderTrail.tsx",
+          "type": "registry:ui",
+          "target": "components/tai-ui/BorderTrail.tsx"
+        }
+      ]
+    },
+    {
+      "name": "number-flow",
+      "type": "registry:ui",
+      "title": "Number Flow",
+      "description": "Small numeric settle for values that genuinely change.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "ui/NumberFlow.tsx",
+          "type": "registry:ui",
+          "target": "components/tai-ui/NumberFlow.tsx"
+        }
+      ]
     }
   ]
 }

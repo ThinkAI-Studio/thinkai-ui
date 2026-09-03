@@ -19,14 +19,14 @@
 [![TypeScript 5](https://img.shields.io/badge/TypeScript-Strict_5.x-08080a?style=flat-square&logo=typescript&logoColor=white)](https://www.typescriptlang.org)
 [![React 19](https://img.shields.io/badge/React-19.2+-08080a?style=flat-square&logo=react&logoColor=white)](https://react.dev)
 [![Motion 13](https://img.shields.io/badge/Motion-13.1+-08080a?style=flat-square&logo=framer&logoColor=white)](https://motion.dev)
-[![A11y WCAG AAA](https://img.shields.io/badge/A11y-WCAG_AAA_Compliant-4ade80?style=flat-square&logoColor=08080a)](DESIGN.md)
+[![A11y WCAG 2.2 AA](https://img.shields.io/badge/A11y-WCAG_2.2_AA_Target-4ade80?style=flat-square&logoColor=08080a)](DESIGN.md)
 
 <p align="center">
   <a href="#-executive-summary">Overview</a> •
   <a href="#-quick-start--cli-usage">Quick Start</a> •
   <a href="#%EF%B8%8F-core-architectural-pillars">Pillars</a> •
   <a href="#-the-production-hallmark-contrast-matrix">Comparison Matrix</a> •
-  <a href="#-production-component-catalog-16-primitives">Component Catalog</a> •
+  <a href="#-production-component-catalog-30-primitives">Component Catalog</a> •
   <a href="#-design-tokens--global-configuration">Design Tokens</a> •
   <a href="#%EF%B8%8F-registry-architecture">Architecture</a>
 </p>
@@ -57,7 +57,7 @@ Instead of an opaque, immutable NPM dependency, **`thinkai-ui` distributes code 
 │  03. TECTONIC MOTION PHYSICS  │  04. REGISTRY DECENTRALIZATION│
 │  Frictionless mechanical mass │  Direct code ownership in src │
 │  Luxury `[0.16, 1, 0.3, 1]`   │  shadcn-compatible manifests  │
-│  Full WCAG AAA reduced motion │  Zero bloated node_modules    │
+│  WCAG 2.2 AA motion baseline  │  Zero bloated node_modules    │
 └───────────────────────────────┴───────────────────────────────┘
 ```
 
@@ -130,7 +130,7 @@ npx thinkai-ui add halftone-banner
 npx thinkai-ui add tai-header
 npx thinkai-ui add about-drawer
 
-# Or Install All 16 Components At Once
+# Or Install All 30 Components At Once
 npx thinkai-ui add --all
 ```
 
@@ -142,9 +142,9 @@ npx thinkai-ui list
 
 ---
 
-## 📦 Production Component Catalog (16 Primitives)
+## 📦 Production Component Catalog (30 Primitives)
 
-Every component is written in **TypeScript Strict Mode**, supports polymorphic **Radix Slot (`asChild`)**, and enforces full **WCAG AAA Reduced-Motion compliance**.
+Every component is written in **TypeScript Strict Mode**, documents its keyboard and reduced-motion behavior, and targets **WCAG 2.2 AA** without overstating unverified compliance.
 
 | Primitive | CLI Command | Category | Key Capabilities & Highlights |
 | :--- | :--- | :--- | :--- |
@@ -164,6 +164,20 @@ Every component is written in **TypeScript Strict Mode**, supports polymorphic *
 | **SmoothScroll** | `npx thinkai-ui add smooth-scroll` | *Provider* | Lenis 120Hz smooth scrolling coordination with touch and anchor normalization |
 | **AiBrandIcons** | `npx thinkai-ui add ai-brand-icons` | *Vectors* | Pure SVG brand marks: Claude, Gemini, OpenAI, Groq, Ollama, DeepSeek |
 | **TechLogos** | `npx thinkai-ui add tech-logos` | *Display* | High-contrast inverted hover tiles with snappy spring lift physics |
+| **TaiInput** | `npx thinkai-ui add tai-input` | *Forms* | Labelled input with description, invalid, and disabled states |
+| **TaiSelect** | `npx thinkai-ui add tai-select` | *Forms* | Native select shell with explicit options and error state |
+| **TaiCheckbox** | `npx thinkai-ui add tai-checkbox` | *Controls* | Native checkbox with visible focus and label association |
+| **TaiSwitch** | `npx thinkai-ui add tai-switch` | *Controls* | Immediate on/off control with switch semantics |
+| **TaiTabs** | `npx thinkai-ui add tai-tabs` | *Disclosure* | Keyboard-navigable tablist and panels |
+| **TaiAccordion** | `npx thinkai-ui add tai-accordion` | *Disclosure* | Single-open progressive disclosure primitive |
+| **TaiDialog** | `npx thinkai-ui add tai-dialog` | *Overlay* | Focused modal surface with Escape and backdrop dismissal |
+| **TaiToast** | `npx thinkai-ui add tai-toast` | *Feedback* | Quiet live notification for non-blocking feedback |
+| **TextScramble** | `npx thinkai-ui add text-scramble` | *Motion* | Finite character transition for known display text |
+| **TextMorph** | `npx thinkai-ui add text-morph` | *Motion* | Small crossfade for changing text values |
+| **TextRevealBlock** | `npx thinkai-ui add text-reveal-block` | *Motion* | One-shot block reveal for short headings |
+| **DrawUnderline** | `npx thinkai-ui add draw-underline` | *Motion* | Restrained underline draw for links and emphasis |
+| **BorderTrail** | `npx thinkai-ui add border-trail` | *Motion* | Sparse attention trail for a focused surface |
+| **NumberFlow** | `npx thinkai-ui add number-flow` | *Motion* | Small numeric settle for real changing values |
 
 ---
 
@@ -205,7 +219,7 @@ export const TAI_SPRING = {
 
 ---
 
-## ♿ WCAG AAA Accessibility & Reduced Motion
+## ♿ WCAG 2.2 AA Accessibility & Reduced Motion
 
 All components strictly honor `prefers-reduced-motion: reduce` through four deterministic strategies:
 

@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.thinkai.studio/schema/registry-item.json",
+  "name": "tai-select",
+  "type": "registry:ui",
+  "title": "Tai Select",
+  "description": "Native select with focused visual shell and explicit options.",
+  "dependencies": [
+    "lucide-react"
+  ],
+  "registryDependencies": [],
+  "files": [
+    {
+      "name": "TaiSelect.tsx",
+      "content": "\"use client\";\n\nimport * as React from \"react\";\nimport { ChevronDown } from \"lucide-react\";\nimport { cn } from \"@/lib/utils\";\n\nexport type TaiSelectOption = { label: string; value: string; disabled?: boolean };\n\nexport interface TaiSelectProps extends React.SelectHTMLAttributes<HTMLSelectElement> {\n  label?: string;\n  description?: string;\n  error?: string;\n  options: TaiSelectOption[];\n}\n\nexport const TaiSelect = React.forwardRef<HTMLSelectElement, TaiSelectProps>(\n  ({ className, id, label, description, error, options, ...props }, ref) => {\n    const generatedId = React.useId();\n    const selectId = id ?? generatedId;\n    const descriptionId = description ? `${selectId}-description` : undefined;\n    const errorId = error ? `${selectId}-error` : undefined;\n    const describedBy = [descriptionId, errorId].filter(Boolean).join(\" \") || undefined;\n\n    return (\n      <label className=\"block space-y-2 font-sans text-sm text-zinc-300\" htmlFor={selectId}>\n        {label && <span className=\"block font-mono text-[10px] uppercase tracking-widest text-zinc-500\">{label}</span>}\n        <span className=\"relative block\">\n          <select\n            ref={ref}\n            id={selectId}\n            aria-invalid={error ? true : undefined}\n            aria-describedby={describedBy}\n            className={cn(\n              \"block min-h-11 w-full appearance-none border bg-black px-3 py-2.5 pr-10 text-sm text-white outline-none transition-[border-color,background-color] focus-visible:border-emerald-400 focus-visible:ring-2 focus-visible:ring-emerald-400/30 disabled:cursor-not-allowed disabled:opacity-45\",\n              error ? \"border-amber-300/70\" : \"border-white/[0.14] hover:border-white/[0.26]\",\n              className,\n            )}\n            {...props}\n          >\n            {options.map((option) => <option key={option.value} value={option.value} disabled={option.disabled}>{option.label}</option>)}\n          </select>\n          <ChevronDown aria-hidden=\"true\" className=\"pointer-events-none absolute right-3 top-1/2 h-4 w-4 -translate-y-1/2 text-zinc-500\" />\n        </span>\n        {description && <span id={descriptionId} className=\"block text-xs leading-5 text-zinc-500\">{description}</span>}\n        {error && <span id={errorId} className=\"block text-xs leading-5 text-amber-200\">{error}</span>}\n      </label>\n    );\n  },\n);\n\nTaiSelect.displayName = \"TaiSelect\";\n"
+    }
+  ]
+}

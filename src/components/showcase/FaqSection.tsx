@@ -19,8 +19,8 @@ export function FaqSection() {
       a: "Absolutely. The components rely on design tokens declared in globals.css (@theme) and src/lib/motion.ts. Because you own the component source code, you can tweak any CSS class, animation parameter, or Radix prop directly in your project.",
     },
     {
-      q: "How does thinkai-ui handle accessibility (WCAG AAA) and reduced motion?",
-      a: "Every interactive component includes 4-tier reduced-motion fallbacks (Bail, Snap, Collapse, Reduce). When a user enables prefers-reduced-motion, transitions resolve instantly, WebGL shaders throttle down, and crisp 2px focus outlines are enforced.",
+      q: "How does thinkai-ui handle accessibility (WCAG 2.2 AA) and reduced motion?",
+      a: "Interactive components target WCAG 2.2 AA fundamentals: semantic controls, keyboard access, visible focus, and reduced-motion fallbacks. When a user enables prefers-reduced-motion, transitions remove travel and preserve the final content state.",
     },
     {
       q: "Is thinkai-ui free and open-source?",

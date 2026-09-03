@@ -2,6 +2,7 @@
 
 import { useCallback, useState, useEffect } from "react";
 import { Search, Terminal, Copy, Check, X, Box, ArrowRight, CornerDownLeft } from "lucide-react";
+import { catalogItems } from "@/data/catalog";
 
 interface ComponentEntry {
   name: string;
@@ -10,24 +11,12 @@ interface ComponentEntry {
   description: string;
 }
 
-const ALL_COMPONENTS: ComponentEntry[] = [
-  { name: "TaiButton", slug: "tai-button", category: "Action", description: "0px sharp architectural button with top-inset light sweep." },
-  { name: "WipeButton", slug: "wipe-button", category: "Action", description: "Signature Forward-Wipe interactive button with luxury easing." },
-  { name: "ArrowRoll", slug: "arrow-roll", category: "Micro", description: "Directional forward translation arrow with spring physics." },
-  { name: "ButtonTextRoll", slug: "button-text-roll", category: "Typography", description: "Dual-layer micro-tumbler for kinetic button labels." },
-  { name: "TextRoll", slug: "text-roll", category: "Typography", description: "Slot-machine text tumbler roll for display headlines." },
-  { name: "MaskedTextReveal", slug: "masked-text-reveal", category: "Typography", description: "Editorial typography reveal via geometric clip-path masking." },
-  { name: "ProductMockup", slug: "product-mockup", category: "Display", description: "Architectural browser/laptop mockup frame with inset parallax." },
-  { name: "HalftoneBanner", slug: "halftone-banner", category: "WebGL", description: "WebGL ocean caustics banner integrated with studio logomark." },
-  { name: "ThreeHalftoneCanvas", slug: "three-halftone-canvas", category: "Engine", description: "Procedural WebGL ocean shader with 60/120fps GPU throttle." },
-  { name: "SmoothScroll", slug: "smooth-scroll", category: "Provider", description: "Lenis 120Hz smooth scrolling coordination." },
-  { name: "TaiHeader", slug: "tai-header", category: "Navigation", description: "Zero-border sticky header with mobile full-bleed drawer." },
-  { name: "AboutDrawer", slug: "about-drawer", category: "Overlay", description: "High-contrast spring sliding sheet for biography & career." },
-  { name: "ArchitectureModal", slug: "architecture-modal", category: "Overlay", description: "Multi-tab deep-dive system architecture modal." },
-  { name: "ContactModal", slug: "contact-modal", category: "Overlay", description: "Sharp geometric contact dialog with instant clipboard actions." },
-  { name: "AiBrandIcons", slug: "ai-brand-icons", category: "Vectors", description: "SVG brand marks for Claude, Gemini, OpenAI, Perplexity." },
-  { name: "TechLogos", slug: "tech-logos", category: "Display", description: "High-contrast inverted tech badges with spring lift physics." },
-];
+const ALL_COMPONENTS: ComponentEntry[] = catalogItems.map((item) => ({
+  name: item.title,
+  slug: item.slug,
+  category: item.category,
+  description: item.description,
+}));
 
 export function CommandMenu({
   isOpen,
@@ -52,7 +41,10 @@ export function CommandMenu({
     const el = document.getElementById(slug);
     if (el) {
       el.scrollIntoView({ behavior: "smooth" });
+      return;
     }
+    const item = catalogItems.find((entry) => entry.slug === slug);
+    window.location.assign(item ? `/docs/${item.kind}/${slug}` : `/docs/${slug}`);
   }, [onClose]);
 
   useEffect(() => {

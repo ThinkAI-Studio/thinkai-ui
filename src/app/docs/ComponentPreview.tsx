@@ -13,10 +13,25 @@ import { TechLogo } from "@/components/tai-ui/TechLogos";
 import { TextRoll } from "@/components/tai-ui/TextRoll";
 import { ThreeHalftoneCanvas } from "@/components/tai-ui/ThreeHalftoneCanvas";
 import { WipeButton } from "@/components/tai-ui/WipeButton";
+import { TaiInput } from "@/components/tai-ui/TaiInput";
+import { TaiSelect } from "@/components/tai-ui/TaiSelect";
+import { TaiCheckbox } from "@/components/tai-ui/TaiCheckbox";
+import { TaiSwitch } from "@/components/tai-ui/TaiSwitch";
+import { TaiTabs } from "@/components/tai-ui/TaiTabs";
+import { TaiAccordion } from "@/components/tai-ui/TaiAccordion";
+import { TaiDialog } from "@/components/tai-ui/TaiDialog";
+import { TaiToast } from "@/components/tai-ui/TaiToast";
+import { BorderTrail } from "@/components/tai-ui/BorderTrail";
+import { DrawUnderline } from "@/components/tai-ui/DrawUnderline";
+import { NumberFlow } from "@/components/tai-ui/NumberFlow";
+import { TextMorph } from "@/components/tai-ui/TextMorph";
+import { TextRevealBlock } from "@/components/tai-ui/TextRevealBlock";
+import { TextScramble } from "@/components/tai-ui/TextScramble";
 import type { CatalogItem } from "@/data/catalog";
 
 export function ComponentPreview({ item, compact = false }: { item: CatalogItem; compact?: boolean }) {
   const [open, setOpen] = useState(false);
+  const [toastOpen, setToastOpen] = useState(true);
   const className = compact ? "scale-[0.82] origin-center" : "";
   return <div className={`relative flex min-h-[150px] w-full min-w-0 max-w-full items-center justify-center overflow-hidden ${className}`}>
     {item.previewId === "tai-button" && <div className="flex flex-wrap justify-center gap-3"><TaiButton>Deploy system</TaiButton><TaiButton variant="outline">Inspect</TaiButton></div>}
@@ -35,5 +50,19 @@ export function ComponentPreview({ item, compact = false }: { item: CatalogItem;
     {item.previewId === "tai-header" && <div className="w-full border-y border-white/[0.12] px-4 py-3 text-center font-mono text-xs uppercase text-zinc-300">ThinkAI UI / Components / Docs</div>}
     {item.previewId === "smooth-scroll" && <div className="border border-white/[0.12] p-5 font-mono text-xs uppercase text-zinc-400">Native scroll → Lenis optional</div>}
     {item.previewId === "ai-brand-icons" && <div className="font-mono text-xs uppercase tracking-widest text-emerald-400">Provider marks / labelled</div>}
+    {item.previewId === "tai-input" && <div className="w-full max-w-sm"><TaiInput label="Project name" placeholder="ThinkAI Studio" description="A short, source-owned label." /></div>}
+    {item.previewId === "tai-select" && <div className="w-full max-w-sm"><TaiSelect label="Environment" defaultValue="preview" options={[{ label: "Preview", value: "preview" }, { label: "Production", value: "production" }]} /></div>}
+    {item.previewId === "tai-checkbox" && <TaiCheckbox label="Keep source in my repository" defaultChecked description="No hidden runtime dependency." />}
+    {item.previewId === "tai-switch" && <div className="w-full max-w-sm"><TaiSwitch label="Enable motion preview" defaultChecked description="Reduced motion remains respected." /></div>}
+    {item.previewId === "tai-tabs" && <div className="w-full max-w-lg"><TaiTabs tabs={[{ value: "overview", label: "Overview", content: "A compact view for the current primitive." }, { value: "source", label: "Source", content: "Readable TypeScript remains the product." }]} /></div>}
+    {item.previewId === "tai-accordion" && <div className="w-full max-w-lg"><TaiAccordion items={[{ value: "ownership", title: "Why source ownership?", content: "The installed component remains editable in your repository." }, { value: "motion", title: "What about motion?", content: "Motion explains state and respects reduced motion." }]} /></div>}
+    {item.previewId === "tai-dialog" && <><TaiButton onClick={() => setOpen(true)}>Open dialog</TaiButton><TaiDialog open={open} onOpenChange={setOpen} title="Confirm source install" description="This is a focused task surface, not a documentation replacement."><p className="text-sm leading-6 text-zinc-400">The component will remain source-owned in your project.</p></TaiDialog></>}
+    {item.previewId === "tai-toast" && <><TaiButton variant="outline" onClick={() => setToastOpen(true)}>Show feedback</TaiButton><TaiToast open={toastOpen} title="Copied" description="The usage snippet is ready to paste." onClose={() => setToastOpen(false)} duration={0} className="!absolute bottom-2 right-2" /></>}
+    {item.previewId === "text-scramble" && <div className="font-mono text-xl font-bold uppercase text-white"><TextScramble text="SOURCE OWNERSHIP" /></div>}
+    {item.previewId === "text-morph" && <div className="font-mono text-xl font-bold uppercase text-white"><TextMorph text="MOTION WITH A JOB" /></div>}
+    {item.previewId === "text-reveal-block" && <div className="font-mono text-xl font-bold uppercase text-white"><TextRevealBlock>BUILD WITH INTENT</TextRevealBlock></div>}
+    {item.previewId === "draw-underline" && <div className="font-mono text-xl uppercase text-white"><DrawUnderline>Read the source</DrawUnderline></div>}
+    {item.previewId === "border-trail" && <BorderTrail className="w-full max-w-sm bg-tai-sheet p-8 text-center font-mono text-xs uppercase tracking-widest text-zinc-300">Focused surface</BorderTrail>}
+    {item.previewId === "number-flow" && <div className="font-mono text-4xl font-bold text-white"><NumberFlow value="30+" /></div>}
   </div>;
 }

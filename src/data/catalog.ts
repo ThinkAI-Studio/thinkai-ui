@@ -11,7 +11,7 @@ export type CatalogItem = {
   slug: string;
   title: string;
   kind: CatalogKind;
-  category: "Action" | "Overlay" | "Typography" | "Display" | "WebGL" | "System";
+  category: "Action" | "Overlay" | "Typography" | "Display" | "WebGL" | "System" | "Forms" | "Controls" | "Disclosure" | "Feedback" | "Text" | "Effects";
   description: string;
   sourcePath: string;
   dependencies: string[];
@@ -296,6 +296,62 @@ export const catalogItems: CatalogItem[] = [
     whenNotToUse: "Do not imply an integration that the product does not actually provide.",
     accessibility: ["Provide an accessible label when icons are interactive or informative."],
     reducedMotion: "No motion required.",
+  },
+  {
+    slug: "tai-input", title: "TaiInput", kind: "ui", category: "Forms",
+    description: "A labelled text input with honest description and error states.", sourcePath: "src/components/tai-ui/TaiInput.tsx", dependencies: [], previewId: "tai-input", usage: '<TaiInput label="Project name" placeholder="ThinkAI" />', variants: ["default", "invalid", "disabled"], whenToUse: "Use for short user-entered values that need a visible label.", whenNotToUse: "Do not replace a search control or rich editor with an unlabeled field.", accessibility: ["Uses a real input and associates label, description, and error text.", "Invalid state is exposed with aria-invalid."], reducedMotion: "No motion required.", props: [{ name: "error", type: "string", description: "Displays an invalid state and message." }],
+  },
+  {
+    slug: "tai-select", title: "TaiSelect", kind: "ui", category: "Forms",
+    description: "A native select with a focused visual shell and explicit options.", sourcePath: "src/components/tai-ui/TaiSelect.tsx", dependencies: ["lucide-react"], previewId: "tai-select", usage: '<TaiSelect label="Environment" options={[{ label: "Production", value: "prod" }]} />', variants: ["default", "invalid", "disabled"], whenToUse: "Use for a short, known list of mutually exclusive options.", whenNotToUse: "Do not use for large datasets that require search.", accessibility: ["Keeps native select keyboard behavior.", "Options can be disabled and errors are associated with the control."], reducedMotion: "No motion required.", props: [{ name: "options", type: "TaiSelectOption[]", description: "The visible choices." }],
+  },
+  {
+    slug: "tai-checkbox", title: "TaiCheckbox", kind: "ui", category: "Controls",
+    description: "A labelled binary choice with native checkbox semantics.", sourcePath: "src/components/tai-ui/TaiCheckbox.tsx", dependencies: ["lucide-react"], previewId: "tai-checkbox", usage: '<TaiCheckbox label="I understand the source ownership model" />', variants: ["unchecked", "checked", "disabled"], whenToUse: "Use for independent opt-in choices.", whenNotToUse: "Use a switch when the control represents an immediate on/off setting.", accessibility: ["Uses a real checkbox input and label association.", "Focus is visible through the surrounding control."], reducedMotion: "Keeps the check state without scale animation.",
+  },
+  {
+    slug: "tai-switch", title: "TaiSwitch", kind: "ui", category: "Controls",
+    description: "An immediate on/off control with a native switch role.", sourcePath: "src/components/tai-ui/TaiSwitch.tsx", dependencies: [], previewId: "tai-switch", usage: '<TaiSwitch label="Enable preview motion" defaultChecked />', variants: ["off", "on", "disabled"], whenToUse: "Use for settings that take effect immediately.", whenNotToUse: "Do not use when the user must submit a form to apply the choice.", accessibility: ["Exposes role=switch and native checked state.", "Label and description remain available to assistive technology."], reducedMotion: "Changes state without sliding travel.",
+  },
+  {
+    slug: "tai-tabs", title: "TaiTabs", kind: "ui", category: "Disclosure",
+    description: "A compact tablist with roving keyboard navigation and explicit panels.", sourcePath: "src/components/tai-ui/TaiTabs.tsx", dependencies: [], previewId: "tai-tabs", usage: '<TaiTabs tabs={[{ value: "overview", label: "Overview", content: "..." }]} />', variants: ["underline", "controlled"], whenToUse: "Use for peer views that share the same context and location.", whenNotToUse: "Do not hide a required step behind tabs.", accessibility: ["Uses tablist, tab, and tabpanel roles.", "Arrow, Home, and End keys move between tabs."], reducedMotion: "Panel content changes without layout animation.",
+  },
+  {
+    slug: "tai-accordion", title: "TaiAccordion", kind: "ui", category: "Disclosure",
+    description: "A single-open disclosure list for progressive information density.", sourcePath: "src/components/tai-ui/TaiAccordion.tsx", dependencies: ["lucide-react"], previewId: "tai-accordion", usage: '<TaiAccordion items={[{ value: "one", title: "What is source ownership?", content: "..." }]} />', variants: ["single-open", "controlled"], whenToUse: "Use when answers or secondary details can be progressively disclosed.", whenNotToUse: "Do not hide essential instructions or primary actions.", accessibility: ["Buttons expose aria-expanded and control their region.", "Content remains in the DOM when open."], reducedMotion: "Open and close state changes immediately.",
+  },
+  {
+    slug: "tai-dialog", title: "TaiDialog", kind: "ui", category: "Overlay",
+    description: "A restrained modal surface with Escape and backdrop dismissal.", sourcePath: "src/components/tai-ui/TaiDialog.tsx", dependencies: ["motion", "lucide-react"], previewId: "tai-dialog", usage: '<TaiDialog open={open} onOpenChange={setOpen} title="Confirm deployment">...</TaiDialog>', variants: ["controlled", "uncontrolled"], whenToUse: "Use for a short decision or focused task that interrupts the current view.", whenNotToUse: "Do not put long documentation or multi-step workflows in a modal.", accessibility: ["Uses dialog semantics, labelled title, and described content.", "Escape and an explicit close button dismiss the surface."], reducedMotion: "Removes entrance travel while preserving the final state.",
+  },
+  {
+    slug: "tai-toast", title: "TaiToast", kind: "ui", category: "Feedback",
+    description: "A quiet live notification for completed or recoverable actions.", sourcePath: "src/components/tai-ui/TaiToast.tsx", dependencies: ["motion", "lucide-react"], previewId: "tai-toast", usage: '<TaiToast open={open} title="Copied" onClose={() => setOpen(false)} />', variants: ["success", "dismissible"], whenToUse: "Use for brief feedback after a non-blocking action.", whenNotToUse: "Do not use for errors that require user attention or confirmation.", accessibility: ["Uses a polite live status region.", "Dismissal is available without relying on color."], reducedMotion: "Uses an immediate opacity state without travel.",
+  },
+  {
+    slug: "text-scramble", title: "TextScramble", kind: "motion", category: "Text",
+    description: "A short character scramble for known display text transitions.", sourcePath: "src/components/tai-ui/TextScramble.tsx", dependencies: ["motion"], previewId: "text-scramble", usage: '<TextScramble text="SOURCE OWNERSHIP" />', variants: ["triggered", "static"], whenToUse: "Use for short labels or headlines that change between known values.", whenNotToUse: "Do not use for paragraphs, errors, or content users must scan quickly.", accessibility: ["Final text is exposed through aria-label.", "Animation is progressive enhancement."], reducedMotion: "Shows the final text immediately.", motionNotes: "Finite 12-frame character transition; no loop.",
+  },
+  {
+    slug: "text-morph", title: "TextMorph", kind: "motion", category: "Text",
+    description: "A small crossfade and settle for changing a single text value.", sourcePath: "src/components/tai-ui/TextMorph.tsx", dependencies: ["motion"], previewId: "text-morph", usage: '<TextMorph text={activeLabel} />', variants: ["crossfade", "static"], whenToUse: "Use when a value changes in place and spatial continuity matters.", whenNotToUse: "Do not use to decorate static copy.", accessibility: ["Uses a polite live region for changing values.", "The current value remains real text."], reducedMotion: "Crossfade collapses to an immediate replacement.",
+  },
+  {
+    slug: "text-reveal-block", title: "TextRevealBlock", kind: "motion", category: "Text",
+    description: "A one-shot block reveal for short headings entering the viewport.", sourcePath: "src/components/tai-ui/TextRevealBlock.tsx", dependencies: ["motion"], previewId: "text-reveal-block", usage: '<TextRevealBlock>Build with intent.</TextRevealBlock>', variants: ["viewport", "static"], whenToUse: "Use for a short statement that benefits from a clear entrance.", whenNotToUse: "Do not gate body copy behind a reveal.", accessibility: ["Content remains in the DOM and is not hover-dependent."], reducedMotion: "Renders the full block without clip-path travel.",
+  },
+  {
+    slug: "draw-underline", title: "DrawUnderline", kind: "motion", category: "Text",
+    description: "A restrained underline draw that reinforces a text link or phrase.", sourcePath: "src/components/tai-ui/DrawUnderline.tsx", dependencies: ["motion"], previewId: "draw-underline", usage: '<DrawUnderline>Read the source</DrawUnderline>', variants: ["accent", "static"], whenToUse: "Use when the underline itself helps identify a text action or emphasis.", whenNotToUse: "Do not apply to every heading or paragraph.", accessibility: ["Text stays visible without the underline animation.", "Pair interactive use with a real anchor or button."], reducedMotion: "Underline is present immediately.",
+  },
+  {
+    slug: "border-trail", title: "BorderTrail", kind: "motion", category: "Effects",
+    description: "A sparse border highlight for an active surface, never a status claim.", sourcePath: "src/components/tai-ui/BorderTrail.tsx", dependencies: ["motion"], previewId: "border-trail", usage: '<BorderTrail>Active surface</BorderTrail>', variants: ["active", "quiet"], whenToUse: "Use on a focused showcase surface where the trail clarifies attention.", whenNotToUse: "Do not use as fake telemetry or on every card.", accessibility: ["The content and active state remain understandable without motion."], reducedMotion: "Disables the continuous trail.", motionNotes: "The only looping primitive in this batch; opt-in and decorative." ,
+  },
+  {
+    slug: "number-flow", title: "NumberFlow", kind: "motion", category: "Text",
+    description: "A small numeric settle for values that genuinely change.", sourcePath: "src/components/tai-ui/NumberFlow.tsx", dependencies: ["motion"], previewId: "number-flow", usage: '<NumberFlow value={activeUsers} />', variants: ["integer", "string"], whenToUse: "Use for real changing numbers with a stable label and context.", whenNotToUse: "Do not invent metrics just to create an animation.", accessibility: ["Uses a polite live region for value changes.", "Keep the surrounding label visible."], reducedMotion: "Replaces the value without travel.",
   },
 ];
 

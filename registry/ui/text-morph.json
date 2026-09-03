@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.thinkai.studio/schema/registry-item.json",
+  "name": "text-morph",
+  "type": "registry:ui",
+  "title": "Text Morph",
+  "description": "Small crossfade and settle for changing a single text value.",
+  "dependencies": [
+    "motion"
+  ],
+  "registryDependencies": [],
+  "files": [
+    {
+      "name": "TextMorph.tsx",
+      "content": "\"use client\";\n\nimport * as React from \"react\";\nimport { AnimatePresence, motion, useReducedMotion } from \"motion/react\";\n\nexport function TextMorph({ text, className = \"\" }: { text: string; className?: string }) {\n  const prefersReduced = useReducedMotion();\n  return <span className={className} aria-live=\"polite\"><AnimatePresence initial={false} mode=\"wait\"><motion.span key={text} initial={{ opacity: 0, y: prefersReduced ? 0 : 5 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: prefersReduced ? 0 : -5 }} transition={prefersReduced ? { duration: 0 } : { duration: 0.18 }} className=\"inline-block\">{text}</motion.span></AnimatePresence></span>;\n}\n"
+    }
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.thinkai.studio/schema/registry-item.json",
+  "name": "text-reveal-block",
+  "type": "registry:ui",
+  "title": "Text Reveal Block",
+  "description": "One-shot block reveal for short headings entering the viewport.",
+  "dependencies": [
+    "motion"
+  ],
+  "registryDependencies": [],
+  "files": [
+    {
+      "name": "TextRevealBlock.tsx",
+      "content": "\"use client\";\n\nimport * as React from \"react\";\nimport { motion, useReducedMotion } from \"motion/react\";\n\nexport function TextRevealBlock({ children, className = \"\" }: { children: React.ReactNode; className?: string }) {\n  const prefersReduced = useReducedMotion();\n  return <motion.span initial={{ opacity: 0, clipPath: prefersReduced ? \"inset(0)\" : \"inset(0 0 100% 0)\" }} whileInView={{ opacity: 1, clipPath: \"inset(0)\" }} viewport={{ once: true, amount: 0.7 }} transition={prefersReduced ? { duration: 0 } : { duration: 0.48, ease: [0.16, 1, 0.3, 1] }} className={`inline-block ${className}`}>{children}</motion.span>;\n}\n"
+    }
+  ]
+}

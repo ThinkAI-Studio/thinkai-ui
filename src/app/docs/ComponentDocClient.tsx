@@ -8,6 +8,9 @@ import { ComponentPreview } from "./ComponentPreview";
 
 export function CatalogIndex({ kind }: { kind: CatalogItem["kind"] }) {
   const items = catalogItems.filter((item) => item.kind === kind);
+  const [category, setCategory] = useState("All");
+  const categories = ["All", ...Array.from(new Set(items.map((item) => item.category)))];
+  const visibleItems = category === "All" ? items : items.filter((item) => item.category === category);
   const title = kind === "motion" ? "Motion primitives" : "UI primitives";
   const summary = kind === "motion"
     ? "Purposeful transitions, reveal patterns, and interaction physics for ThinkAI surfaces."
@@ -16,8 +19,13 @@ export function CatalogIndex({ kind }: { kind: CatalogItem["kind"] }) {
   return (
     <main className="min-h-screen bg-tai-bg text-white font-sans">
       <CatalogHeader eyebrow={kind === "motion" ? "Motion" : "UI"} title={title} summary={summary} />
-      <div className="mx-auto grid max-w-[1480px] gap-5 px-4 pb-16 sm:px-8 sm:pb-24 lg:grid-cols-2">
-        {items.map((item) => <CatalogCard key={item.slug} item={item} />)}
+      <div className="mx-auto max-w-[1480px] px-4 pb-16 sm:px-8 sm:pb-24">
+        <div className="mb-6 flex min-w-0 gap-1 overflow-x-auto border-b border-white/[0.1] pb-px" role="tablist" aria-label={`${kind} categories`}>
+          {categories.map((itemCategory) => <button key={itemCategory} type="button" role="tab" aria-selected={category === itemCategory} onClick={() => setCategory(itemCategory)} className={`shrink-0 border-b-2 px-3 py-3 font-mono text-[10px] uppercase tracking-widest transition-colors focus-visible:outline-2 focus-visible:outline-emerald-400 ${category === itemCategory ? "border-emerald-400 text-white" : "border-transparent text-zinc-600 hover:text-white"}`}>{itemCategory}</button>)}
+        </div>
+        <div className="grid gap-5 lg:grid-cols-2">
+          {visibleItems.map((item) => <CatalogCard key={item.slug} item={item} />)}
+        </div>
       </div>
     </main>
   );

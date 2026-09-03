@@ -32,7 +32,7 @@ export function HeroSection({ onOpenCommandMenu }: { onOpenCommandMenu: () => vo
         <div className="mb-8 inline-flex items-center gap-2 border border-white/[0.12] bg-tai-sheet/90 px-3 py-1 font-mono text-xs uppercase tracking-widest text-zinc-300 tai-inset-top backdrop-blur-md">
           <span>Source-owned UI registry</span>
           <span className="text-zinc-600">/</span>
-          <span className="text-zinc-400">16 primitives</span>
+          <span className="text-zinc-400">30 primitives</span>
         </div>
 
         {/* Primary Headline (Condensed Grotesque Style) */}
@@ -94,7 +94,7 @@ export function HeroSection({ onOpenCommandMenu }: { onOpenCommandMenu: () => vo
             <kbd className="px-1.5 py-0.5 bg-zinc-900 border border-white/10 text-[11px] text-zinc-300 font-mono">⌘K</kbd>
             <span>or</span>
             <kbd className="px-1.5 py-0.5 bg-zinc-900 border border-white/10 text-[11px] text-zinc-300 font-mono">Ctrl+K</kbd>
-            <span>to search 16 primitives</span>
+            <span>to search 30 primitives</span>
           </button>
           <Link href="/docs" className="inline-flex items-center border border-white/[0.12] px-3 py-2 text-xs font-mono uppercase tracking-wider text-zinc-300 transition-[border-color,color,transform] hover:-translate-y-0.5 hover:border-emerald-400 hover:text-white">
             Read documentation

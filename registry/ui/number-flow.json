@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.thinkai.studio/schema/registry-item.json",
+  "name": "number-flow",
+  "type": "registry:ui",
+  "title": "Number Flow",
+  "description": "Small numeric settle for values that genuinely change.",
+  "dependencies": [
+    "motion"
+  ],
+  "registryDependencies": [],
+  "files": [
+    {
+      "name": "NumberFlow.tsx",
+      "content": "\"use client\";\n\nimport * as React from \"react\";\nimport { motion, useReducedMotion } from \"motion/react\";\n\nexport function NumberFlow({ value, className = \"\" }: { value: number | string; className?: string }) {\n  const prefersReduced = useReducedMotion();\n  return <span className={className} aria-live=\"polite\"><motion.span key={String(value)} initial={{ opacity: 0, y: prefersReduced ? 0 : 5 }} animate={{ opacity: 1, y: 0 }} transition={prefersReduced ? { duration: 0 } : { type: \"spring\", stiffness: 250, damping: 24 }} className=\"inline-block\">{value}</motion.span></span>;\n}\n"
+    }
+  ]
+}

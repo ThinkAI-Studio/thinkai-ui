@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.thinkai.studio/schema/registry-item.json",
+  "name": "tai-accordion",
+  "type": "registry:ui",
+  "title": "Tai Accordion",
+  "description": "Single-open disclosure list for progressive information density.",
+  "dependencies": [
+    "lucide-react"
+  ],
+  "registryDependencies": [],
+  "files": [
+    {
+      "name": "TaiAccordion.tsx",
+      "content": "\"use client\";\n\nimport * as React from \"react\";\nimport { ChevronDown } from \"lucide-react\";\nimport { cn } from \"@/lib/utils\";\n\nexport type TaiAccordionItem = { value: string; title: React.ReactNode; content: React.ReactNode; disabled?: boolean };\n\nexport interface TaiAccordionProps {\n  items: TaiAccordionItem[];\n  value?: string;\n  defaultValue?: string;\n  onValueChange?: (value: string | undefined) => void;\n  className?: string;\n}\n\nexport function TaiAccordion({ items, value, defaultValue, onValueChange, className }: TaiAccordionProps) {\n  const [internalValue, setInternalValue] = React.useState<string | undefined>(defaultValue);\n  const activeValue = value ?? internalValue;\n  const toggle = (nextValue: string) => {\n    const next = activeValue === nextValue ? undefined : nextValue;\n    if (value === undefined) setInternalValue(next);\n    onValueChange?.(next);\n  };\n\n  return <div className={cn(\"divide-y divide-white/[0.1] border-y border-white/[0.1]\", className)}>{items.map((item) => { const open = activeValue === item.value; const panelId = `accordion-${item.value}`; return <div key={item.value}><h3><button type=\"button\" aria-expanded={open} aria-controls={panelId} disabled={item.disabled} onClick={() => toggle(item.value)} className=\"flex w-full items-center justify-between gap-4 py-4 text-left font-mono text-sm uppercase tracking-tight text-white transition-colors hover:text-emerald-300 focus-visible:outline-2 focus-visible:outline-emerald-400 disabled:cursor-not-allowed disabled:opacity-40\"><span className=\"min-w-0\">{item.title}</span><ChevronDown aria-hidden=\"true\" className={cn(\"h-4 w-4 shrink-0 transition-transform\", open && \"rotate-180\")} /></button></h3>{open && <div id={panelId} role=\"region\" className=\"pb-4 pr-8 text-sm leading-7 text-zinc-400\">{item.content}</div>}</div>; })}</div>;\n}\n"
+    }
+  ]
+}

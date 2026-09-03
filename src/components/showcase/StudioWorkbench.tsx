@@ -329,12 +329,12 @@ export function StudioWorkbench({
             Interactive Primitives Console
           </h2>
           <p className="text-xs sm:text-sm text-zinc-400 mt-1 max-w-xl font-sans">
-            Inspect, test, and extract pure TypeScript source code for ThinkAI Studio&apos;s 16 production primitives.
+            Inspect, test, and extract pure TypeScript source code for ThinkAI Studio&apos;s 30 production primitives.
           </p>
         </div>
 
         <div className="flex items-center gap-2 font-mono text-xs text-zinc-400">
-          <span className="text-emerald-400">16 PRIMITIVES</span>
+          <span className="text-emerald-400">30 PRIMITIVES</span>
           <span className="text-zinc-600">|</span>
           <span>100% 0px GEOMETRY</span>
         </div>

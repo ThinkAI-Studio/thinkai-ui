@@ -130,7 +130,7 @@ export const THINKAI_EASE = {
 
 ---
 
-## 4. Quy Chuẩn Tuân Thủ Reduced Motion (WCAG AAA)
+## 4. Quy Chuẩn Tuân Thủ Reduced Motion (WCAG 2.2 AA target)
 
 Toàn bộ component phải triển khai đúng 4 chiến lược chuyển động tiếp cận:
 

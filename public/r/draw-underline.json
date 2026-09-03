@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.thinkai.studio/schema/registry-item.json",
+  "name": "draw-underline",
+  "type": "registry:ui",
+  "title": "Draw Underline",
+  "description": "Restrained underline draw for a text link or phrase.",
+  "dependencies": [
+    "motion"
+  ],
+  "registryDependencies": [],
+  "files": [
+    {
+      "name": "DrawUnderline.tsx",
+      "content": "\"use client\";\n\nimport * as React from \"react\";\nimport { motion, useReducedMotion } from \"motion/react\";\n\nexport function DrawUnderline({ children, className = \"\" }: { children: React.ReactNode; className?: string }) {\n  const prefersReduced = useReducedMotion();\n  return <span className={`group relative inline-block ${className}`}><span>{children}</span><motion.span aria-hidden=\"true\" initial={{ scaleX: prefersReduced ? 1 : 0 }} whileInView={{ scaleX: 1 }} viewport={{ once: true }} transition={prefersReduced ? { duration: 0 } : { duration: 0.42, delay: 0.08, ease: [0.16, 1, 0.3, 1] }} className=\"absolute inset-x-0 -bottom-1 h-px origin-left bg-emerald-400\" /></span>;\n}\n"
+    }
+  ]
+}

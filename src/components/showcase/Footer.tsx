@@ -87,7 +87,7 @@ export function Footer() {
             © 2026 ThinkAI Studio · Nguyen Binh Minh. All rights reserved.
           </div>
           <div className="text-zinc-600">
-            WCAG AAA Compliant · Next.js 16 · React 19
+            WCAG 2.2 AA target · Next.js 16 · React 19
           </div>
         </div>
       </div>

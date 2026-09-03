@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.thinkai.studio/schema/registry-item.json",
+  "name": "text-scramble",
+  "type": "registry:ui",
+  "title": "Text Scramble",
+  "description": "Finite character scramble for known display text transitions.",
+  "dependencies": [
+    "motion"
+  ],
+  "registryDependencies": [],
+  "files": [
+    {
+      "name": "TextScramble.tsx",
+      "content": "\"use client\";\n\nimport * as React from \"react\";\nimport { useReducedMotion } from \"motion/react\";\n\nexport function TextScramble({ text, trigger = true, className = \"\" }: { text: string; trigger?: boolean; className?: string }) {\n  const prefersReduced = useReducedMotion();\n  const [display, setDisplay] = React.useState(text);\n  const previous = React.useRef(text);\n  React.useEffect(() => {\n    if (prefersReduced || !trigger) { previous.current = text; return; }\n    const chars = \"ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789\";\n    let frame = 0;\n    const from = previous.current;\n    const total = Math.max(from.length, text.length);\n    const timer = window.setInterval(() => {\n      frame += 1;\n      const progress = Math.min(1, frame / 12);\n      setDisplay(Array.from({ length: total }, (_, index) => { if (index >= text.length) return \"\"; if (index < text.length * progress) return text[index]; return chars[Math.floor(Math.random() * chars.length)]; }).join(\"\"));\n      if (progress === 1) { window.clearInterval(timer); previous.current = text; }\n    }, 32);\n    return () => window.clearInterval(timer);\n  }, [prefersReduced, text, trigger]);\n  return <span className={className} aria-label={text}>{prefersReduced || !trigger ? text : display}</span>;\n}\n"
+    }
+  ]
+}

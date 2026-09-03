@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.thinkai.studio/schema/registry-item.json",
+  "name": "border-trail",
+  "type": "registry:ui",
+  "title": "Border Trail",
+  "description": "Sparse border highlight for an active showcase surface.",
+  "dependencies": [
+    "motion"
+  ],
+  "registryDependencies": [],
+  "files": [
+    {
+      "name": "BorderTrail.tsx",
+      "content": "\"use client\";\n\nimport * as React from \"react\";\nimport { motion, useReducedMotion } from \"motion/react\";\nimport { cn } from \"@/lib/utils\";\n\nexport function BorderTrail({ children, className = \"\", active = true }: { children: React.ReactNode; className?: string; active?: boolean }) {\n  const prefersReduced = useReducedMotion();\n  return <div className={cn(\"relative overflow-hidden border border-white/[0.12]\", className)}>{active && !prefersReduced && <motion.span aria-hidden=\"true\" className=\"pointer-events-none absolute left-0 top-0 h-px w-1/3 bg-emerald-300\" animate={{ x: [\"-100%\", \"400%\"] }} transition={{ duration: 2.8, repeat: Infinity, ease: \"linear\" }} />}{children}</div>;\n}\n"
+    }
+  ]
+}
