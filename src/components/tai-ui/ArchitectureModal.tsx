@@ -137,7 +137,7 @@ export function ArchitectureModal({ projectId, onClose, lang }: ArchitectureModa
                         {/* Column 1: Ingress */}
                         <div className="p-4 bg-[#141418] border border-white/[0.08] rounded-none space-y-3">
                           <div className="font-mono font-bold text-white flex items-center justify-between border-b border-white/[0.06] pb-2">
-                            <span>01 // INGRESS</span>
+                            <span>01 · INGRESS</span>
                             <Lock className="w-3.5 h-3.5 text-neutral-400" />
                           </div>
                           <div className="space-y-2">
@@ -155,7 +155,7 @@ export function ArchitectureModal({ projectId, onClose, lang }: ArchitectureModa
                         {/* Column 2: Runtime Engine */}
                         <div className="p-4 bg-[#141418] border border-white/[0.08] rounded-none space-y-3">
                           <div className="font-mono font-bold text-white flex items-center justify-between border-b border-white/[0.06] pb-2">
-                            <span>02 // RUNTIME</span>
+                            <span>02 · RUNTIME</span>
                             <Cpu className="w-3.5 h-3.5 text-neutral-400" />
                           </div>
                           <div className="space-y-2">
@@ -173,7 +173,7 @@ export function ArchitectureModal({ projectId, onClose, lang }: ArchitectureModa
                         {/* Column 3: Services & Data */}
                         <div className="p-4 bg-[#141418] border border-white/[0.08] rounded-none space-y-3">
                           <div className="font-mono font-bold text-white flex items-center justify-between border-b border-white/[0.06] pb-2">
-                            <span>03 // STORAGE &amp; SERVICES</span>
+                            <span>03 · STORAGE &amp; SERVICES</span>
                             <Database className="w-3.5 h-3.5 text-neutral-400" />
                           </div>
                           <div className="space-y-2">
@@ -191,7 +191,7 @@ export function ArchitectureModal({ projectId, onClose, lang }: ArchitectureModa
                         {/* Column 4: Observability */}
                         <div className="p-4 bg-[#141418] border border-white/[0.08] rounded-none space-y-3">
                           <div className="font-mono font-bold text-white flex items-center justify-between border-b border-white/[0.06] pb-2">
-                            <span>04 // OBSERVABILITY</span>
+                            <span>04 · OBSERVABILITY</span>
                             <Activity className="w-3.5 h-3.5 text-neutral-400" />
                           </div>
                           <div className="space-y-2">
@@ -223,7 +223,7 @@ export function ArchitectureModal({ projectId, onClose, lang }: ArchitectureModa
                           { step: "05", title: "Staged Rollout", sub: "Zero-downtime health verification" },
                         ].map((s) => (
                           <div key={s.step} className="p-3 bg-[#141418] border border-white/[0.08] rounded-none space-y-1">
-                            <span className="font-mono text-[10px] text-neutral-500 font-bold">{s.step} // STAGE</span>
+                            <span className="font-mono text-[10px] text-neutral-500 font-bold">{s.step} · STAGE</span>
                             <div className="font-bold text-white font-mono text-xs">{s.title}</div>
                             <p className="text-[11px] text-neutral-400 font-light">{s.sub}</p>
                           </div>

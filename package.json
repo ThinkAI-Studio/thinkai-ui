@@ -1,12 +1,49 @@
 {
-  "name": "@thinkai-studio/ui",
+  "name": "thinkai-ui",
   "version": "1.0.0",
   "description": "0px sharp architectural UI registry crafted for technical luxury, obsidian monochromatic depth, and precision motion physics.",
-  "main": "index.js",
+  "private": true,
   "type": "module",
   "scripts": {
+    "dev": "next dev -p 3001",
+    "build": "node scripts/build-registry.mjs && next build",
+    "start": "next start -p 3001",
+    "lint": "eslint",
+    "typecheck": "tsc --noEmit",
     "registry:build": "node scripts/build-registry.mjs",
-    "test": "echo \"No tests specified\" && exit 0"
+    "catalog:check": "node scripts/verify-catalog.mjs"
+  },
+  "engines": {
+    "node": ">=24 <25"
+  },
+  "overrides": {
+    "postcss": "8.5.24",
+    "sharp": "0.35.3"
+  },
+  "dependencies": {
+    "@radix-ui/react-slot": "^1.1.0",
+    "@vercel/analytics": "^1.5.0",
+    "class-variance-authority": "^0.7.1",
+    "clsx": "^2.1.1",
+    "lenis": "^1.3.26",
+    "lucide-react": "^0.577.0",
+    "motion": "^13.1.1",
+    "next": "^16.2.12",
+    "react": "19.2.3",
+    "react-dom": "19.2.3",
+    "tailwind-merge": "^3.6.0",
+    "three": "^0.185.1"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4",
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "@types/three": "^0.185.4",
+    "eslint": "^9",
+    "eslint-config-next": "^16.2.12",
+    "tailwindcss": "^4",
+    "typescript": "^5"
   },
   "keywords": [
     "thinkai",
@@ -26,18 +63,5 @@
     "type": "git",
     "url": "https://github.com/ThinkAI-Studio/thinkai-ui.git"
   },
-  "bugs": {
-    "url": "https://github.com/ThinkAI-Studio/thinkai-ui/issues"
-  },
-  "homepage": "https://ui.thinkai.studio",
-  "peerDependencies": {
-    "@radix-ui/react-slot": "^1.1.0",
-    "class-variance-authority": "^0.7.1",
-    "clsx": "^2.1.1",
-    "motion": "^12.0.0 || ^13.0.0",
-    "react": "^19.0.0",
-    "react-dom": "^19.0.0",
-    "tailwind-merge": "^3.0.0",
-    "three": "^0.180.0"
-  }
+  "homepage": "https://ui.thinkai.studio"
 }

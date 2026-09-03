@@ -8,7 +8,7 @@ import { cn } from "@/lib/utils";
 import { TAI_EASE } from "@/lib/motion";
 
 export const taiButtonVariants = cva(
-  "relative inline-flex items-center justify-center gap-2 overflow-hidden rounded-none font-mono text-xs tracking-wider uppercase transition-all duration-200 group cursor-pointer select-none outline-none focus-visible:ring-1 focus-visible:ring-white/50 active:scale-[0.98]",
+  "relative inline-flex items-center justify-center gap-2 overflow-hidden rounded-none font-mono text-xs tracking-wider uppercase transition-colors duration-400 group cursor-pointer select-none outline-none focus-visible:ring-1 focus-visible:ring-white/50",
   {
     variants: {
       variant: {
@@ -72,6 +72,15 @@ export const TaiButton = React.forwardRef<HTMLButtonElement, TaiButtonProps>(
     }
 
     const Component = href ? motion.a : motion.button;
+    const tapAnimation = prefersReduced
+      ? {}
+      : variant === "primary"
+        ? { scale: 0.98 }
+        : variant === "secondary"
+          ? { y: 1 }
+          : variant === "outline"
+            ? { backgroundColor: "rgba(255,255,255,0.08)" }
+            : { opacity: 0.72 };
 
     const bgVariants = prefersReduced
       ? { hover: { opacity: 1 } }
@@ -81,9 +90,7 @@ export const TaiButton = React.forwardRef<HTMLButtonElement, TaiButtonProps>(
       ? { opacity: 0 }
       : { y: "100%", opacity: 0 };
 
-    const contentVariants = prefersReduced
-      ? { hover: { y: 0 } }
-      : { hover: { y: -0.5 } };
+    const contentVariants = prefersReduced ? { hover: { y: 0 } } : { hover: { y: -1 } };
 
     const iconVariants = prefersReduced
       ? { hover: { x: 0 } }
@@ -96,7 +103,9 @@ export const TaiButton = React.forwardRef<HTMLButtonElement, TaiButtonProps>(
         href={href}
         className={cn(taiButtonVariants({ variant, size, className }))}
         whileHover="hover"
-        whileTap={{ scale: prefersReduced ? 1 : 0.98 }}
+        variants={{ hover: prefersReduced ? { y: 0 } : { y: -1 } }}
+        whileTap={tapAnimation}
+        transition={{ type: "spring", stiffness: 220, damping: 22, mass: 0.8 }}
         {...(props as any)}
       >
         {/* Ambient Top Light Reflection Sweep */}
@@ -106,8 +115,8 @@ export const TaiButton = React.forwardRef<HTMLButtonElement, TaiButtonProps>(
             initial={bgInitial}
             variants={bgVariants}
             transition={{
-              duration: prefersReduced ? 0 : 0.22,
-              ease: TAI_EASE.snappy,
+              duration: prefersReduced ? 0 : 0.45,
+              ease: TAI_EASE.luxury,
             }}
           />
         )}
@@ -116,7 +125,7 @@ export const TaiButton = React.forwardRef<HTMLButtonElement, TaiButtonProps>(
         <motion.span
           className="relative flex items-center justify-center gap-2"
           variants={contentVariants}
-          transition={{ duration: prefersReduced ? 0 : 0.18 }}
+          transition={prefersReduced ? { duration: 0 } : { type: "spring", stiffness: 260, damping: 22 }}
         >
           <span>{children}</span>
 
@@ -125,7 +134,7 @@ export const TaiButton = React.forwardRef<HTMLButtonElement, TaiButtonProps>(
             <motion.span
               variants={iconVariants}
               transition={{
-                duration: prefersReduced ? 0 : 0.22,
+                duration: prefersReduced ? 0 : 0.35,
                 ease: TAI_EASE.luxury,
               }}
               className="flex items-center justify-center shrink-0"

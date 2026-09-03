@@ -276,7 +276,7 @@ export function TaiHeader({ onOpenAbout, onOpenContact }: TaiHeaderProps) {
                       setIsMobileMenuOpen(false);
                       item.action();
                     }}
-                    className="text-left text-white hover:text-neutral-300 active:scale-[0.98] transition-all cursor-pointer font-bold"
+                    className="text-left text-white hover:text-neutral-300 active:translate-y-px transition-colors cursor-pointer font-bold"
                   >
                     {item.label}
                   </button>
@@ -296,7 +296,7 @@ export function TaiHeader({ onOpenAbout, onOpenContact }: TaiHeaderProps) {
                 href="https://hostdeck.thinkai.id.vn"
                 target="_blank"
                 rel="noreferrer"
-                className="p-3.5 rounded-none bg-white/[0.04] border border-white/[0.08] flex items-center justify-between gap-3 group hover:bg-white/[0.08] transition-all"
+                    className="p-3.5 rounded-none bg-white/[0.04] border border-white/[0.08] flex items-center justify-between gap-3 group hover:bg-white/[0.08] transition-colors"
               >
                 <div className="flex items-center gap-3 overflow-hidden">
                   <div className="relative w-12 h-10 rounded-none overflow-hidden border border-white/10 shrink-0 bg-[#161619]">

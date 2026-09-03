@@ -26,14 +26,16 @@ export function ThreeHalftoneCanvas({ className = "" }: ThreeHalftoneCanvasProps
       alpha: false,
     });
     renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
-    renderer.setSize(window.innerWidth, window.innerHeight);
+    renderer.domElement.style.display = "block";
+    renderer.domElement.style.width = "100%";
+    renderer.domElement.style.height = "100%";
     container.appendChild(renderer.domElement);
 
     // 2. Uniforms for Venice Ocean Caustics Shader
     const uniforms = {
       u_time: { value: 0 },
       u_resolution: {
-        value: new THREE.Vector2(window.innerWidth, window.innerHeight),
+        value: new THREE.Vector2(1, 1),
       },
       u_mouse: { value: new THREE.Vector2(0.5, 0.5) },
       u_target_mouse: { value: new THREE.Vector2(0.5, 0.5) },
@@ -176,8 +178,9 @@ export function ThreeHalftoneCanvas({ className = "" }: ThreeHalftoneCanvasProps
 
     // 4. Global Event Listeners & Bridge
     const handleMouseMove = (e: MouseEvent) => {
-      const x = e.clientX / window.innerWidth;
-      const y = e.clientY / window.innerHeight;
+      const rect = container.getBoundingClientRect();
+      const x = Math.min(1, Math.max(0, (e.clientX - rect.left) / Math.max(1, rect.width)));
+      const y = Math.min(1, Math.max(0, (e.clientY - rect.top) / Math.max(1, rect.height)));
       uniforms.u_target_mouse.value.set(x, y);
     };
 
@@ -190,11 +193,16 @@ export function ThreeHalftoneCanvas({ className = "" }: ThreeHalftoneCanvasProps
     };
 
     const handleResize = () => {
-      const width = window.innerWidth;
-      const height = window.innerHeight;
-      renderer.setSize(width, height);
+      const rect = container.getBoundingClientRect();
+      const width = Math.max(1, Math.floor(rect.width));
+      const height = Math.max(1, Math.floor(rect.height));
+      renderer.setSize(width, height, false);
       uniforms.u_resolution.value.set(width, height);
     };
+
+    handleResize();
+    const resizeObserver = new ResizeObserver(handleResize);
+    resizeObserver.observe(container);
 
     // Custom Window Bridge for Footer "Hold to create waves" interaction
     (window as unknown as { __setOceanStir?: (stir: number, x?: number, y?: number) => void }).__setOceanStir = (
@@ -255,6 +263,7 @@ export function ThreeHalftoneCanvas({ className = "" }: ThreeHalftoneCanvasProps
       window.removeEventListener("mousemove", handleMouseMove);
       window.removeEventListener("scroll", handleScroll);
       window.removeEventListener("resize", handleResize);
+      resizeObserver.disconnect();
       delete (window as unknown as { __setOceanStir?: unknown }).__setOceanStir;
 
       geometry.dispose();
@@ -269,7 +278,7 @@ export function ThreeHalftoneCanvas({ className = "" }: ThreeHalftoneCanvasProps
   return (
     <div
       ref={containerRef}
-      className={`fixed inset-0 pointer-events-none ${className}`}
+      className={`relative h-full w-full min-w-0 max-w-full overflow-hidden pointer-events-none ${className}`}
       style={{ zIndex: 0 }}
     />
   );

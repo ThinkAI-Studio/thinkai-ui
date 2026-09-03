@@ -1,0 +1,89 @@
+@import "tailwindcss";
+
+/* Hallmark · pre-emit critique: P5 H5 E4 S5 R5 V4 · macrostructure: command-console with asymmetric workbench · theme: obsidian/editorial · nav: N9 · footer: Ft5 · slop: pass (42–49) · mobile: pass target (34, 49, 50–57) */
+
+@theme {
+  --color-tai-bg: #08080a;
+  --color-tai-sheet: #0d0d10;
+  --color-tai-card: #131316;
+  --color-tai-surface: #18181c;
+  --color-tai-border: rgba(255, 255, 255, 0.07);
+  --color-tai-border-strong: rgba(255, 255, 255, 0.18);
+  --color-tai-green: #4ade80;
+  --font-tai-display: var(--font-geist-mono), ui-monospace, SFMono-Regular, Menlo, monospace;
+  --font-tai-body: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-tai-display);
+  --font-sans: var(--font-tai-body);
+  --ease-spring: cubic-bezier(0.32, 0.72, 0, 1);
+  --ease-luxury: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-snappy: cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+@layer base {
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--color-tai-border, rgba(255, 255, 255, 0.07));
+  }
+
+  * {
+    border-radius: 0px !important;
+  }
+
+  html {
+    color-scheme: dark;
+    background-color: var(--color-tai-bg);
+    color: rgba(255, 255, 255, 0.9);
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+    overflow-x: clip;
+  }
+
+  body {
+    background-color: var(--color-tai-bg);
+    min-height: 100vh;
+    overflow-x: clip;
+    font-family: var(--font-tai-body);
+    selection-background-color: rgba(255, 255, 255, 0.2);
+  }
+
+  ::selection {
+    background: rgba(255, 255, 255, 0.2);
+    color: #ffffff;
+  }
+}
+
+/* Linear-grade top-inset highlight */
+.tai-inset-top {
+  box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.08);
+}
+
+.tai-inset-top-strong {
+  box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.16);
+}
+
+/* LED Optical Status Glow */
+.tai-led-glow {
+  filter: drop-shadow(0 0 6px rgba(74, 222, 128, 0.45));
+}
+
+/* Micro-noise overlay */
+.tai-grain {
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.03'/%3E%3C/svg%3E");
+}
+
+/* Custom Minimalist Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #08080a;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.12);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.24);
+}

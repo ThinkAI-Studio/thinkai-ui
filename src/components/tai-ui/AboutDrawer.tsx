@@ -76,12 +76,7 @@ export function AboutDrawer({ isOpen, onClose, lang }: AboutDrawerProps) {
             data-lenis-prevent-touch="true"
             onWheel={(e) => e.stopPropagation()}
             onTouchMove={(e) => e.stopPropagation()}
-            className="relative w-full max-w-[640px] h-screen max-h-screen bg-[#f4f4f5] text-[#0a0a0c] z-10 overflow-y-auto overscroll-contain px-8 sm:px-14 py-12 shadow-2xl"
-            style={{
-              fontFamily:
-                '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif',
-              letterSpacing: "-0.018em",
-            }}
+            className="relative w-full max-w-[640px] h-screen max-h-screen bg-[#f4f4f5] text-[#0a0a0c] z-10 overflow-y-auto overscroll-contain px-8 sm:px-14 py-12 shadow-2xl font-sans tracking-tight"
           >
             <div className="min-h-full flex flex-col justify-between space-y-12">
               <div className="space-y-10">
@@ -110,7 +105,7 @@ export function AboutDrawer({ isOpen, onClose, lang }: AboutDrawerProps) {
                   <div className="relative w-24 h-24 sm:w-28 sm:h-28 rounded-none overflow-hidden border-2 border-black/10 shadow-md bg-white shrink-0 group">
                     <Image
                       src="/images/binhminh-sketch.jpg"
-                      alt="Nguyen Binh Minh - DevOps & Systems Engineer"
+                      alt="Nguyen Binh Minh - DevOps Engineer"
                       fill
                       sizes="(max-width: 640px) 96px, 112px"
                       className="object-cover object-top group-hover:scale-105 transition-transform duration-500"
@@ -122,7 +117,7 @@ export function AboutDrawer({ isOpen, onClose, lang }: AboutDrawerProps) {
                       Nguyen Binh Minh
                     </div>
                     <div className="text-xs font-mono text-neutral-700 font-bold">
-                      DevOps & Systems Engineer · Founder of ThinkAI Studio
+                      DevOps Engineer · ThinkAI Studio
                     </div>
                     <div className="text-[11px] font-mono text-neutral-600 flex items-center gap-1.5 pt-0.5 font-medium">
                       <span className="w-2 h-2 rounded-none bg-emerald-600 animate-pulse" />

@@ -107,16 +107,11 @@ export function ContactModal({ isOpen, onClose }: ContactModalProps) {
             data-lenis-prevent="true"
             onWheel={(e) => e.stopPropagation()}
             onTouchMove={(e) => e.stopPropagation()}
-            className="relative w-full max-w-lg bg-[#141417] text-white border border-white/15 rounded-none p-6 sm:p-8 shadow-[0_25px_60px_rgba(0,0,0,0.9)] z-10 space-y-6 overflow-hidden"
-            style={{
-              fontFamily:
-                '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif',
-            }}
+            className="relative w-full max-w-lg bg-[#141417] text-white border border-white/15 rounded-none p-6 sm:p-8 shadow-[0_25px_60px_rgba(0,0,0,0.9)] z-10 space-y-6 overflow-hidden font-sans"
           >
             {/* Header: Title + Close Button */}
             <div className="flex items-center justify-between border-b border-white/10 pb-4">
               <div className="flex items-center gap-2.5">
-                <span className="w-2.5 h-2.5 rounded-none bg-emerald-400 animate-pulse" />
                 <h3 className="text-base sm:text-lg font-extrabold text-white tracking-tight">
                   Start a Project
                 </h3>
@@ -141,7 +136,6 @@ export function ContactModal({ isOpen, onClose }: ContactModalProps) {
             <div className="p-4 rounded-none bg-white/[0.04] border border-white/10 space-y-3">
               <div className="flex items-center justify-between text-[11px] font-mono text-neutral-400 uppercase tracking-wider">
                 <span>(PRIMARY CONTACT)</span>
-                <span className="text-emerald-400">4-8h Response SLA</span>
               </div>
 
               <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2.5">
@@ -152,7 +146,7 @@ export function ContactModal({ isOpen, onClose }: ContactModalProps) {
                 <button
                   type="button"
                   onClick={() => handleCopy(primaryEmail)}
-                  className={`inline-flex items-center justify-center gap-1.5 px-3 py-1.5 rounded-none text-xs font-mono font-bold transition-all shrink-0 cursor-pointer ${
+                  className={`inline-flex items-center justify-center gap-1.5 px-3 py-1.5 rounded-none text-xs font-mono font-bold transition-colors shrink-0 cursor-pointer active:opacity-80 ${
                     copiedEmail === primaryEmail
                       ? "bg-emerald-500 text-black shadow-lg shadow-emerald-500/30"
                       : "bg-white text-black hover:bg-neutral-200"

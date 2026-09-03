@@ -19,7 +19,7 @@ export function HalftoneBanner({
       className={`relative w-full overflow-hidden flex items-center justify-center ${height} ${className}`}
     >
       {/* Interactive GPU Three.js Halftone Canvas */}
-      <ThreeHalftoneCanvas />
+      <ThreeHalftoneCanvas className="absolute inset-0 h-full w-full" />
 
       {/* Content Container */}
       <div className="relative z-20 w-full max-w-6xl mx-auto px-6 py-20 flex flex-col items-center justify-center text-center">

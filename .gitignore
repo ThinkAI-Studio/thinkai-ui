@@ -31,3 +31,9 @@ yarn-error.log*
 .vscode/
 *.swp
 *.swo
+
+# Next.js build
+.next/
+out/
+next-env.d.ts
+*.tsbuildinfo
