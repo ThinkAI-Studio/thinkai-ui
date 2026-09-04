@@ -24,7 +24,9 @@ import { OpenAiIcon, GeminiIcon, ClaudeIcon, PerplexityIcon, ManusIcon } from "@
 import { ProductMockup } from "@/components/tai-ui/ProductMockup";
 import { QuantumMatrixCanvas } from "@/components/tai-ui/QuantumMatrixCanvas";
 import { ThreeHalftoneCanvas } from "@/components/tai-ui/ThreeHalftoneCanvas";
+import { TaiBadge } from "@/components/tai-ui/TaiBadge";
 import { AnimatePresence, motion, useReducedMotion } from "motion/react";
+import { catalogItems } from "@/data/catalog";
 
 interface StudioWorkbenchProps {
   onOpenAbout: () => void;
@@ -329,12 +331,12 @@ export function StudioWorkbench({
             Interactive Primitives Console
           </h2>
           <p className="text-xs sm:text-sm text-zinc-400 mt-1 max-w-xl font-sans">
-            Inspect, test, and extract pure TypeScript source code for ThinkAI Studio&apos;s 30 production primitives.
+            Inspect, test, and extract pure TypeScript source code for ThinkAI Studio&apos;s featured resources.
           </p>
         </div>
 
         <div className="flex items-center gap-2 font-mono text-xs text-zinc-400">
-          <span className="text-emerald-400">30 PRIMITIVES</span>
+          <span className="text-emerald-400">{catalogItems.length} RESOURCES</span>
           <span className="text-zinc-600">|</span>
           <span>100% 0px GEOMETRY</span>
         </div>
@@ -343,7 +345,7 @@ export function StudioWorkbench({
       {/* Main Workbench Frame */}
       <div className="bg-[#0d0d10] border border-white/[0.1] shadow-2xl overflow-hidden tai-inset-top flex flex-col lg:flex-row min-h-[640px]">
         {/* Left Pane: Explorer Tree */}
-        <aside className="w-full lg:w-72 border-b lg:border-b-0 lg:border-r border-white/[0.08] bg-[#09090b] flex flex-col shrink-0">
+        <aside className="w-full min-h-0 lg:w-72 border-b lg:border-b-0 lg:border-r border-white/[0.08] bg-[#09090b] flex flex-col shrink-0">
           <div className="p-3.5 border-b border-white/[0.08] bg-black/40 flex items-center justify-between">
             <span className="font-mono text-[10px] tracking-widest text-zinc-400 uppercase font-bold">
               EXPLORER · CATALOG
@@ -360,7 +362,7 @@ export function StudioWorkbench({
             </div>
           </div>
 
-          <div className="p-2 overflow-y-auto max-h-[300px] lg:max-h-[580px] space-y-4 font-mono text-xs">
+          <div data-lenis-prevent className="min-h-0 p-2 overflow-y-auto overscroll-contain touch-pan-y max-h-[300px] lg:max-h-[580px] space-y-4 font-mono text-xs">
             {categories.map((cat) => {
               const items = componentsList.filter(
                 (c) => c.category === cat && c.title.toLowerCase().includes(searchQuery.toLowerCase())
@@ -391,19 +393,12 @@ export function StudioWorkbench({
                             </span>
                             <span className="truncate">{item.title}</span>
                           </div>
-                          <span
-                            className={`text-[9px] px-1.5 py-0.2 font-mono uppercase tracking-wider ${
-                              isActive
-                                ? "bg-black text-white"
-                                : item.status === "STABLE"
-                                ? "text-emerald-400 bg-emerald-950/40 border border-emerald-800/40"
-                                : item.status === "NEW"
-                                ? "text-cyan-400 bg-cyan-950/40 border border-cyan-800/40"
-                                : "text-amber-400 bg-amber-950/40 border border-amber-800/40"
-                            }`}
+                          <TaiBadge
+                            tone={isActive ? "neutral" : item.status === "STABLE" ? "success" : item.status === "NEW" ? "accent" : "warning"}
+                            className={isActive ? "border-[#05070a] bg-[#05070a] text-white" : "px-1.5 py-0.5 text-[9px]"}
                           >
                             {item.status}
-                          </span>
+                          </TaiBadge>
                         </button>
                       );
                     })}
@@ -472,8 +467,8 @@ export function StudioWorkbench({
           <div
             className={`flex-1 overflow-auto flex items-center justify-center p-6 min-h-[300px] relative transition-colors ${
               bgMode === "matrix"
-                ? "bg-[#08080a] bg-[radial-gradient(rgba(255,255,255,0.08)_1px,transparent_1px)] [background-size:20px_20px]"
-                : "bg-[#08080a]"
+                ? "tai-dot-matrix"
+                : "bg-tai-bg"
             }`}
           >
             {/* Viewport Sizing Wrapper */}
@@ -542,7 +537,7 @@ export function StudioWorkbench({
                   if (inspectorTab === "tokens")
                     handleCopy(`@theme {\n  --color-tai-bg: #08080a;\n  --color-tai-border: rgba(255,255,255,0.07);\n}`);
                 }}
-                className="flex items-center gap-1.5 px-3 py-1 font-mono text-[10.5px] uppercase tracking-wider bg-black border border-white/20 hover:border-white text-white transition-colors active:opacity-80"
+                className="flex items-center gap-1.5 px-3 py-1 font-mono text-[10.5px] uppercase tracking-wider bg-tai-bg border border-tai-border-strong hover:border-tai-text text-tai-text transition-colors active:opacity-80"
               >
                 {copied ? <Check className="w-3 h-3 text-emerald-400" /> : <Copy className="w-3 h-3" />}
                 <span>{copied ? "COPIED" : "COPY"}</span>
@@ -622,7 +617,7 @@ export default function Example() {
   --color-tai-card: #131316;
   --color-tai-border: rgba(255, 255, 255, 0.07);
   --color-tai-border-strong: rgba(255, 255, 255, 0.18);
-  --color-tai-green: #4ade80;
+  --color-tai-accent: #2985b8;
   --ease-spring: cubic-bezier(0.32, 0.72, 0, 1);
   --ease-luxury: cubic-bezier(0.16, 1, 0.3, 1);
 }`}

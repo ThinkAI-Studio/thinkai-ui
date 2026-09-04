@@ -11,7 +11,10 @@
     "lint": "eslint",
     "typecheck": "tsc --noEmit",
     "registry:build": "node scripts/build-registry.mjs",
-    "catalog:check": "node scripts/verify-catalog.mjs"
+    "catalog:check": "node scripts/verify-catalog.mjs",
+    "docs:check": "node scripts/verify-docs.mjs",
+    "registry:check": "node scripts/verify-catalog.mjs",
+    "contrast:check": "node scripts/verify-contrast.mjs"
   },
   "engines": {
     "node": ">=24 <25"

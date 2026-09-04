@@ -34,7 +34,7 @@ export function MaskedTextReveal({
         <span className="inline-flex items-center justify-center gap-[0.18em] leading-none">
           {parts[0]}
           <svg
-            className="inline-block w-[0.82em] h-[0.82em] text-white shrink-0 self-center"
+            className="inline-block h-[0.82em] w-[0.82em] shrink-0 self-center text-tai-text"
             viewBox="0 0 24 24"
             fill="none"
             stroke="currentColor"

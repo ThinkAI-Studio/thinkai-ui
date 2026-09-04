@@ -33,11 +33,11 @@ export const WipeButton = React.forwardRef<HTMLButtonElement, WipeButtonProps>(
       href,
       target,
       rel,
-      wipeColor = "#ffffff",
+      wipeColor = "var(--tai-text)",
       textColor,
-      hoverTextColor = "#05070a",
-      borderColor = "rgba(255, 255, 255, 0.12)",
-      hoverBorderColor = "#ffffff",
+      hoverTextColor = "var(--tai-bg)",
+      borderColor = "var(--tai-border)",
+      hoverBorderColor = "var(--tai-border-strong)",
       ariaLabel,
       ...props
     },
@@ -113,7 +113,7 @@ export const WipeButton = React.forwardRef<HTMLButtonElement, WipeButtonProps>(
     );
 
     const baseClasses = cn(
-      "relative inline-flex items-center justify-center overflow-hidden rounded-none font-mono text-xs tracking-wider uppercase transition-[border-color,transform] duration-300 cursor-pointer select-none outline-none focus-visible:ring-1 focus-visible:ring-white/50 active:scale-[0.98] shadow-[inset_0_1px_0_0_rgba(255,255,255,0.06)]",
+      "relative inline-flex items-center justify-center overflow-hidden rounded-none font-mono text-xs tracking-wider uppercase transition-[border-color,transform] duration-300 cursor-pointer select-none outline-none focus-visible:ring-1 focus-visible:ring-tai-focus active:scale-[0.98] shadow-[inset_0_1px_0_0_rgba(255,255,255,0.06)]",
       className
     );
 

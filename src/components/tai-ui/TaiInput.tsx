@@ -18,22 +18,22 @@ export const TaiInput = React.forwardRef<HTMLInputElement, TaiInputProps>(
     const describedBy = [descriptionId, errorId].filter(Boolean).join(" ") || undefined;
 
     return (
-      <label className="block space-y-2 font-sans text-sm text-zinc-300" htmlFor={inputId}>
-        {label && <span className="block font-mono text-[10px] uppercase tracking-widest text-zinc-500">{label}</span>}
+      <label className="block space-y-2 font-sans text-sm text-tai-muted" htmlFor={inputId}>
+        {label && <span className="block font-mono text-[10px] uppercase tracking-widest text-tai-subtle">{label}</span>}
         <input
           ref={ref}
           id={inputId}
           aria-invalid={error ? true : undefined}
           aria-describedby={describedBy}
           className={cn(
-            "block min-h-11 w-full border bg-black px-3 py-2.5 text-sm text-white outline-none transition-[border-color,background-color] placeholder:text-zinc-600 focus-visible:border-emerald-400 focus-visible:ring-2 focus-visible:ring-emerald-400/30 disabled:cursor-not-allowed disabled:opacity-45",
-            error ? "border-amber-300/70" : "border-white/[0.14] hover:border-white/[0.26]",
+            "block min-h-11 w-full border border-tai-border bg-tai-bg px-3 py-2.5 text-sm text-tai-text outline-none transition-[border-color,background-color] placeholder:text-tai-subtle focus-visible:border-tai-focus focus-visible:ring-2 focus-visible:ring-tai-focus/30 disabled:cursor-not-allowed disabled:opacity-45",
+            error ? "border-amber-600" : "hover:border-tai-border-strong",
             className,
           )}
           {...props}
         />
-        {description && <span id={descriptionId} className="block text-xs leading-5 text-zinc-500">{description}</span>}
-        {error && <span id={errorId} className="block text-xs leading-5 text-amber-200">{error}</span>}
+        {description && <span id={descriptionId} className="block min-h-[1lh] text-xs leading-5 text-tai-subtle">{description}</span>}
+        {error && <span id={errorId} className="block min-h-[1lh] text-xs leading-5 text-tai-warning">{error}</span>}
       </label>
     );
   },

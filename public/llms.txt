@@ -1,0 +1,25 @@
+# ThinkAI UI
+
+> Source-owned UI, motion, and icon primitives for React and Next.js.
+
+## Documentation
+
+- [Documentation](https://ui.thinkai.studio/docs): installation, accessibility, roadmap, and contribution guidance.
+- [Installation](https://ui.thinkai.studio/docs/installation): initialize and add source-owned primitives.
+- [Accessibility](https://ui.thinkai.studio/docs/accessibility): semantic controls, keyboard behavior, and reduced motion.
+- [Roadmap](https://ui.thinkai.studio/docs/roadmap): planned library and docs improvements.
+- [Changelog](https://ui.thinkai.studio/docs/changelog): shipped changes.
+- [Troubleshooting](https://ui.thinkai.studio/docs/troubleshooting): registry, theme, and motion guidance.
+
+## Library
+
+- [UI primitives](https://ui.thinkai.studio/docs/ui): application controls and surfaces.
+- [Motion primitives](https://ui.thinkai.studio/docs/motion): purposeful transitions and effects.
+- [Icons](https://ui.thinkai.studio/docs/icons): factual technology marks and accessible icon controls.
+- [Catalog](https://ui.thinkai.studio/catalog): composed showcase patterns.
+
+## Registry
+
+- [Registry index](https://ui.thinkai.studio/r/registry.json): installable source manifests.
+- Install a primitive with `npx thinkai-ui add <slug>`.
+- Source is copied into the consuming project and remains editable there.

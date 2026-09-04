@@ -112,7 +112,7 @@ export function TaiHeader({ onOpenAbout, onOpenContact }: TaiHeaderProps) {
               alt="ThinkAI Studio"
               fill
               sizes="28px"
-              className="object-contain"
+              className="tai-brand-mark object-contain"
               priority
             />
           </div>

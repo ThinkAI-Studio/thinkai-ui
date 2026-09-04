@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef } from "react";
+import { useReducedMotion } from "motion/react";
 import Lenis from "lenis";
 
 interface SmoothScrollProps {
@@ -9,8 +10,13 @@ interface SmoothScrollProps {
 
 export function SmoothScroll({ isLocked = false }: SmoothScrollProps) {
   const lenisRef = useRef<Lenis | null>(null);
+  const prefersReduced = useReducedMotion();
 
   useEffect(() => {
+    // Respect the user's motion preference by leaving the browser's native
+    // scroll behavior in place when reduced motion is enabled.
+    if (prefersReduced) return;
+
     // Initialize Lenis 120Hz/ProMotion Smooth Momentum Scroll
     const lenis = new Lenis({
       duration: 1.15,
@@ -72,7 +78,7 @@ export function SmoothScroll({ isLocked = false }: SmoothScrollProps) {
       lenisRef.current = null;
       (window as unknown as { __lenis?: Lenis | null }).__lenis = null;
     };
-  }, []);
+  }, [prefersReduced]);
 
   // Pause / Resume smooth scroll when Drawer or Modal is opened
   useEffect(() => {

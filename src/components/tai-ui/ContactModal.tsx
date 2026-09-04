@@ -1,10 +1,11 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useRef, useState } from "react";
 import { motion, AnimatePresence, useReducedMotion } from "motion/react";
 import { Copy, Check, ExternalLink, Mail } from "lucide-react";
 import { ButtonTextRoll } from "./ButtonTextRoll";
 import { WipeButton } from "./WipeButton";
+import { useModalFocus } from "@/lib/useModalFocus";
 
 interface ContactModalProps {
   isOpen: boolean;
@@ -16,27 +17,12 @@ const LUXURY_EASE = [0.16, 1, 0.3, 1] as const;
 export function ContactModal({ isOpen, onClose }: ContactModalProps) {
   const prefersReduced = useReducedMotion();
   const [copiedEmail, setCopiedEmail] = useState<string | null>(null);
+  const modalRef = useRef<HTMLDivElement>(null);
 
   const primaryEmail = "contact@binhminh.thinkai.id.vn";
   const directEmail = "pata10102004@gmail.com";
 
-  useEffect(() => {
-    const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === "Escape") onClose();
-    };
-
-    if (isOpen) {
-      document.body.style.overflow = "hidden";
-      window.addEventListener("keydown", handleKeyDown);
-    } else {
-      document.body.style.overflow = "unset";
-    }
-
-    return () => {
-      document.body.style.overflow = "unset";
-      window.removeEventListener("keydown", handleKeyDown);
-    };
-  }, [isOpen, onClose]);
+  useModalFocus({ open: isOpen, containerRef: modalRef, onClose });
 
   const handleCopy = (email: string) => {
     if (navigator.clipboard) {
@@ -64,6 +50,7 @@ export function ContactModal({ isOpen, onClose }: ContactModalProps) {
         <div className="fixed inset-0 z-[1000] flex items-center justify-center p-4 sm:p-6">
           {/* Backdrop Blur */}
           <motion.div
+            ref={modalRef}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}

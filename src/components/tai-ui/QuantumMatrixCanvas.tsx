@@ -30,6 +30,7 @@ export function QuantumMatrixCanvas({
     let mouseY = -1000;
     let targetMouseX = -1000;
     let targetMouseY = -1000;
+    let isLight = document.documentElement.dataset.theme === "light";
 
     const handleMouseMove = (e: MouseEvent) => {
       const rect = canvas.getBoundingClientRect();
@@ -56,6 +57,11 @@ export function QuantumMatrixCanvas({
       if (!ctx || !canvas) return;
       const displayWidth = canvas.offsetWidth;
       const displayHeight = canvas.offsetHeight;
+      const dotColor = isLight ? "24, 24, 27" : "224, 230, 236";
+      const lineColor = isLight ? "24, 24, 27" : "220, 226, 232";
+      const accentColor = isLight ? "8, 127, 69" : "74, 222, 128";
+      const baseAlpha = isLight ? 0.16 : 0.24;
+      const hoverAlpha = isLight ? 0.42 : 0.5;
 
       ctx.clearRect(0, 0, displayWidth, displayHeight);
 
@@ -65,7 +71,7 @@ export function QuantumMatrixCanvas({
 
       // Draw Manhattan Bus Lines under mouse
       if (mouseX > 0 && mouseY > 0 && !prefersReduced) {
-        ctx.strokeStyle = "rgba(255, 255, 255, 0.04)";
+        ctx.strokeStyle = `rgba(${lineColor}, ${isLight ? 0.14 : 0.1})`;
         ctx.lineWidth = 1;
         ctx.beginPath();
         ctx.moveTo(0, mouseY);
@@ -75,7 +81,7 @@ export function QuantumMatrixCanvas({
         ctx.stroke();
 
         // 1px crosshair intersection at cursor
-        ctx.strokeStyle = "rgba(74, 222, 128, 0.35)";
+        ctx.strokeStyle = `rgba(${accentColor}, ${isLight ? 0.62 : 0.52})`;
         ctx.lineWidth = 1;
         ctx.beginPath();
         ctx.moveTo(mouseX - 12, mouseY);
@@ -96,8 +102,8 @@ export function QuantumMatrixCanvas({
 
           let drawX = x;
           let drawY = y;
-          let alpha = 0.14;
-          let size = 1.2;
+          let alpha = baseAlpha;
+          let size = 1.55;
 
           if (mouseX > 0 && mouseY > 0 && !prefersReduced) {
             const dx = mouseX - x;
@@ -108,12 +114,12 @@ export function QuantumMatrixCanvas({
               const strain = (1 - manhattanDist / 160) * 4;
               drawX += (dx > 0 ? 1 : -1) * strain;
               drawY += (dy > 0 ? 1 : -1) * strain;
-              alpha = 0.14 + (1 - manhattanDist / 160) * 0.48;
-              size = 1.2 + (1 - manhattanDist / 160) * 1.5;
+              alpha = baseAlpha + (1 - manhattanDist / 160) * hoverAlpha;
+              size = 1.55 + (1 - manhattanDist / 160) * 1.7;
             }
           }
 
-          ctx.fillStyle = `rgba(255, 255, 255, ${alpha})`;
+          ctx.fillStyle = `rgba(${dotColor}, ${alpha})`;
           ctx.fillRect(drawX - size / 2, drawY - size / 2, size, size);
         }
       }
@@ -123,11 +129,18 @@ export function QuantumMatrixCanvas({
       }
     };
 
+    const themeObserver = new MutationObserver(() => {
+      isLight = document.documentElement.dataset.theme === "light";
+      render();
+    });
+    themeObserver.observe(document.documentElement, { attributes: true, attributeFilter: ["data-theme"] });
+
     render();
 
     return () => {
       window.removeEventListener("mousemove", handleMouseMove);
       window.removeEventListener("resize", handleResize);
+      themeObserver.disconnect();
       cancelAnimationFrame(animationFrameId);
     };
   }, [gridSize, prefersReduced]);

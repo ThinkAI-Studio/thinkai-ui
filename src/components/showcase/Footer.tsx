@@ -17,7 +17,7 @@ export function Footer() {
                   alt="ThinkAI Studio"
                   fill
                   sizes="28px"
-                  className="object-contain"
+                    className="tai-brand-mark object-contain"
                 />
               </div>
               <span className="font-mono text-sm font-bold text-white uppercase tracking-tight">

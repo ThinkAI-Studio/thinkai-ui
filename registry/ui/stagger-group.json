@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.thinkai.studio/schema/registry-item.json",
+  "name": "stagger-group",
+  "type": "registry:ui",
+  "title": "Stagger Group",
+  "description": "Small sequential entrance for a coherent list.",
+  "dependencies": [
+    "motion"
+  ],
+  "registryDependencies": [],
+  "files": [
+    {
+      "name": "StaggerGroup.tsx",
+      "content": "\"use client\";\n\nimport { motion, useReducedMotion } from \"motion/react\";\n\nexport function StaggerGroup({ children, className = \"\", delay = 0.05 }: { children: React.ReactNode; className?: string; delay?: number }) {\n  const reduced = useReducedMotion();\n  return <motion.div initial=\"hidden\" whileInView=\"show\" viewport={{ once: true, amount: 0.15 }} variants={{ hidden: {}, show: { transition: { staggerChildren: reduced ? 0 : delay } } }} className={className}>{children}</motion.div>;\n}\n\nexport function StaggerItem({ children, className = \"\" }: { children: React.ReactNode; className?: string }) {\n  const reduced = useReducedMotion();\n  return <motion.div variants={{ hidden: { opacity: 0, y: reduced ? 0 : 6 }, show: { opacity: 1, y: 0 } }} transition={reduced ? { duration: 0 } : { duration: 0.28, ease: [0.16, 1, 0.3, 1] }} className={className}>{children}</motion.div>;\n}\n"
+    }
+  ]
+}

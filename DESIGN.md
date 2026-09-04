@@ -143,7 +143,7 @@ Toàn bộ component phải triển khai đúng 4 chiến lược chuyển độ
 
 ---
 
-## 5. Cấu Trúc Thành Phần `src/components/tai-ui/` (16 Active Production Components)
+## 5. Cấu Trúc Thành Phần `src/components/tai-ui/` (47 Documented Production Resources)
 
 ```
 src/components/tai-ui/

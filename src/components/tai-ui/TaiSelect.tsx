@@ -22,8 +22,8 @@ export const TaiSelect = React.forwardRef<HTMLSelectElement, TaiSelectProps>(
     const describedBy = [descriptionId, errorId].filter(Boolean).join(" ") || undefined;
 
     return (
-      <label className="block space-y-2 font-sans text-sm text-zinc-300" htmlFor={selectId}>
-        {label && <span className="block font-mono text-[10px] uppercase tracking-widest text-zinc-500">{label}</span>}
+      <label className="block space-y-2 font-sans text-sm text-tai-muted" htmlFor={selectId}>
+        {label && <span className="block font-mono text-[10px] uppercase tracking-widest text-tai-subtle">{label}</span>}
         <span className="relative block">
           <select
             ref={ref}
@@ -31,18 +31,18 @@ export const TaiSelect = React.forwardRef<HTMLSelectElement, TaiSelectProps>(
             aria-invalid={error ? true : undefined}
             aria-describedby={describedBy}
             className={cn(
-              "block min-h-11 w-full appearance-none border bg-black px-3 py-2.5 pr-10 text-sm text-white outline-none transition-[border-color,background-color] focus-visible:border-emerald-400 focus-visible:ring-2 focus-visible:ring-emerald-400/30 disabled:cursor-not-allowed disabled:opacity-45",
-              error ? "border-amber-300/70" : "border-white/[0.14] hover:border-white/[0.26]",
+              "block min-h-11 w-full appearance-none border border-tai-border bg-tai-bg px-3 py-2.5 pr-10 text-sm text-tai-text outline-none transition-[border-color,background-color] focus-visible:border-tai-focus focus-visible:ring-2 focus-visible:ring-tai-focus/30 disabled:cursor-not-allowed disabled:opacity-45",
+              error ? "border-amber-600" : "hover:border-tai-border-strong",
               className,
             )}
             {...props}
           >
             {options.map((option) => <option key={option.value} value={option.value} disabled={option.disabled}>{option.label}</option>)}
           </select>
-          <ChevronDown aria-hidden="true" className="pointer-events-none absolute right-3 top-1/2 h-4 w-4 -translate-y-1/2 text-zinc-500" />
+          <ChevronDown aria-hidden="true" className="pointer-events-none absolute right-3 top-1/2 h-4 w-4 -translate-y-1/2 text-tai-subtle" />
         </span>
-        {description && <span id={descriptionId} className="block text-xs leading-5 text-zinc-500">{description}</span>}
-        {error && <span id={errorId} className="block text-xs leading-5 text-amber-200">{error}</span>}
+        {description && <span id={descriptionId} className="block min-h-[1lh] text-xs leading-5 text-tai-subtle">{description}</span>}
+        {error && <span id={errorId} className="block min-h-[1lh] text-xs leading-5 text-tai-warning">{error}</span>}
       </label>
     );
   },

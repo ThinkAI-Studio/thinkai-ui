@@ -1,8 +1,8 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { motion } from "motion/react";
-import { Play, RotateCcw, Gauge } from "lucide-react";
+import { Play, Gauge } from "lucide-react";
 import { TAI_SPRING, TAI_EASE } from "@/lib/motion";
 
 type PhysicsPreset = "default" | "stiff" | "gentle" | "luxury" | "snappy";
@@ -11,6 +11,30 @@ export function MotionPhysicsLab() {
   const [activePreset, setActivePreset] = useState<PhysicsPreset>("default");
   const [togglePosition, setTogglePosition] = useState(false);
   const [triggerCount, setTriggerCount] = useState(0);
+  const trackRef = useRef<HTMLDivElement>(null);
+  const slabRef = useRef<HTMLDivElement>(null);
+  const destinationRef = useRef<HTMLDivElement>(null);
+  const [destinationX, setDestinationX] = useState<number | null>(null);
+
+  useEffect(() => {
+    const track = trackRef.current;
+    const slab = slabRef.current;
+    const destination = destinationRef.current;
+    if (!track || !slab || !destination) return;
+
+    const measureDestination = () => {
+      // offsetLeft reads the flex layout position, not the current Motion
+      // transform, so resizing while the slab is at the destination remains stable.
+      setDestinationX(Math.max(0, destination.offsetLeft - slab.offsetLeft));
+    };
+
+    measureDestination();
+    const observer = new ResizeObserver(measureDestination);
+    observer.observe(track);
+    observer.observe(slab);
+    observer.observe(destination);
+    return () => observer.disconnect();
+  }, []);
 
   const getTransition = () => {
     switch (activePreset) {
@@ -111,16 +135,15 @@ export function MotionPhysicsLab() {
           </div>
 
           {/* Motion Visual Track */}
-          <div className="py-12 px-4 relative bg-black/40 border border-white/[0.06] flex items-center justify-between min-h-[180px]">
+          <div ref={trackRef} className="py-12 px-4 relative bg-black/40 border border-white/[0.06] flex items-center justify-between min-h-[180px]">
             {/* Track Grid Lines */}
             <div className="absolute inset-0 opacity-10 bg-[linear-gradient(to_right,rgba(255,255,255,0.2)_1px,transparent_1px)] bg-[size:2rem_100%]" />
 
             {/* Moving Physical Object */}
             <motion.div
-              layout
+              ref={slabRef}
               animate={{
-                x: togglePosition ? "calc(100% - 140px)" : "0px",
-                rotate: togglePosition ? 0 : 0,
+                x: togglePosition && destinationX !== null ? destinationX : 0,
               }}
               transition={getTransition() as any}
               className="relative z-10 w-32 h-20 bg-white text-black font-mono font-bold flex flex-col items-center justify-center p-3 shadow-2xl cursor-pointer select-none"
@@ -133,7 +156,7 @@ export function MotionPhysicsLab() {
             </motion.div>
 
             {/* Destination Target Marker */}
-            <div className="w-32 h-20 border border-dashed border-white/20 flex flex-col items-center justify-center text-[10px] font-mono text-zinc-600 uppercase">
+            <div ref={destinationRef} className="w-32 h-20 border border-dashed border-white/20 flex flex-col items-center justify-center text-[10px] font-mono text-zinc-600 uppercase">
               DESTINATION
             </div>
           </div>

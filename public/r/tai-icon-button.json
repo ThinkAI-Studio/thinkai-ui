@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.thinkai.studio/schema/registry-item.json",
+  "name": "tai-icon-button",
+  "type": "registry:ui",
+  "title": "Tai Icon Button",
+  "description": "Accessible icon-only action with a consistent focus target.",
+  "dependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "name": "TaiIconButton.tsx",
+      "content": "import * as React from \"react\";\nimport { cn } from \"@/lib/utils\";\n\nexport const TaiIconButton = React.forwardRef<HTMLButtonElement, React.ButtonHTMLAttributes<HTMLButtonElement> & { label: string }>(\n  ({ label, className, children, ...props }, ref) => <button ref={ref} type=\"button\" aria-label={label} title={label} className={cn(\"inline-grid h-11 w-11 place-items-center border border-tai-border text-tai-muted transition-colors hover:border-tai-border-strong hover:text-tai-text focus-visible:outline-2 focus-visible:outline-tai-focus disabled:cursor-not-allowed disabled:opacity-40\", className)} {...props}>{children}</button>,\n);\nTaiIconButton.displayName = \"TaiIconButton\";\n"
+    }
+  ]
+}

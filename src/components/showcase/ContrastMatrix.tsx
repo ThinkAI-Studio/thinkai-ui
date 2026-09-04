@@ -37,8 +37,8 @@ export function ContrastMatrix() {
     },
     {
       dimension: "Status Telemetry",
-      generic: "Flat green dots",
-      thinkai: "Optical LED Glow (drop-shadow emerald)",
+      generic: "Flat blue dots",
+      thinkai: "Optical LED Glow (Venice blue)",
     },
     {
       dimension: "Code Ownership",

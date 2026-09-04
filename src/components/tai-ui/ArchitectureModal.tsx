@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useRef, useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import {
   X,
@@ -19,6 +19,7 @@ import {
 import { projects } from "@/data/portfolio";
 import { TaiLogoMark } from "./HalftoneBanner";
 import { TAI_EASE } from "@/lib/motion";
+import { useModalFocus } from "@/lib/useModalFocus";
 
 interface ArchitectureModalProps {
   projectId: "homelab" | "thinkai" | null;
@@ -28,21 +29,9 @@ interface ArchitectureModalProps {
 
 export function ArchitectureModal({ projectId, onClose, lang }: ArchitectureModalProps) {
   const [activeTab, setActiveTab] = useState<"diagram" | "security" | "provenance">("diagram");
+  const modalRef = useRef<HTMLDivElement>(null);
   const project = projects.find((p) => p.id === projectId);
-
-  useEffect(() => {
-    const handleGlobalKeyDown = (e: KeyboardEvent) => {
-      if (e.key === "Escape") {
-        onClose();
-      }
-    };
-    if (projectId) {
-      document.addEventListener("keydown", handleGlobalKeyDown, true);
-    }
-    return () => {
-      document.removeEventListener("keydown", handleGlobalKeyDown, true);
-    };
-  }, [projectId, onClose]);
+  useModalFocus({ open: Boolean(projectId), containerRef: modalRef, onClose });
 
   if (!project) return null;
 
@@ -56,6 +45,7 @@ export function ArchitectureModal({ projectId, onClose, lang }: ArchitectureModa
           className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 bg-black/85 backdrop-blur-md cursor-pointer"
         >
           <motion.div
+            ref={modalRef}
             onClick={(e) => e.stopPropagation()}
             initial={{ opacity: 0, scale: 0.98, y: 16 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}

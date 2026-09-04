@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.thinkai.studio/schema/registry-item.json",
+  "name": "fade-in",
+  "type": "registry:ui",
+  "title": "Fade In",
+  "description": "Restrained one-shot entrance for meaningful content groups.",
+  "dependencies": [
+    "motion"
+  ],
+  "registryDependencies": [],
+  "files": [
+    {
+      "name": "FadeIn.tsx",
+      "content": "\"use client\";\n\nimport { motion, useReducedMotion } from \"motion/react\";\n\nexport function FadeIn({ children, className = \"\" }: { children: React.ReactNode; className?: string }) {\n  const reduced = useReducedMotion();\n  return <motion.div initial={{ opacity: 0, y: reduced ? 0 : 8 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.2 }} transition={reduced ? { duration: 0 } : { duration: 0.3, ease: [0.16, 1, 0.3, 1] }} className={className}>{children}</motion.div>;\n}\n"
+    }
+  ]
+}

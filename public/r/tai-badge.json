@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.thinkai.studio/schema/registry-item.json",
+  "name": "tai-badge",
+  "type": "registry:ui",
+  "title": "Tai Badge",
+  "description": "Compact factual label for status or category.",
+  "dependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "name": "TaiBadge.tsx",
+      "content": "import { cn } from \"@/lib/utils\";\n\nexport function TaiBadge({ children, tone = \"neutral\", className }: { children: React.ReactNode; tone?: \"neutral\" | \"accent\" | \"success\" | \"warning\"; className?: string }) {\n  return <span className={cn(\"inline-flex items-center border px-2 py-1 font-mono text-[10px] uppercase tracking-widest\", tone === \"accent\" && \"border-tai-accent/50 text-tai-accent\", tone === \"success\" && \"border-tai-success/50 text-tai-success\", tone === \"warning\" && \"border-tai-warning/50 text-tai-warning\", tone === \"neutral\" && \"border-tai-border text-tai-muted\", className)}>{children}</span>;\n}\n"
+    }
+  ]
+}

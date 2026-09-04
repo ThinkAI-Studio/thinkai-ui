@@ -20,7 +20,7 @@ export type Answer = {
 export type DocsSearchResult = {
   slug: string;
   title: string;
-  kind: "guide" | "ui" | "motion";
+  kind: "guide" | "ui" | "motion" | "icons";
   description: string;
 };
 
@@ -59,7 +59,7 @@ export const docPages: DocPage[] = [
     ],
   },
   {
-    slug: "motion",
+    slug: "motion-system",
     title: "Motion system",
     summary: "A calm motion language for hierarchy, state, and tactile feedback.",
     category: "System",
@@ -91,6 +91,49 @@ export const docPages: DocPage[] = [
       { id: "motion", title: "Purposeful motion", body: "Use opacity, small travel, and a soft settle to explain change. Respect prefers-reduced-motion by keeping the final state and removing travel or loops." },
     ],
   },
+  {
+    slug: "roadmap",
+    title: "Roadmap",
+    summary: "A transparent sequence for growing the ThinkAI UI registry without sacrificing source quality.",
+    category: "Guide",
+    sections: [
+      { id: "now", title: "Now", body: "Stabilize the docs shell, semantic theme tokens, core application controls, motion accessibility, and registry parity." },
+      { id: "next", title: "Next", body: "Expand the UI and motion catalog with practical primitives, add icon documentation, and make contribution checks deterministic." },
+      { id: "later", title: "Later", body: "Evaluate a model-backed docs assistant, MCP access, and richer catalog compositions only after the local docs index and privacy model are ready." },
+    ],
+  },
+  {
+    slug: "changelog",
+    title: "Changelog",
+    summary: "A short record of shipped registry and documentation changes.",
+    category: "Guide",
+    sections: [
+      { id: "v1-2", title: "v1.2 · library expansion", body: "Added core form, control, disclosure, feedback, text, and effect primitives with generated registry manifests and documented reduced-motion behavior." },
+      { id: "v1-1", title: "v1.1 · source-owned catalog", body: "Established the catalog data model, direct component pages, local grounded Ask AI, and source ownership documentation." },
+    ],
+  },
+  {
+    slug: "contributing",
+    title: "Contributing",
+    summary: "The smallest reliable path for adding a ThinkAI UI component or motion primitive.",
+    category: "Guide",
+    sections: [
+      { id: "source", title: "Start with source", body: "Add the readable component under src/components/tai-ui and keep the public API small. Avoid adding a visual effect unless it clarifies hierarchy or interaction." },
+      { id: "catalog", title: "Document the item", body: "Add one catalog entry, one preview, usage guidance, accessibility notes, and reduced-motion behavior. The registry is generated from the same source contract." },
+      { id: "checks", title: "Run the checks", body: "Run lint, typecheck, catalog verification, registry generation, diff check, and the production build before opening a change." },
+    ],
+  },
+  {
+    slug: "troubleshooting",
+    title: "Troubleshooting",
+    summary: "Common installation, preview, registry, and motion issues.",
+    category: "Guide",
+    sections: [
+      { id: "registry", title: "Registry not found", body: "Confirm the registry URL is reachable and that the requested slug exists in public/r. Run registry:build after changing source or registry metadata." },
+      { id: "motion", title: "Motion feels heavy", body: "Remove loops first, then reduce travel and stagger. Confirm the component has a reduced-motion path and does not animate layout properties." },
+      { id: "theme", title: "Theme mismatch", body: "Use semantic tai tokens instead of hard-coded white, black, or zinc surfaces. Check the selected System, Light, or Dark preference after a full reload." },
+    ],
+  },
 ];
 
 export const getDocPage = (slug: string) => docPages.find((page) => page.slug === slug) ?? docPages[0];
@@ -110,7 +153,7 @@ export function answerQuestion(question: string): Answer {
   const normalized = question.toLowerCase();
   const answers: { terms: string[]; answer: string; sourceSlug: string; sourceTitle: string }[] = [
     { terms: ["install", "setup", "start", "registry", "add component"], answer: "Run `npx thinkai-ui init`, then add a primitive with `npx thinkai-ui add tai-button`. The CLI copies source into your project so you can own and edit it.", sourceSlug: "installation", sourceTitle: "Installation" },
-    { terms: ["motion", "animation", "spring", "reduced motion"], answer: "Use Motion for intentional reveals, gentle springs, and component feedback. Reduced-motion users receive the same state change without travel.", sourceSlug: "motion", sourceTitle: "Motion system" },
+    { terms: ["motion", "animation", "spring", "reduced motion"], answer: "Use Motion for intentional reveals, gentle springs, and component feedback. Reduced-motion users receive the same state change without travel.", sourceSlug: "motion-system", sourceTitle: "Motion system" },
     { terms: ["tai-button", "tai button", "component variant"], answer: "Use TaiButton for actions that change state or submit an intent. Choose primary for the strongest action, then secondary, outline, or ghost for supporting actions.", sourceSlug: "tai-button", sourceTitle: "TaiButton" },
     { terms: ["wipebutton", "wipe button"], answer: "Use WipeButton sparingly for a primary forward action or link. Keep the label short and use a real anchor when the action navigates.", sourceSlug: "wipe-button", sourceTitle: "WipeButton" },
     { terms: ["accessibility", "a11y", "keyboard", "focus", "aria", "semantic"], answer: "Use semantic buttons and links, visible focus styles, labelled controls, and `aria-expanded` for disclosures. Native keyboard behavior should remain predictable.", sourceSlug: "accessibility", sourceTitle: "Accessibility" },

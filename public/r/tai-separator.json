@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.thinkai.studio/schema/registry-item.json",
+  "name": "tai-separator",
+  "type": "registry:ui",
+  "title": "Tai Separator",
+  "description": "Semantic hairline for related content groups.",
+  "dependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "name": "TaiSeparator.tsx",
+      "content": "export function TaiSeparator({ orientation = \"horizontal\", className = \"\" }: { orientation?: \"horizontal\" | \"vertical\"; className?: string }) {\n  return <div role=\"separator\" aria-orientation={orientation} className={`${orientation === \"horizontal\" ? \"h-px w-full\" : \"h-full w-px\"} bg-tai-border ${className}`} />;\n}\n"
+    }
+  ]
+}

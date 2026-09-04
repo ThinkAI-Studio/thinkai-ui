@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.thinkai.studio/schema/registry-item.json",
+  "name": "highlight",
+  "type": "registry:ui",
+  "title": "Highlight",
+  "description": "Subtle highlight behind a phrase to reinforce emphasis.",
+  "dependencies": [
+    "motion"
+  ],
+  "registryDependencies": [],
+  "files": [
+    {
+      "name": "Highlight.tsx",
+      "content": "\"use client\";\n\nimport { motion, useReducedMotion } from \"motion/react\";\n\nexport function Highlight({ children, className = \"\" }: { children: React.ReactNode; className?: string }) {\n  const reduced = useReducedMotion();\n  return <span className={`relative inline ${className}`}><motion.span aria-hidden=\"true\" initial={{ scaleX: reduced ? 1 : 0 }} whileInView={{ scaleX: 1 }} viewport={{ once: true }} transition={reduced ? { duration: 0 } : { duration: 0.38, ease: [0.16, 1, 0.3, 1] }} className=\"absolute inset-x-0 bottom-0 -z-0 h-[0.5em] origin-left bg-tai-accent/25\" /><span className=\"relative\">{children}</span></span>;\n}\n"
+    }
+  ]
+}

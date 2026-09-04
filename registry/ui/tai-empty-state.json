@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.thinkai.studio/schema/registry-item.json",
+  "name": "tai-empty-state",
+  "type": "registry:ui",
+  "title": "Tai Empty State",
+  "description": "Calm empty result with explanation and optional next action.",
+  "dependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "name": "TaiEmptyState.tsx",
+      "content": "import { cn } from \"@/lib/utils\";\n\nexport function TaiEmptyState({ title, description, action, className }: { title: string; description: string; action?: React.ReactNode; className?: string }) {\n  return <div className={cn(\"border border-dashed border-tai-border p-8 text-center\", className)}><p className=\"font-mono text-sm uppercase tracking-tight text-tai-text\">{title}</p><p className=\"mx-auto mt-2 max-w-md text-sm leading-6 text-tai-muted\">{description}</p>{action && <div className=\"mt-5\">{action}</div>}</div>;\n}\n"
+    }
+  ]
+}

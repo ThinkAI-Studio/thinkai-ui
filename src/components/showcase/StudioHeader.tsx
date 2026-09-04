@@ -8,6 +8,7 @@ import { Search, Terminal, Github } from "lucide-react";
 import { WipeButton } from "@/components/tai-ui/WipeButton";
 import { ButtonTextRoll } from "@/components/tai-ui/ButtonTextRoll";
 import { ArrowRoll } from "@/components/tai-ui/ArrowRoll";
+import { ThemeToggle } from "@/components/theme/ThemeToggle";
 
 interface StudioHeaderProps {
   onOpenAbout: () => void;
@@ -93,15 +94,15 @@ export function StudioHeader({
                 alt="ThinkAI Studio"
                 fill
                 sizes="32px"
-                className="object-contain"
+                className="tai-brand-mark object-contain"
                 priority
               />
             </div>
             <div className="flex flex-col">
-              <span className="font-mono text-sm font-bold tracking-tight text-white uppercase group-hover:text-emerald-400 transition-colors drop-shadow-md">
+              <span className="font-mono text-sm font-bold tracking-tight text-tai-text uppercase group-hover:text-tai-accent transition-colors drop-shadow-md">
                 THINKAI UI
               </span>
-              <span className="text-[9.5px] font-mono text-zinc-400 uppercase tracking-widest hidden sm:inline">
+              <span className="text-[9.5px] font-mono text-tai-muted uppercase tracking-widest hidden sm:inline">
                 REGISTRY v1.1
               </span>
             </div>
@@ -116,12 +117,12 @@ export function StudioHeader({
           {/* Quick Search Shortcut */}
           <button
             onClick={onOpenCommandMenu}
-            className="hidden sm:flex items-center gap-2 px-3 py-2 bg-black/60 backdrop-blur-xl border border-white/[0.1] hover:border-white/30 text-xs font-mono text-zinc-400 hover:text-white transition-colors active:translate-y-px"
+            className="hidden sm:flex items-center gap-2 px-3 py-2 bg-tai-sheet backdrop-blur-xl border border-tai-border hover:border-tai-border-strong text-xs font-mono text-tai-muted hover:text-tai-text transition-colors active:translate-y-px"
             title="Search Primitives (Cmd+K)"
           >
-            <Search className="w-3.5 h-3.5 text-zinc-400" />
+            <Search className="w-3.5 h-3.5 text-tai-muted" />
             <span className="text-[11px]">SEARCH</span>
-            <kbd className="px-1 py-0.2 bg-zinc-900 border border-white/10 text-[9px] text-zinc-400 font-mono">
+            <kbd className="px-1 py-0.2 bg-tai-surface border border-tai-border text-[9px] text-tai-muted font-mono">
               ⌘K
             </kbd>
           </button>
@@ -129,7 +130,7 @@ export function StudioHeader({
           {/* GitHub Star Button */}
           <Link
             href="/docs"
-            className="hidden md:inline-flex items-center border border-white/[0.1] bg-black/60 px-3 py-2 font-mono text-[11px] uppercase tracking-widest text-zinc-300 transition-[border-color,color,transform] hover:-translate-y-0.5 hover:border-white/30 hover:text-white"
+            className="hidden md:inline-flex items-center border border-tai-border bg-tai-sheet px-3 py-2 font-mono text-[11px] uppercase tracking-widest text-tai-muted transition-[border-color,color,transform] hover:-translate-y-0.5 hover:border-tai-border-strong hover:text-tai-text"
           >
             Docs
           </Link>
@@ -137,11 +138,13 @@ export function StudioHeader({
             href="https://github.com/ThinkAI-Studio/thinkai-ui"
             target="_blank"
             rel="noopener noreferrer"
-            className="p-2 bg-black/60 backdrop-blur-xl border border-white/[0.1] text-zinc-300 hover:text-white hover:border-white/30 transition-colors active:opacity-80"
+            className="p-2 bg-tai-sheet backdrop-blur-xl border border-tai-border text-tai-muted hover:text-tai-text hover:border-tai-border-strong transition-colors active:opacity-80"
             title="GitHub Repository"
           >
             <Github className="w-4 h-4" />
           </a>
+
+          <ThemeToggle />
 
           {/* Start with CLI Action Button */}
           <WipeButton
@@ -162,7 +165,7 @@ export function StudioHeader({
           {/* Mobile Menu Toggle */}
           <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="md:hidden text-white font-mono text-xs uppercase tracking-wider px-2 py-1.5 bg-black/60 border border-white/10"
+            className="md:hidden text-tai-text font-mono text-xs uppercase tracking-wider px-2 py-1.5 bg-tai-sheet border border-tai-border"
             aria-label="Toggle mobile menu"
           >
             {isMobileMenuOpen ? "CLOSE" : "MENU"}
@@ -178,25 +181,25 @@ export function StudioHeader({
             animate={{ y: 0, opacity: 1 }}
             exit={{ y: "-100%", opacity: 0 }}
             transition={{ duration: 0.45, ease: LUXURY_EASE }}
-            className="fixed top-0 inset-x-0 z-40 bg-[#09090b]/98 backdrop-blur-3xl pt-24 pb-8 px-6 border-b border-white/[0.08] shadow-2xl md:hidden flex flex-col justify-between"
+            className="fixed top-0 inset-x-0 z-40 bg-tai-sheet backdrop-blur-3xl pt-24 pb-8 px-6 border-b border-tai-border shadow-2xl md:hidden flex flex-col justify-between"
           >
-            <div className="flex flex-col gap-4 text-2xl font-mono font-bold uppercase tracking-tight text-white pt-2">
+            <div className="flex flex-col gap-4 text-2xl font-mono font-bold uppercase tracking-tight text-tai-text pt-2">
               <button
                 onClick={() => handleNavClick()}
-                className="text-left text-white hover:text-emerald-400 transition-colors"
+                className="text-left text-tai-text hover:text-tai-accent transition-colors"
               >
                 Home
               </button>
               <button
                 onClick={() => handleNavClick("workbench")}
-                className="text-left text-white hover:text-emerald-400 transition-colors"
+                className="text-left text-tai-text hover:text-tai-accent transition-colors"
               >
                 Workbench
               </button>
               <Link
                 href="/docs"
                 onClick={() => setIsMobileMenuOpen(false)}
-                className="text-left text-white transition-colors hover:text-emerald-400"
+                className="text-left text-tai-text transition-colors hover:text-tai-accent"
               >
                 Documentation
               </Link>
@@ -205,14 +208,14 @@ export function StudioHeader({
                   setIsMobileMenuOpen(false);
                   onOpenAbout();
                 }}
-                className="text-left text-white hover:text-emerald-400 transition-colors"
+                className="text-left text-tai-text hover:text-tai-accent transition-colors"
               >
                 About Studio
               </button>
             </div>
 
             <div className="mt-8 pt-6 border-t border-white/[0.08] flex flex-col gap-3">
-              <div className="text-[10px] font-mono text-zinc-500 uppercase tracking-widest">
+              <div className="text-[10px] font-mono text-tai-subtle uppercase tracking-widest">
                 Quick Install
               </div>
               <button
@@ -220,14 +223,15 @@ export function StudioHeader({
                   navigator.clipboard.writeText("npx thinkai-ui init");
                   setIsMobileMenuOpen(false);
                 }}
-                className="flex items-center justify-between p-3 bg-black border border-white/10 font-mono text-xs text-white"
+                className="flex items-center justify-between p-3 bg-tai-bg border border-tai-border font-mono text-xs text-tai-text"
               >
                 <div className="flex items-center gap-2">
-                  <Terminal className="w-4 h-4 text-emerald-400" />
+                  <Terminal className="w-4 h-4 text-tai-accent" />
                   <span>npx thinkai-ui init</span>
                 </div>
-                <span className="text-[10px] bg-white text-black font-bold px-2 py-0.5">COPY</span>
+                <span className="text-[10px] bg-tai-text text-tai-bg font-bold px-2 py-0.5">COPY</span>
               </button>
+              <ThemeToggle />
             </div>
           </motion.div>
         )}

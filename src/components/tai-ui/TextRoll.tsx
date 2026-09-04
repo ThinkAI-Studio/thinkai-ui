@@ -93,7 +93,7 @@ export function TextRoll({
                 return (
                   <span
                     key={rIdx}
-                    className="flex items-center justify-center text-white"
+                    className="flex items-center justify-center text-tai-text"
                     style={{
                       height: `${itemHeightEm}em`,
                       lineHeight: `${itemHeightEm}em`,

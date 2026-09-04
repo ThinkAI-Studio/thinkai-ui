@@ -1,7 +1,9 @@
 import type { Metadata, Viewport } from "next";
+import Script from "next/script";
 import { Geist, Geist_Mono } from "next/font/google";
 import { Analytics } from "@vercel/analytics/react";
 import { MotionConfig } from "motion/react";
+import { ThemeProvider } from "@/components/theme/ThemeProvider";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -15,7 +17,7 @@ const geistMono = Geist_Mono({
 });
 
 export const viewport: Viewport = {
-  themeColor: "#08080a",
+  themeColor: "#111315",
   width: "device-width",
   initialScale: 1,
   maximumScale: 5,
@@ -87,7 +89,9 @@ export const metadata: Metadata = {
     },
   },
   icons: {
-    icon: "/favicon.ico",
+    icon: "/images/thinkai_studio_logo.png",
+    shortcut: "/images/thinkai_studio_logo.png",
+    apple: "/images/thinkai_studio_logo.png",
   },
 };
 
@@ -133,19 +137,21 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="dark">
-      <head>
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-        />
-      </head>
+    <html lang="en" suppressHydrationWarning>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} font-sans bg-tai-bg text-white/90 antialiased min-h-screen selection:bg-white/20`}
+        className={`${geistSans.variable} ${geistMono.variable} font-sans bg-tai-bg text-tai-text antialiased min-h-screen`}
       >
-        <div className="relative min-h-screen flex flex-col tai-grain">
-          <MotionConfig reducedMotion="user">{children}</MotionConfig>
-        </div>
+        <Script id="thinkai-theme-init" strategy="beforeInteractive">{`(() => { try { const saved = localStorage.getItem('thinkai-ui-theme'); const system = matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark'; const theme = saved === 'light' || saved === 'dark' ? saved : system; document.documentElement.dataset.theme = theme; document.documentElement.style.colorScheme = theme; } catch (_) {} })()`}</Script>
+        <script
+          id="thinkai-jsonld"
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c") }}
+        />
+        <ThemeProvider>
+          <div className="relative min-h-screen flex flex-col tai-grain">
+            <MotionConfig reducedMotion="user">{children}</MotionConfig>
+          </div>
+        </ThemeProvider>
         <Analytics />
       </body>
     </html>

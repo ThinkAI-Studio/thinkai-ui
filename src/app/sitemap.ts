@@ -1,6 +1,7 @@
 import { MetadataRoute } from "next";
 import fs from "fs";
 import path from "path";
+import { catalogItems } from "@/data/catalog";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = "https://ui.thinkai.studio";
@@ -35,9 +36,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
   try {
     const registryPath = path.resolve("public/r/registry.json");
     if (fs.existsSync(registryPath)) {
-      const registry = JSON.parse(fs.readFileSync(registryPath, "utf-8"));
-      const componentRoutes: MetadataRoute.Sitemap = registry.items.map((item: any) => ({
-        url: `${baseUrl}/#${item.name}`,
+      const componentRoutes: MetadataRoute.Sitemap = catalogItems.map((item) => ({
+        url: `${baseUrl}/docs/${item.kind}/${item.slug}`,
         lastModified: new Date(),
         changeFrequency: "weekly",
         priority: 0.8,

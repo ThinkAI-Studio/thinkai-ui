@@ -1,12 +1,13 @@
 "use client";
 
-import React, { useEffect } from "react";
+import React, { useRef } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence, useReducedMotion } from "motion/react";
 import { ArrowUpRight } from "lucide-react";
 import { ButtonTextRoll } from "./ButtonTextRoll";
 import { WipeButton } from "./WipeButton";
 import { TAI_SPRING, TAI_EASE } from "@/lib/motion";
+import { useModalFocus } from "@/lib/useModalFocus";
 
 interface AboutDrawerProps {
   isOpen: boolean;
@@ -16,24 +17,8 @@ interface AboutDrawerProps {
 
 export function AboutDrawer({ isOpen, onClose, lang }: AboutDrawerProps) {
   const prefersReduced = useReducedMotion();
-
-  useEffect(() => {
-    const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === "Escape") onClose();
-    };
-
-    if (isOpen) {
-      document.body.style.overflow = "hidden";
-      window.addEventListener("keydown", handleKeyDown);
-    } else {
-      document.body.style.overflow = "unset";
-    }
-
-    return () => {
-      document.body.style.overflow = "unset";
-      window.removeEventListener("keydown", handleKeyDown);
-    };
-  }, [isOpen, onClose]);
+  const drawerRef = useRef<HTMLDivElement>(null);
+  useModalFocus({ open: isOpen, containerRef: drawerRef, onClose });
 
   // Motion variants for each staggered element inside the drawer
   const getRevealProps = (delaySec: number) => ({
@@ -57,6 +42,7 @@ export function AboutDrawer({ isOpen, onClose, lang }: AboutDrawerProps) {
         <div className="fixed inset-0 z-[999] flex justify-end">
           {/* Ambient Backdrop Blur with Clean Luxury Fade */}
           <motion.div
+            ref={drawerRef}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}

@@ -12,6 +12,9 @@ import { SmoothScroll } from "@/components/tai-ui/SmoothScroll";
 import { AboutDrawer } from "@/components/tai-ui/AboutDrawer";
 import { ArchitectureModal } from "@/components/tai-ui/ArchitectureModal";
 import { ContactModal } from "@/components/tai-ui/ContactModal";
+import { MotionPhysicsLab } from "@/components/showcase/MotionPhysicsLab";
+import { ContrastMatrix } from "@/components/showcase/ContrastMatrix";
+import { FaqSection } from "@/components/showcase/FaqSection";
 
 export default function HomePage() {
   const [commandMenuOpen, setCommandMenuOpen] = useState(false);
@@ -19,7 +22,7 @@ export default function HomePage() {
   const [archOpen, setArchOpen] = useState(false);
   const [contactOpen, setContactOpen] = useState(false);
   const prefersReduced = useReducedMotion();
-  const sectionMotion = prefersReduced
+  const heroMotion = prefersReduced
     ? { initial: { opacity: 0 }, whileInView: { opacity: 1 } }
     : { initial: { opacity: 0, y: 22 }, whileInView: { opacity: 1, y: 0 } };
 
@@ -37,18 +40,28 @@ export default function HomePage() {
 
       <main className="flex-1">
         {/* Cinematic Hero with Quantum Matrix Substrate */}
-        <motion.div {...sectionMotion} viewport={{ once: true, amount: 0.08 }} transition={{ duration: prefersReduced ? 0 : 0.8, ease: [0.16, 1, 0.3, 1] }}>
+        <motion.div {...heroMotion} viewport={{ once: true, amount: 0.08 }} transition={{ duration: prefersReduced ? 0 : 0.8, ease: [0.16, 1, 0.3, 1] }}>
           <HeroSection onOpenCommandMenu={() => setCommandMenuOpen(true)} />
         </motion.div>
 
         {/* Studio Tri-Pane Component Workbench */}
-        <motion.div {...sectionMotion} viewport={{ once: true, amount: 0.08 }} transition={{ duration: prefersReduced ? 0 : 0.9, delay: prefersReduced ? 0 : 0.08, ease: [0.16, 1, 0.3, 1] }}>
+        <div>
           <StudioWorkbench
             onOpenAbout={() => setAboutOpen(true)}
             onOpenArch={() => setArchOpen(true)}
             onOpenContact={() => setContactOpen(true)}
           />
-        </motion.div>
+        </div>
+
+        <div>
+          <MotionPhysicsLab />
+        </div>
+        <div>
+          <ContrastMatrix />
+        </div>
+        <div>
+          <FaqSection />
+        </div>
 
       </main>
 

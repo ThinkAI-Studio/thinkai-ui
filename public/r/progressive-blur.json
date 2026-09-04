@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.thinkai.studio/schema/registry-item.json",
+  "name": "progressive-blur",
+  "type": "registry:ui",
+  "title": "Progressive Blur",
+  "description": "Restrained blur settle for a non-essential visual surface.",
+  "dependencies": [
+    "motion"
+  ],
+  "registryDependencies": [],
+  "files": [
+    {
+      "name": "ProgressiveBlur.tsx",
+      "content": "\"use client\";\n\nimport { motion, useReducedMotion } from \"motion/react\";\n\nexport function ProgressiveBlur({ children, className = \"\" }: { children: React.ReactNode; className?: string }) {\n  const reduced = useReducedMotion();\n  return <motion.div initial={{ opacity: 0, filter: reduced ? \"blur(0px)\" : \"blur(5px)\" }} animate={{ opacity: 1, filter: \"blur(0px)\" }} transition={reduced ? { duration: 0 } : { duration: 0.5, ease: [0.16, 1, 0.3, 1] }} className={className}>{children}</motion.div>;\n}\n"
+    }
+  ]
+}

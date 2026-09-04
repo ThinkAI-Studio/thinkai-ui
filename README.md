@@ -26,7 +26,7 @@
   <a href="#-quick-start--cli-usage">Quick Start</a> •
   <a href="#%EF%B8%8F-core-architectural-pillars">Pillars</a> •
   <a href="#-the-production-hallmark-contrast-matrix">Comparison Matrix</a> •
-  <a href="#-production-component-catalog-30-primitives">Component Catalog</a> •
+  <a href="#-production-component-catalog-47-primitives">Component Catalog</a> •
   <a href="#-design-tokens--global-configuration">Design Tokens</a> •
   <a href="#%EF%B8%8F-registry-architecture">Architecture</a>
 </p>
@@ -130,7 +130,7 @@ npx thinkai-ui add halftone-banner
 npx thinkai-ui add tai-header
 npx thinkai-ui add about-drawer
 
-# Or Install All 30 Components At Once
+# Or Install All 47 Components At Once
 npx thinkai-ui add --all
 ```
 
@@ -142,7 +142,7 @@ npx thinkai-ui list
 
 ---
 
-## 📦 Production Component Catalog (30 Primitives)
+## 📦 Production Component Catalog (47 Primitives)
 
 Every component is written in **TypeScript Strict Mode**, documents its keyboard and reduced-motion behavior, and targets **WCAG 2.2 AA** without overstating unverified compliance.
 
@@ -178,6 +178,23 @@ Every component is written in **TypeScript Strict Mode**, documents its keyboard
 | **DrawUnderline** | `npx thinkai-ui add draw-underline` | *Motion* | Restrained underline draw for links and emphasis |
 | **BorderTrail** | `npx thinkai-ui add border-trail` | *Motion* | Sparse attention trail for a focused surface |
 | **NumberFlow** | `npx thinkai-ui add number-flow` | *Motion* | Small numeric settle for real changing values |
+| **FadeIn** | `npx thinkai-ui add fade-in` | *Motion* | Small opacity and position entry for content blocks |
+| **BlurReveal** | `npx thinkai-ui add blur-reveal` | *Motion* | Restrained blur-to-clear reveal for editorial content |
+| **StaggerGroup** | `npx thinkai-ui add stagger-group` | *Motion* | Shared stagger context for small content groups |
+| **Highlight** | `npx thinkai-ui add highlight` | *Motion* | One-shot accent highlight for important text |
+| **ProgressiveBlur** | `npx thinkai-ui add progressive-blur` | *Motion* | Edge fade for scrollable content surfaces |
+| **SkeletonShimmer** | `npx thinkai-ui add skeleton-shimmer` | *Motion* | Slow finite loading sweep with reduced-motion fallback |
+| **TaiTooltip** | `npx thinkai-ui add tai-tooltip` | *Feedback* | Labelled hover and keyboard tooltip primitive |
+| **TaiPopover** | `npx thinkai-ui add tai-popover` | *Overlay* | Lightweight anchored disclosure surface |
+| **TaiDropdownMenu** | `npx thinkai-ui add tai-dropdown-menu` | *Navigation* | Keyboard-friendly action menu with Escape dismissal |
+| **TaiAlert** | `npx thinkai-ui add tai-alert` | *Feedback* | Persistent status message with semantic live region |
+| **TaiBadge** | `npx thinkai-ui add tai-badge` | *Display* | Compact status and category label |
+| **TaiSkeleton** | `npx thinkai-ui add tai-skeleton` | *Feedback* | Quiet static loading placeholder |
+| **TaiSeparator** | `npx thinkai-ui add tai-separator` | *Layout* | Semantic horizontal or vertical divider |
+| **TaiAvatar** | `npx thinkai-ui add tai-avatar` | *Display* | Initials avatar with accessible label |
+| **TaiIconButton** | `npx thinkai-ui add tai-icon-button` | *Controls* | Labelled icon-only control with focus treatment |
+| **TaiEmptyState** | `npx thinkai-ui add tai-empty-state` | *Feedback* | Clear empty collection state with optional action |
+| **TaiBottomSheet** | `npx thinkai-ui add tai-bottom-sheet` | *Overlay* | Mobile-first sheet with focus management and Escape dismissal |
 
 ---
 

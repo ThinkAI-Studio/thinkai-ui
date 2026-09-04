@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.thinkai.studio/schema/registry-item.json",
+  "name": "tai-skeleton",
+  "type": "registry:ui",
+  "title": "Tai Skeleton",
+  "description": "Quiet loading placeholder for stable content shapes.",
+  "dependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "name": "TaiSkeleton.tsx",
+      "content": "import { cn } from \"@/lib/utils\";\n\nexport function TaiSkeleton({ className }: { className?: string }) {\n  return <span aria-hidden=\"true\" className={cn(\"block bg-tai-surface\", className)} />;\n}\n"
+    }
+  ]
+}

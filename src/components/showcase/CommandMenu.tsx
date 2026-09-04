@@ -185,7 +185,7 @@ export function CommandMenu({
           )}
         </div>
 
-        {/* Modal Footer Keyboard Telemetry */}
+        {/* Modal Footer Keyboard Shortcuts */}
         <div className="px-4 py-2 bg-black/80 border-t border-white/[0.06] flex items-center justify-between text-[10px] font-mono text-zinc-500">
           <div className="flex items-center gap-3">
             <span>

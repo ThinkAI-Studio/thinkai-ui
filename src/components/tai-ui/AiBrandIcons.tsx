@@ -1,9 +1,12 @@
 import React from "react";
 
-interface IconProps {
+export interface IconProps {
   className?: string;
   size?: number;
 }
+
+export type BrandIconCategory = "ai" | "infra" | "dev";
+export type BrandIconEntry = { name: string; label: string; category: BrandIconCategory; source: "official" | "custom"; component: React.ComponentType<IconProps> };
 
 /**
  * Official OpenAI / ChatGPT Logo (Rosette Hexagonal Spiral Knot)
@@ -94,3 +97,11 @@ export function ManusIcon({ className = "w-4 h-4", size = 16 }: IconProps) {
     </svg>
   );
 }
+
+export const aiBrandIconRegistry: BrandIconEntry[] = [
+  { name: "openai", label: "OpenAI ChatGPT", category: "ai", source: "official", component: OpenAiIcon },
+  { name: "gemini", label: "Google Gemini", category: "ai", source: "official", component: GeminiIcon },
+  { name: "claude", label: "Anthropic Claude", category: "ai", source: "official", component: ClaudeIcon },
+  { name: "perplexity", label: "Perplexity AI", category: "ai", source: "official", component: PerplexityIcon },
+  { name: "manus", label: "Manus AI", category: "ai", source: "custom", component: ManusIcon },
+];

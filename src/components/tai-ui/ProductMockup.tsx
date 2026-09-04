@@ -62,9 +62,9 @@ export function ProductMockup({
 
         {/* Floating Quick Action Badge on Hover */}
         <div className="absolute inset-0 flex items-center justify-center bg-black/30 opacity-0 transition-opacity duration-300 group-hover/preview:opacity-100 pointer-events-none">
-          <span className="inline-flex items-center gap-2 bg-white px-5 py-2.5 font-mono text-xs font-bold tracking-wider text-black shadow-2xl">
+          <span className="inline-flex items-center gap-2 border border-tai-accent/70 bg-tai-bg/90 px-4 py-2.5 font-mono text-xs font-bold tracking-wider text-tai-text shadow-2xl backdrop-blur-sm">
             <span>VISIT {domain.toUpperCase()}</span>
-            <ArrowUpRight className="h-4 w-4 shrink-0" />
+            <ArrowUpRight className="h-4 w-4 shrink-0 text-tai-accent" />
           </span>
         </div>
       </a>
