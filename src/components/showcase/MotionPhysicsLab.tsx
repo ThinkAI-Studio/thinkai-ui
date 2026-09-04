@@ -90,10 +90,10 @@ export function MotionPhysicsLab() {
   };
 
   return (
-    <section className="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto border-t border-white/[0.08]">
-      <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 border-b border-white/[0.08] pb-6 gap-6">
-        <div>
-          <h2 className="text-3xl sm:text-4xl font-mono font-bold tracking-tight text-white uppercase">
+    <section className="mx-auto min-w-0 max-w-7xl border-t border-white/[0.08] px-4 py-20 sm:px-6 lg:px-8">
+      <div className="mb-12 flex min-w-0 flex-col gap-6 border-b border-white/[0.08] pb-6 md:flex-row md:items-end md:justify-between">
+        <div className="min-w-0">
+          <h2 className="break-words text-3xl font-mono font-bold uppercase tracking-tight text-white sm:text-4xl">
             Motion Physics Engine
           </h2>
           <p className="text-xs sm:text-sm text-zinc-400 mt-2 max-w-xl font-sans">
@@ -125,9 +125,9 @@ export function MotionPhysicsLab() {
         <div className="lg:col-span-2 bg-tai-sheet border border-white/[0.08] p-6 sm:p-8 flex flex-col justify-between tai-inset-top relative overflow-hidden">
           {/* Stage Header */}
           <div className="flex items-center justify-between pb-6 border-b border-white/[0.06] mb-8">
-            <div className="flex items-center gap-2 font-mono text-xs text-zinc-400">
+            <div className="flex min-w-0 items-start gap-2 font-mono text-xs text-zinc-400">
               <Gauge className="w-4 h-4 text-emerald-400" />
-              <span>TEST BENCH · TARGET: [0px MECHANICAL SLAB]</span>
+              <span className="min-w-0 break-words">TEST BENCH · TARGET: [0px MECHANICAL SLAB]</span>
             </div>
             <div className="text-xs font-mono text-zinc-500">
               CYCLES: <span className="text-white font-bold">{triggerCount}</span>
@@ -135,7 +135,7 @@ export function MotionPhysicsLab() {
           </div>
 
           {/* Motion Visual Track */}
-          <div ref={trackRef} className="py-12 px-4 relative bg-black/40 border border-white/[0.06] flex items-center justify-between min-h-[180px]">
+          <div ref={trackRef} className="relative flex min-w-0 min-h-[156px] items-center justify-between overflow-hidden border border-white/[0.06] bg-black/40 px-3 py-8 sm:min-h-[180px] sm:px-4 sm:py-12">
             {/* Track Grid Lines */}
             <div className="absolute inset-0 opacity-10 bg-[linear-gradient(to_right,rgba(255,255,255,0.2)_1px,transparent_1px)] bg-[size:2rem_100%]" />
 
@@ -146,7 +146,7 @@ export function MotionPhysicsLab() {
                 x: togglePosition && destinationX !== null ? destinationX : 0,
               }}
               transition={getTransition() as any}
-              className="relative z-10 w-32 h-20 bg-white text-black font-mono font-bold flex flex-col items-center justify-center p-3 shadow-2xl cursor-pointer select-none"
+              className="relative z-10 flex h-16 w-24 shrink-0 cursor-pointer select-none flex-col items-center justify-center bg-white p-2 text-black shadow-2xl sm:h-20 sm:w-32 sm:p-3"
               onClick={handleTrigger}
             >
               <div className="text-[10px] uppercase tracking-wider text-zinc-600">0px SLAB</div>
@@ -156,7 +156,7 @@ export function MotionPhysicsLab() {
             </motion.div>
 
             {/* Destination Target Marker */}
-            <div ref={destinationRef} className="w-32 h-20 border border-dashed border-white/20 flex flex-col items-center justify-center text-[10px] font-mono text-zinc-600 uppercase">
+            <div ref={destinationRef} className="flex h-16 w-24 shrink-0 flex-col items-center justify-center border border-dashed border-white/20 text-center text-[10px] font-mono uppercase text-zinc-600 sm:h-20 sm:w-32">
               DESTINATION
             </div>
           </div>

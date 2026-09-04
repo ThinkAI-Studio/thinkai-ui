@@ -42,7 +42,7 @@ export function ArchitectureModal({ projectId, onClose, lang }: ArchitectureModa
       {projectId && (
         <div
           onClick={onClose}
-          className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 bg-black/85 backdrop-blur-md cursor-pointer"
+          className="fixed inset-0 z-50 flex items-center justify-center overflow-hidden p-2 sm:p-6 bg-black/85 backdrop-blur-md cursor-pointer"
         >
           <motion.div
             ref={modalRef}
@@ -51,18 +51,18 @@ export function ArchitectureModal({ projectId, onClose, lang }: ArchitectureModa
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.98, y: 16 }}
             transition={{ duration: 0.25, ease: TAI_EASE.luxury }}
-            className="w-full max-w-5xl bg-[#0a0a0c] border border-white/[0.08] rounded-none shadow-[inset_0_1px_0_0_rgba(255,255,255,0.08),0_24px_60px_-15px_rgba(0,0,0,0.95)] overflow-hidden flex flex-col max-h-[90vh] cursor-default"
+            className="flex min-h-0 w-full max-w-5xl flex-col overflow-hidden bg-[#0a0a0c] border border-white/[0.08] rounded-none shadow-[inset_0_1px_0_0_rgba(255,255,255,0.08),0_24px_60px_-15px_rgba(0,0,0,0.95)] max-h-[calc(100dvh-1rem)] cursor-default sm:max-h-[90vh]"
           >
             {/* Header */}
-            <div className="px-6 py-4 bg-[#141417] border-b border-white/[0.08] flex items-center justify-between">
-              <div className="flex items-center gap-3">
+            <div className="flex flex-col gap-3 border-b border-white/[0.08] bg-[#141417] px-3 py-3 sm:flex-row sm:items-center sm:justify-between sm:px-6 sm:py-4">
+              <div className="flex min-w-0 items-center gap-3">
                 <TaiLogoMark className="w-4 h-4" />
-                <div>
-                  <div className="flex items-center gap-2">
-                    <h3 className="text-base sm:text-lg font-bold text-white uppercase tracking-tight">
+                <div className="min-w-0">
+                  <div className="flex min-w-0 flex-wrap items-start gap-2">
+                    <h3 className="min-w-0 break-words text-base font-bold uppercase tracking-tight text-white sm:text-lg">
                       {project.content[lang].title}
                     </h3>
-                    <span className="text-[10px] font-mono uppercase px-2 py-0.5 rounded-none bg-white/[0.06] border border-white/[0.08] text-neutral-300">
+                    <span className="shrink-0 whitespace-nowrap text-[10px] font-mono uppercase px-2 py-0.5 rounded-none bg-white/[0.06] border border-white/[0.08] text-neutral-300">
                       {lang === "vi" ? "Kiến trúc hệ thống" : "System Architecture"}
                     </span>
                   </div>
@@ -72,12 +72,12 @@ export function ArchitectureModal({ projectId, onClose, lang }: ArchitectureModa
                 </div>
               </div>
 
-              <div className="flex items-center gap-3">
+              <div className="flex min-w-0 w-full items-center gap-2 sm:w-auto sm:gap-3">
                 {/* Minimalist Monochrome Tabs */}
-                <div className="flex items-center bg-black/50 p-1 rounded-none border border-white/[0.08] text-xs font-mono">
+                <div className="flex min-w-0 flex-1 items-center overflow-x-auto bg-black/50 p-1 rounded-none border border-white/[0.08] text-[11px] font-mono sm:flex-none sm:text-xs">
                   <button
                     onClick={() => setActiveTab("diagram")}
-                    className={`px-3 py-1 rounded-none transition-colors ${
+                    className={`shrink-0 whitespace-nowrap px-2 py-1 rounded-none transition-colors sm:px-3 ${
                       activeTab === "diagram" ? "bg-white text-black font-bold" : "text-neutral-400 hover:text-white"
                     }`}
                   >
@@ -85,7 +85,7 @@ export function ArchitectureModal({ projectId, onClose, lang }: ArchitectureModa
                   </button>
                   <button
                     onClick={() => setActiveTab("security")}
-                    className={`px-3 py-1 rounded-none transition-colors ${
+                    className={`shrink-0 whitespace-nowrap px-2 py-1 rounded-none transition-colors sm:px-3 ${
                       activeTab === "security" ? "bg-white text-black font-bold" : "text-neutral-400 hover:text-white"
                     }`}
                   >
@@ -93,7 +93,7 @@ export function ArchitectureModal({ projectId, onClose, lang }: ArchitectureModa
                   </button>
                   <button
                     onClick={() => setActiveTab("provenance")}
-                    className={`px-3 py-1 rounded-none transition-colors ${
+                    className={`shrink-0 whitespace-nowrap px-2 py-1 rounded-none transition-colors sm:px-3 ${
                       activeTab === "provenance" ? "bg-white text-black font-bold" : "text-neutral-400 hover:text-white"
                     }`}
                   >
@@ -105,7 +105,7 @@ export function ArchitectureModal({ projectId, onClose, lang }: ArchitectureModa
                   data-testid="arch-close-button"
                   onClick={onClose}
                   aria-label="Close Architecture Modal"
-                  className="p-1.5 rounded-none bg-white/[0.04] hover:bg-white/[0.1] text-neutral-400 hover:text-white transition-colors cursor-pointer"
+                  className="shrink-0 p-1.5 rounded-none bg-white/[0.04] hover:bg-white/[0.1] text-neutral-400 hover:text-white transition-colors cursor-pointer"
                 >
                   <X className="w-5 h-5" />
                 </button>
@@ -113,17 +113,17 @@ export function ArchitectureModal({ projectId, onClose, lang }: ArchitectureModa
             </div>
 
             {/* Content Body */}
-            <div className="p-6 overflow-y-auto space-y-6 flex-1 text-xs">
+            <div className="min-h-0 min-w-0 flex-1 space-y-6 overflow-x-hidden overflow-y-auto p-3 text-xs sm:p-6">
               {activeTab === "diagram" && (
                 <div className="space-y-6">
                   {isHomelab ? (
                     <div className="space-y-4">
-                      <div className="font-mono text-xs text-neutral-400 uppercase tracking-widest flex items-center gap-2">
-                        <Layers className="w-3.5 h-3.5" />
-                        <span>HostDeck Ops Workbench: Zero-Trust Delivery &amp; Telemetry Flow</span>
+                      <div className="flex min-w-0 items-start gap-2 font-mono text-xs uppercase tracking-widest text-neutral-400">
+                        <Layers className="mt-0.5 h-3.5 w-3.5 shrink-0" />
+                        <span className="min-w-0 break-words">HostDeck Ops Workbench: Zero-Trust Delivery &amp; Telemetry Flow</span>
                       </div>
 
-                      <div className="grid grid-cols-1 md:grid-cols-4 gap-4 pt-2">
+                      <div className="grid min-w-0 grid-cols-1 gap-4 pt-2 md:grid-cols-4">
                         {/* Column 1: Ingress */}
                         <div className="p-4 bg-[#141418] border border-white/[0.08] rounded-none space-y-3">
                           <div className="font-mono font-bold text-white flex items-center justify-between border-b border-white/[0.06] pb-2">
@@ -198,13 +198,13 @@ export function ArchitectureModal({ projectId, onClose, lang }: ArchitectureModa
                       </div>
                     </div>
                   ) : (
-                    <div className="space-y-4">
-                      <div className="font-mono text-xs text-neutral-400 uppercase tracking-widest flex items-center gap-2">
-                        <GitBranch className="w-3.5 h-3.5" />
-                        <span>ThinkAI Automated DevSecOps Pipeline Flow</span>
+                    <div className="min-w-0 space-y-4">
+                      <div className="flex min-w-0 items-start gap-2 font-mono text-xs uppercase tracking-widest text-neutral-400">
+                        <GitBranch className="mt-0.5 h-3.5 w-3.5 shrink-0" />
+                        <span className="min-w-0 break-words">ThinkAI Automated DevSecOps Pipeline Flow</span>
                       </div>
 
-                      <div className="grid grid-cols-1 sm:grid-cols-5 gap-3 pt-2">
+                      <div className="grid min-w-0 grid-cols-1 gap-3 pt-2 sm:grid-cols-5">
                         {[
                           { step: "01", title: "Git Push / PR", sub: "Trigger via main branch push" },
                           { step: "02", title: "CodeQL & Sonar", sub: "SAST & quality gate validation" },
@@ -274,8 +274,8 @@ export function ArchitectureModal({ projectId, onClose, lang }: ArchitectureModa
                 <div className="space-y-4">
                   <div className="space-y-3">
                     {project.evidence.repository.map((item, idx) => (
-                      <div key={idx} className="p-4 bg-[#141418] border border-white/[0.08] rounded-none flex items-center justify-between gap-4">
-                        <div className="space-y-1">
+                      <div key={idx} className="flex min-w-0 flex-col items-start justify-between gap-4 p-4 bg-[#141418] border border-white/[0.08] rounded-none sm:flex-row sm:items-center">
+                        <div className="min-w-0 space-y-1">
                           <span className="font-mono text-[10px] text-neutral-500 uppercase">CLAIM EVIDENCE 0{idx + 1}</span>
                           <p className="text-white text-xs font-light">{item.claim}</p>
                         </div>
@@ -296,8 +296,8 @@ export function ArchitectureModal({ projectId, onClose, lang }: ArchitectureModa
             </div>
 
             {/* Footer */}
-            <div className="px-6 py-3 bg-[#101013] border-t border-white/[0.08] flex items-center justify-between text-xs font-mono text-neutral-400">
-              <span>{project.repo}</span>
+            <div className="flex flex-col items-start gap-2 border-t border-white/[0.08] bg-[#101013] px-3 py-3 text-xs font-mono text-neutral-400 sm:flex-row sm:items-center sm:justify-between sm:px-6">
+              <span className="min-w-0 max-w-full break-words">{project.repo}</span>
               <a
                 href={project.repo}
                 target="_blank"

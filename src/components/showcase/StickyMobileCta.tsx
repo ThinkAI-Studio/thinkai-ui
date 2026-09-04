@@ -13,7 +13,7 @@ export function StickyMobileCta() {
   };
 
   return (
-    <div className="md:hidden fixed bottom-0 left-0 right-0 z-50 p-3 bg-tai-bg/95 backdrop-blur-lg border-t border-white/[0.12] tai-inset-top">
+    <div className="fixed inset-x-0 bottom-0 z-50 p-3 pb-[calc(0.75rem+env(safe-area-inset-bottom))] backdrop-blur-lg border-t border-white/[0.12] bg-tai-bg/95 tai-inset-top md:hidden">
       <button
         onClick={copyInit}
         className="w-full flex items-center justify-between px-4 py-3 bg-white text-black font-mono font-bold text-xs uppercase tracking-wider active:scale-[0.98] transition-transform shadow-lg"

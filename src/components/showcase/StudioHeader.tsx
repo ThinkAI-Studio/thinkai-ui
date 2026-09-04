@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { motion, AnimatePresence } from "motion/react";
 import { Search, Terminal, Github } from "lucide-react";
 import { WipeButton } from "@/components/tai-ui/WipeButton";
@@ -25,6 +26,7 @@ export function StudioHeader({
   onOpenContact,
   onOpenCommandMenu,
 }: StudioHeaderProps) {
+  const router = useRouter();
   const [isHeaderHidden, setIsHeaderHidden] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
@@ -78,13 +80,15 @@ export function StudioHeader({
             ? { opacity: 0, y: -14, filter: "blur(12px)", transition: { duration: 0.35, ease: LUXURY_EASE } }
             : { opacity: 1, y: 0, filter: "blur(0px)", transition: { duration: 0.45, ease: LUXURY_EASE } }
         }
-        className="fixed top-0 inset-x-0 z-50 bg-transparent px-4 sm:px-8 lg:px-12 py-4 sm:py-5 flex items-center justify-between pointer-events-none select-none"
+        className="fixed inset-x-0 top-0 z-50 flex items-center justify-between gap-3 bg-transparent px-3 py-3 pointer-events-none select-none sm:px-8 sm:py-5 lg:px-12"
       >
         {/* Left: Authentic ThinkAI Studio Floating Logo */}
         <div className="flex items-center gap-4 pointer-events-auto">
           <Link
             href="/"
-            className="group flex items-center gap-3 p-1 transition-transform hover:scale-105 active:scale-95"
+            prefetch={false}
+            onClick={(event) => { event.preventDefault(); router.push("/"); }}
+            className="group flex min-w-0 shrink-0 items-center gap-3 whitespace-nowrap p-1 transition-transform hover:scale-105 active:scale-95"
             aria-label="Home — ThinkAI Studio UI Registry"
             title="Home"
           >
@@ -98,8 +102,8 @@ export function StudioHeader({
                 priority
               />
             </div>
-            <div className="flex flex-col">
-              <span className="font-mono text-sm font-bold tracking-tight text-tai-text uppercase group-hover:text-tai-accent transition-colors drop-shadow-md">
+            <div className="flex min-w-0 shrink-0 flex-col">
+              <span className="whitespace-nowrap font-mono text-[13px] font-bold uppercase tracking-tight text-tai-text transition-colors group-hover:text-tai-accent drop-shadow-md sm:text-sm">
                 THINKAI UI
               </span>
               <span className="text-[9.5px] font-mono text-tai-muted uppercase tracking-widest hidden sm:inline">
@@ -113,7 +117,7 @@ export function StudioHeader({
         {/* Navigation moved to command menu (⌘K) - distinctive pattern */}
 
         {/* Right: Quick Search + CLI Action Button */}
-        <div className="flex items-center gap-2 sm:gap-3 pointer-events-auto">
+        <div className="flex shrink-0 items-center gap-1.5 pointer-events-auto sm:gap-3">
           {/* Quick Search Shortcut */}
           <button
             onClick={onOpenCommandMenu}
@@ -150,7 +154,7 @@ export function StudioHeader({
           <WipeButton
             textColor="#05070a"
             hoverTextColor="#05070a"
-            className="px-3 sm:px-4 py-2 bg-white text-black font-mono font-bold text-xs uppercase tracking-tight shadow-xl"
+            className="hidden px-3 py-2 bg-white text-black font-mono font-bold text-xs uppercase tracking-tight shadow-xl sm:inline-flex sm:px-4"
             onClick={() => {
               navigator.clipboard.writeText("npx thinkai-ui init");
             }}

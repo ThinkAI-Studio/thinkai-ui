@@ -27,7 +27,7 @@ export default function HomePage() {
     : { initial: { opacity: 0, y: 22 }, whileInView: { opacity: 1, y: 0 } };
 
   return (
-    <div className="flex flex-col min-h-screen bg-[#08080a] text-white selection:bg-white/20">
+    <div className="flex min-h-screen min-w-0 flex-col bg-[#08080a] text-white selection:bg-white/20">
       <SmoothScroll isLocked={aboutOpen || archOpen || contactOpen || commandMenuOpen} />
       
       {/* Floating Glass Navigation Header */}
@@ -38,7 +38,7 @@ export default function HomePage() {
         onOpenCommandMenu={() => setCommandMenuOpen(true)}
       />
 
-      <main className="flex-1">
+      <main className="flex-1 pb-24 md:pb-0">
         {/* Cinematic Hero with Quantum Matrix Substrate */}
         <motion.div {...heroMotion} viewport={{ once: true, amount: 0.08 }} transition={{ duration: prefersReduced ? 0 : 0.8, ease: [0.16, 1, 0.3, 1] }}>
           <HeroSection onOpenCommandMenu={() => setCommandMenuOpen(true)} />

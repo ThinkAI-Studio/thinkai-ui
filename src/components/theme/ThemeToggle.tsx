@@ -83,10 +83,10 @@ export function ThemeToggle() {
       aria-pressed={mounted ? isDark : undefined}
       title="Toggle color theme"
       onClick={() => void toggleTheme()}
-      className="relative inline-flex h-11 w-11 shrink-0 items-center justify-center border border-transparent bg-transparent p-0 text-tai-muted transition-colors duration-200 ease-out hover:text-tai-text focus-visible:outline-2 focus-visible:outline-tai-focus"
+      className="relative inline-flex h-9 w-9 shrink-0 items-center justify-center border border-transparent bg-transparent p-0 text-tai-muted transition-colors duration-200 ease-out hover:text-tai-text focus-visible:outline-2 focus-visible:outline-tai-focus"
     >
-      <span aria-hidden="true" className="relative block h-6 w-11 border border-tai-border-strong bg-tai-surface p-0.5">
-        <span className={`absolute left-0.5 top-0.5 grid h-4 w-4 place-items-center bg-tai-text text-tai-bg transition-transform duration-200 ease-out ${isDark ? "translate-x-5" : "translate-x-0"}`}>
+      <span aria-hidden="true" className="relative block h-5 w-9 border border-tai-border-strong bg-tai-surface p-0.5">
+        <span className={`absolute left-0.5 top-0.5 grid h-3.5 w-3.5 place-items-center bg-tai-text text-tai-bg transition-transform duration-200 ease-out ${isDark ? "translate-x-4" : "translate-x-0"}`}>
           {isDark ? <Moon className="h-2.5 w-2.5" /> : <Sun className="h-2.5 w-2.5" />}
         </span>
       </span>

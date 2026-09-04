@@ -19,7 +19,7 @@ export function HeroSection({ onOpenCommandMenu }: { onOpenCommandMenu: () => vo
   };
 
   return (
-    <section className="relative overflow-hidden border-b border-white/[0.08] px-4 pb-20 pt-24 md:pb-28 md:pt-36">
+    <section className="relative min-w-0 overflow-hidden border-b border-white/[0.08] px-4 pb-20 pt-24 md:pb-28 md:pt-36">
       {/* Background Dynamic Quantum Matrix (Distinctive Infrastructure Substrate) */}
       <div className="absolute inset-0 pointer-events-auto opacity-95 z-0">
         <QuantumMatrixCanvas className="w-full h-full" gridSize={28} />
@@ -28,7 +28,7 @@ export function HeroSection({ onOpenCommandMenu }: { onOpenCommandMenu: () => vo
       {/* Dark Obsidian Gradient Vignette */}
       <div className="pointer-events-none absolute inset-0 z-0 bg-gradient-to-b from-tai-bg/15 via-tai-bg/35 to-tai-bg/75" />
 
-      <div className="max-w-5xl mx-auto text-center relative z-10 pointer-events-auto">
+      <div className="relative z-10 mx-auto min-w-0 max-w-5xl text-center pointer-events-auto">
         {/* Release Pill Badge - Version moved to nav */}
         <div className="mb-8 inline-flex items-center gap-2 border border-white/[0.12] bg-tai-sheet/90 px-3 py-1 font-mono text-xs uppercase tracking-widest text-zinc-300 tai-inset-top backdrop-blur-md">
           <span>Source-owned UI registry</span>
@@ -37,7 +37,7 @@ export function HeroSection({ onOpenCommandMenu }: { onOpenCommandMenu: () => vo
         </div>
 
         {/* Primary Headline (Condensed Grotesque Style) */}
-        <h1 className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-black tracking-[-0.03em] uppercase text-white font-mono leading-[0.96] mb-6 drop-shadow-xl">
+        <h1 className="mb-6 break-words font-mono text-3xl font-black uppercase leading-[0.96] tracking-[-0.03em] text-white drop-shadow-xl sm:text-6xl md:text-7xl lg:text-8xl">
           <span>INFRASTRUCTURE</span>
           <br />
           <span className="text-zinc-500">CRAFTED</span>{" "}
@@ -88,7 +88,7 @@ export function HeroSection({ onOpenCommandMenu }: { onOpenCommandMenu: () => vo
         <div className="mb-14 flex flex-wrap items-center justify-center gap-4">
           <button
             onClick={onOpenCommandMenu}
-            className="inline-flex items-center gap-2 text-xs font-mono text-zinc-400 hover:text-white transition-colors p-1"
+            className="inline-flex max-w-full flex-wrap items-center justify-center gap-2 p-1 text-xs font-mono text-zinc-400 transition-colors hover:text-white"
           >
             <Search className="w-3.5 h-3.5 text-zinc-500" />
             <span>Press</span>
