@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState, type ReactNode } from "react";
+import { useEffect, useRef, useState, type ReactNode } from "react";
 import { usePathname } from "next/navigation";
 import { AnimatePresence, motion, useReducedMotion } from "motion/react";
 import { DocsHeader } from "./DocsHeader";
@@ -13,6 +13,8 @@ export function DocsShell({ children }: { children: ReactNode }) {
   const pathname = usePathname();
   const prefersReduced = useReducedMotion();
   const [mobileNavOpen, setMobileNavOpen] = useState(false);
+  const previousFocusRef = useRef<HTMLElement | null>(null);
+  const mobileNavRef = useRef<HTMLDivElement>(null);
   const {
     open: searchOpen,
     setOpen: setSearchOpen,
@@ -47,6 +49,21 @@ export function DocsShell({ children }: { children: ReactNode }) {
     };
   }, [mobileNavOpen]);
 
+  useEffect(() => {
+    if (mobileNavOpen) {
+      previousFocusRef.current = document.activeElement instanceof HTMLElement ? document.activeElement : null;
+      const focusFrame = window.requestAnimationFrame(() => {
+        mobileNavRef.current?.querySelector<HTMLElement>("a, button")?.focus();
+      });
+      return () => window.cancelAnimationFrame(focusFrame);
+    }
+
+    if (previousFocusRef.current) {
+      previousFocusRef.current.focus();
+      previousFocusRef.current = null;
+    }
+  }, [mobileNavOpen]);
+
   return (
     <div className="min-h-screen bg-tai-bg text-tai-text">
       <DocsHeader searchOpen={searchOpen} onSearchToggle={() => setSearchOpen((value) => !value)} mobileNavOpen={mobileNavOpen} onMobileNavToggle={() => setMobileNavOpen((value) => !value)} />
@@ -59,8 +76,39 @@ export function DocsShell({ children }: { children: ReactNode }) {
         onQueryChange={setSearchQuery}
       />
       <div className="mx-auto grid max-w-[1480px] grid-cols-1 gap-8 px-4 py-8 sm:px-8 sm:py-12 lg:grid-cols-[190px_minmax(0,1fr)] lg:gap-14 lg:py-14">
-        {mobileNavOpen && <button type="button" tabIndex={-1} aria-label="Close documentation menu" onClick={() => setMobileNavOpen(false)} className="fixed inset-0 z-40 bg-tai-bg/70 lg:hidden" />}
-        <div id="docs-mobile-sidebar" className={`fixed inset-y-0 left-0 z-50 w-[min(88vw,320px)] overflow-y-auto border-r border-tai-border bg-tai-sheet px-4 pb-8 pt-24 transition-transform duration-200 ease-out lg:static lg:z-auto lg:w-auto lg:translate-x-0 lg:overflow-visible lg:border-0 lg:bg-transparent lg:p-0 ${mobileNavOpen ? "translate-x-0" : "-translate-x-full lg:translate-x-0"}`} data-lenis-prevent="true" data-lenis-prevent-wheel="true" data-lenis-prevent-touch="true">
+        <AnimatePresence initial={false}>
+          {mobileNavOpen && <>
+            <motion.button
+              type="button"
+              tabIndex={-1}
+              aria-label="Close documentation menu"
+              onClick={() => setMobileNavOpen(false)}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={prefersReduced ? { duration: 0 } : { duration: 0.18 }}
+              className="fixed inset-0 z-40 bg-tai-bg/55 backdrop-blur-[2px] lg:hidden"
+            />
+            <motion.div
+              ref={mobileNavRef}
+              id="docs-mobile-sidebar"
+              role="dialog"
+              aria-modal="true"
+              aria-label="Documentation menu"
+              data-lenis-prevent="true"
+              data-lenis-prevent-wheel="true"
+              data-lenis-prevent-touch="true"
+              initial={{ opacity: 0, y: prefersReduced ? 0 : -8 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: prefersReduced ? 0 : -8 }}
+              transition={prefersReduced ? { duration: 0 } : { type: "spring", stiffness: 280, damping: 30, mass: 0.8 }}
+              className="fixed left-3 right-3 top-[calc(4rem+0.75rem)] bottom-3 z-50 w-auto max-w-[360px] overflow-y-auto border border-tai-border bg-tai-sheet px-4 pb-6 pt-5 shadow-2xl lg:hidden"
+            >
+              <DocsSidebar activeSlug={activeSlug} activeHref={activeHref} onNavigate={() => setMobileNavOpen(false)} />
+            </motion.div>
+          </>}
+        </AnimatePresence>
+        <div className="hidden lg:block">
           <DocsSidebar activeSlug={activeSlug} activeHref={activeHref} onNavigate={() => setMobileNavOpen(false)} />
         </div>
         <AnimatePresence initial={false} mode="wait">
