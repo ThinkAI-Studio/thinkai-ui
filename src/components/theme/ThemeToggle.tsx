@@ -4,8 +4,8 @@ import * as React from "react";
 import { Moon, Sun } from "lucide-react";
 import { useTheme } from "./ThemeProvider";
 
-const THEME_REVEAL_DURATION = 1100;
-const THEME_REVEAL_EASING = "cubic-bezier(0.22, 1, 0.36, 1)";
+const THEME_REVEAL_DURATION = 650;
+const THEME_REVEAL_EASING = "cubic-bezier(0.16, 1, 0.3, 1)";
 
 export function ThemeToggle() {
   const { preference, setPreference } = useTheme();
@@ -23,7 +23,12 @@ export function ThemeToggle() {
     const bounds = button?.getBoundingClientRect();
     const originX = bounds ? bounds.left + bounds.width / 2 : window.innerWidth - 32;
     const originY = bounds ? bounds.top + bounds.height / 2 : 24;
-    const radius = Math.ceil(Math.hypot(Math.max(originX, window.innerWidth - originX), Math.max(originY, window.innerHeight - originY)));
+    
+    // Bounds for 0px orthogonal inset aperture wipe
+    const top = bounds ? Math.round(bounds.top) : 24;
+    const left = bounds ? Math.round(bounds.left) : window.innerWidth - 48;
+    const right = bounds ? Math.round(window.innerWidth - bounds.right) : 16;
+    const bottom = bounds ? Math.round(window.innerHeight - bounds.bottom) : window.innerHeight - 56;
 
     try {
       if (reducedMotion) {
@@ -34,7 +39,10 @@ export function ThemeToggle() {
       const root = document.documentElement;
       root.style.setProperty("--tai-theme-origin-x", `${originX}px`);
       root.style.setProperty("--tai-theme-origin-y", `${originY}px`);
-      root.style.setProperty("--tai-theme-reveal-radius", `${radius}px`);
+      root.style.setProperty("--tai-theme-origin-top", `${top}px`);
+      root.style.setProperty("--tai-theme-origin-right", `${right}px`);
+      root.style.setProperty("--tai-theme-origin-bottom", `${bottom}px`);
+      root.style.setProperty("--tai-theme-origin-left", `${left}px`);
 
       const startViewTransition = (document as Document & {
         startViewTransition?: (update: () => void) => { finished: Promise<void> };
@@ -66,7 +74,10 @@ export function ThemeToggle() {
         } finally {
           root.style.removeProperty("--tai-theme-origin-x");
           root.style.removeProperty("--tai-theme-origin-y");
-          root.style.removeProperty("--tai-theme-reveal-radius");
+          root.style.removeProperty("--tai-theme-origin-top");
+          root.style.removeProperty("--tai-theme-origin-right");
+          root.style.removeProperty("--tai-theme-origin-bottom");
+          root.style.removeProperty("--tai-theme-origin-left");
         }
       }
 

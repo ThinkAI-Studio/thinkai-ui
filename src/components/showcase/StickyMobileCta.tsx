@@ -23,7 +23,7 @@ export function StickyMobileCta() {
           <span>npx thinkai-ui init</span>
         </div>
         <div className="flex items-center gap-1 text-[11px] bg-black text-white px-2 py-0.5">
-          {copied ? <Check className="w-3 h-3 text-emerald-400" /> : <Copy className="w-3 h-3" />}
+          {copied ? <Check className="w-3 h-3 text-[#52adcf]" /> : <Copy className="w-3 h-3" />}
           <span>{copied ? "COPIED" : "COPY"}</span>
         </div>
       </button>

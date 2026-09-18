@@ -99,16 +99,21 @@
 }
 
 ::view-transition-new(root) {
-  animation: tai-theme-reveal 1100ms cubic-bezier(0.22, 1, 0.36, 1) both;
+  animation: tai-theme-aperture-0px 650ms cubic-bezier(0.16, 1, 0.3, 1) both;
   z-index: 2;
 }
 
-@keyframes tai-theme-reveal {
+@keyframes tai-theme-aperture-0px {
   from {
-    clip-path: circle(0 at var(--tai-theme-origin-x) var(--tai-theme-origin-y));
+    clip-path: inset(
+      var(--tai-theme-origin-top, 24px)
+      var(--tai-theme-origin-right, 24px)
+      var(--tai-theme-origin-bottom, calc(100vh - 48px))
+      var(--tai-theme-origin-left, calc(100vw - 48px))
+    );
   }
   to {
-    clip-path: circle(var(--tai-theme-reveal-radius) at var(--tai-theme-origin-x) var(--tai-theme-origin-y));
+    clip-path: inset(0px 0px 0px 0px);
   }
 }
 
@@ -116,8 +121,8 @@
 [data-theme-transitioning] *::before,
 [data-theme-transitioning] *::after {
   transition-property: background-color, border-color, box-shadow, color, fill, stroke;
-  transition-duration: 720ms;
-  transition-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+  transition-duration: 550ms;
+  transition-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 [data-theme-transitioning]::after {
@@ -125,24 +130,24 @@
   top: var(--tai-theme-origin-y);
   left: var(--tai-theme-origin-x);
   z-index: 100;
-  width: 0.75rem;
-  height: 0.75rem;
-  border: 1px solid var(--tai-focus);
-  border-radius: 999px !important;
+  width: 1rem;
+  height: 1rem;
+  border: 1.5px solid var(--tai-focus);
+  border-radius: 0px !important;
   content: "";
   pointer-events: none;
   transform: translate(-50%, -50%);
-  animation: tai-theme-origin-pulse 720ms cubic-bezier(0.22, 1, 0.36, 1) both;
+  animation: tai-theme-origin-pulse 650ms cubic-bezier(0.16, 1, 0.3, 1) both;
 }
 
 @keyframes tai-theme-origin-pulse {
   from {
-    opacity: 0.8;
+    opacity: 1;
     transform: translate(-50%, -50%) scale(1);
   }
   to {
     opacity: 0;
-    transform: translate(-50%, -50%) scale(14);
+    transform: translate(-50%, -50%) scale(16);
   }
 }
 
@@ -437,4 +442,27 @@
 }
 ::-webkit-scrollbar-thumb:hover {
   background: color-mix(in srgb, var(--tai-text) 45%, transparent);
+}
+
+/* Continuous Vertical Marquee for Showcase */
+@keyframes marquee-up {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-50%);
+  }
+}
+
+.animate-marquee-up {
+  animation: marquee-up 28s linear infinite;
+}
+
+.animate-marquee-up-slow {
+  animation: marquee-up 36s linear infinite;
+}
+
+.animate-marquee-up:hover,
+.animate-marquee-up-slow:hover {
+  animation-play-state: paused;
 }

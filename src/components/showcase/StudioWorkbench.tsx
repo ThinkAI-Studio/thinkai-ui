@@ -12,6 +12,8 @@ import {
   Braces,
   Palette,
   Search,
+  Maximize2,
+  Layers,
 } from "lucide-react";
 import { TaiButton } from "@/components/tai-ui/TaiButton";
 import { WipeButton } from "@/components/tai-ui/WipeButton";
@@ -24,14 +26,13 @@ import { OpenAiIcon, GeminiIcon, ClaudeIcon, PerplexityIcon, ManusIcon } from "@
 import { ProductMockup } from "@/components/tai-ui/ProductMockup";
 import { QuantumMatrixCanvas } from "@/components/tai-ui/QuantumMatrixCanvas";
 import { ThreeHalftoneCanvas } from "@/components/tai-ui/ThreeHalftoneCanvas";
-import { TaiBadge } from "@/components/tai-ui/TaiBadge";
 import { AnimatePresence, motion, useReducedMotion } from "motion/react";
 import { catalogItems } from "@/data/catalog";
 
 interface StudioWorkbenchProps {
   onOpenAbout: () => void;
-  onOpenArch: () => void;
-  onOpenContact: () => void;
+  onOpenArch?: () => void;
+  onOpenContact?: () => void;
 }
 
 export type ViewportMode = "desktop" | "tablet" | "mobile";
@@ -79,7 +80,7 @@ export function StudioWorkbench({
       render: () => (
         <div className="flex flex-wrap gap-4 items-center justify-center p-8">
           <WipeButton className="px-6 py-3 bg-white text-black font-bold">Explore Registry</WipeButton>
-          <WipeButton className="px-6 py-3 bg-zinc-900 border border-white/20 text-white">View Source Code</WipeButton>
+          <WipeButton className="px-6 py-3 bg-zinc-900 border border-white/20 text-white hover:border-[#2985b8]">View Source Code</WipeButton>
         </div>
       ),
     },
@@ -93,7 +94,7 @@ export function StudioWorkbench({
       dependencies: ["motion"],
       render: () => (
         <div className="flex items-center justify-center p-8">
-          <button className="group flex items-center gap-3 px-6 py-3.5 bg-tai-sheet border border-white/20 hover:border-white text-white font-mono text-xs tracking-widest uppercase transition-colors active:translate-y-px">
+          <button className="group flex items-center gap-3 px-6 py-3.5 bg-[#0d0d10] border border-white/20 hover:border-[#2985b8] text-white font-mono text-xs tracking-widest uppercase transition-colors active:translate-y-px">
             <span>ACCESS PORTAL</span>
             <ArrowRoll />
           </button>
@@ -111,7 +112,7 @@ export function StudioWorkbench({
       render: () => (
         <div className="flex flex-wrap items-center justify-center gap-4 p-8">
           {["Go", "Docker", "Kubernetes", "Linux"].map((tech) => (
-          <div key={tech} className="p-3.5 bg-zinc-900 border border-white/10 hover:border-white transition-colors text-white">
+            <div key={tech} className="p-3.5 bg-zinc-900 border border-white/10 hover:border-[#2985b8] transition-colors text-white">
               <TechLogo name={tech} />
             </div>
           ))}
@@ -128,19 +129,19 @@ export function StudioWorkbench({
       dependencies: [],
       render: () => (
         <div className="flex flex-wrap items-center justify-center gap-6 p-8 text-white">
-          <div className="p-3 bg-zinc-900 border border-white/10 text-white hover:text-emerald-400 transition-colors" title="OpenAI">
+          <div className="p-3 bg-zinc-900 border border-white/10 text-white hover:text-[#52adcf] hover:border-[#2985b8] transition-colors" title="OpenAI">
             <OpenAiIcon size={28} />
           </div>
-          <div className="p-3 bg-zinc-900 border border-white/10 text-white hover:text-emerald-400 transition-colors" title="Google Gemini">
+          <div className="p-3 bg-zinc-900 border border-white/10 text-white hover:text-[#52adcf] hover:border-[#2985b8] transition-colors" title="Google Gemini">
             <GeminiIcon size={28} />
           </div>
-          <div className="p-3 bg-zinc-900 border border-white/10 text-white hover:text-emerald-400 transition-colors" title="Anthropic Claude">
+          <div className="p-3 bg-zinc-900 border border-white/10 text-white hover:text-[#52adcf] hover:border-[#2985b8] transition-colors" title="Anthropic Claude">
             <ClaudeIcon size={28} />
           </div>
-          <div className="p-3 bg-zinc-900 border border-white/10 text-white hover:text-emerald-400 transition-colors" title="Perplexity AI">
+          <div className="p-3 bg-zinc-900 border border-white/10 text-white hover:text-[#52adcf] hover:border-[#2985b8] transition-colors" title="Perplexity AI">
             <PerplexityIcon size={28} />
           </div>
-          <div className="p-3 bg-zinc-900 border border-white/10 text-white hover:text-emerald-400 transition-colors" title="Manus AI">
+          <div className="p-3 bg-zinc-900 border border-white/10 text-white hover:text-[#52adcf] hover:border-[#2985b8] transition-colors" title="Manus AI">
             <ManusIcon size={28} />
           </div>
         </div>
@@ -156,7 +157,7 @@ export function StudioWorkbench({
       dependencies: ["motion"],
       render: () => (
         <div className="flex items-center justify-center p-8">
-          <div className="px-6 py-3.5 bg-zinc-900 border border-white/20 text-white font-mono uppercase text-xs tracking-wider cursor-pointer hover:border-emerald-400 transition-colors">
+          <div className="px-6 py-3.5 bg-zinc-900 border border-white/20 text-white font-mono uppercase text-xs tracking-wider cursor-pointer hover:border-[#2985b8] hover:text-[#52adcf] transition-colors">
             <ButtonTextRoll text="HOVER TO TUMBLE TEXT" />
           </div>
         </div>
@@ -270,12 +271,12 @@ export function StudioWorkbench({
       itemNumber: "04.01",
       title: "QuantumMatrixCanvas",
       status: "NEW",
-      description: "Interactive monochromatic dot-lattice field with Manhattan cursor strain and 1px bus scanlines.",
+      description: "Interactive monochromatic dot-lattice field with cursor strain and 1px bus scanlines.",
       dependencies: ["motion"],
       render: () => (
         <div className="w-full h-64 relative overflow-hidden bg-[#08080a] border border-white/10">
           <QuantumMatrixCanvas className="w-full h-full" />
-          <div className="absolute top-3 left-3 px-3 py-1 bg-black/80 border border-white/10 text-[10px] font-mono text-emerald-400">
+          <div className="absolute top-3 left-3 px-3 py-1 bg-black/80 border border-[#2985b8]/40 text-[10px] font-mono text-[#52adcf]">
             INTERACTIVE: MOVE MOUSE OVER GRID
           </div>
         </div>
@@ -292,7 +293,7 @@ export function StudioWorkbench({
       render: () => (
         <div className="w-full h-64 relative overflow-hidden bg-black border border-white/10">
           <ThreeHalftoneCanvas className="w-full h-full" />
-          <div className="absolute top-3 left-3 px-3 py-1 bg-black/80 border border-white/10 text-[10px] font-mono text-white">
+          <div className="absolute top-3 left-3 px-3 py-1 bg-black/80 border border-[#2985b8]/40 text-[10px] font-mono text-[#52adcf]">
             THREE.JS OCEAN SHADER
           </div>
         </div>
@@ -323,32 +324,40 @@ export function StudioWorkbench({
   const categories = ["01 · PRIMITIVES", "02 · KINETIC TYPO", "03 · SHEETS & CHROME", "04 · RUNTIMES"];
 
   return (
-    <section id="workbench" className="py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
-      {/* Workbench Header */}
+    <section id="workbench" className="py-16 px-4 sm:px-6 lg:px-8 max-w-[1560px] mx-auto border-b border-white/[0.08]">
+      {/* Workbench Header Banner */}
       <div className="flex flex-col md:flex-row md:items-end justify-between mb-8 border-b border-white/[0.08] pb-6 gap-4">
         <div>
-          <h2 className="text-3xl sm:text-4xl font-mono font-bold tracking-tight text-white uppercase">
+          <div className="flex items-center gap-2 mb-2 font-mono text-[11px] text-[#52adcf]">
+            <span className="w-2 h-2 bg-[#2985b8] shadow-[0_0_8px_#2985b8]" />
+            <span className="uppercase tracking-widest font-bold">CORE APPARATUS · CONSOLE</span>
+          </div>
+          <h2 className="text-xl sm:text-2xl font-mono font-bold tracking-tight text-white uppercase">
             Interactive Primitives Console
           </h2>
-          <p className="text-xs sm:text-sm text-zinc-400 mt-1 max-w-xl font-sans">
-            Inspect, test, and extract pure TypeScript source code for ThinkAI Studio&apos;s featured resources.
+          <p className="text-xs text-zinc-400 mt-1 max-w-xl font-sans">
+            Directly test, verify runtime parameters, and extract source-owned TypeScript components.
           </p>
         </div>
 
-        <div className="flex items-center gap-2 font-mono text-xs text-zinc-400">
-          <span className="text-emerald-400">{catalogItems.length} RESOURCES</span>
+        <div className="flex items-center gap-3 font-mono text-xs text-zinc-400 bg-[#0d0d10] p-2 border border-white/[0.08]">
+          <span className="text-[#52adcf] font-bold">{catalogItems.length} RESOURCES</span>
           <span className="text-zinc-600">|</span>
-          <span>100% 0px GEOMETRY</span>
+          <span className="text-zinc-300">100% ZERO-RADIUS</span>
+          <span className="text-zinc-600">|</span>
+          <span className="text-zinc-400">REACT 19</span>
         </div>
       </div>
 
-      {/* Main Workbench Frame */}
-      <div className="bg-[#0d0d10] border border-white/[0.1] shadow-2xl overflow-hidden tai-inset-top flex flex-col lg:flex-row min-h-[640px]">
-        {/* Left Pane: Explorer Tree */}
-        <aside className="w-full min-h-0 lg:w-72 border-b lg:border-b-0 lg:border-r border-white/[0.08] bg-[#09090b] flex flex-col shrink-0">
+      {/* Main 3-Pane Workbench Frame */}
+      <div className="bg-[#0a0a0d] border border-white/[0.12] shadow-2xl overflow-hidden flex flex-col lg:flex-row min-h-[680px]">
+        
+        {/* Left Pane: Explorer Tree (280px) */}
+        <aside className="w-full lg:w-72 border-b lg:border-b-0 lg:border-r border-white/[0.08] bg-[#070709] flex flex-col shrink-0">
           <div className="p-3.5 border-b border-white/[0.08] bg-black/40 flex items-center justify-between">
-            <span className="font-mono text-[10px] tracking-widest text-zinc-400 uppercase font-bold">
-              EXPLORER · CATALOG
+            <span className="font-mono text-[10px] tracking-widest text-zinc-400 uppercase font-bold flex items-center gap-1.5">
+              <Layers className="w-3 h-3 text-[#52adcf]" />
+              CATALOG EXPLORER
             </span>
             <div className="relative">
               <input
@@ -357,12 +366,12 @@ export function StudioWorkbench({
                 onChange={(e) => setSearchQuery(e.target.value)}
                 placeholder="Filter..."
                 aria-label="Filter components"
-                className="bg-black border border-white/10 text-white font-mono text-[11px] px-2 py-0.5 w-24 focus:w-32 focus:outline-none transition-[width,border-color] placeholder:text-zinc-600"
+                className="bg-black/80 border border-white/10 text-white font-mono text-[11px] px-2 py-1 w-24 focus:w-32 focus:border-[#2985b8] focus:outline-none transition-[width,border-color] placeholder:text-zinc-600"
               />
             </div>
           </div>
 
-          <div data-lenis-prevent className="min-h-0 p-2 overflow-y-auto overscroll-contain touch-pan-y max-h-[300px] lg:max-h-[580px] space-y-4 font-mono text-xs">
+          <div data-lenis-prevent className="min-h-0 p-2 overflow-y-auto overscroll-contain touch-pan-y max-h-[320px] lg:max-h-[620px] space-y-4 font-mono text-xs">
             {categories.map((cat) => {
               const items = componentsList.filter(
                 (c) => c.category === cat && c.title.toLowerCase().includes(searchQuery.toLowerCase())
@@ -371,34 +380,37 @@ export function StudioWorkbench({
 
               return (
                 <div key={cat}>
-                  <div className="px-3 py-1 text-[10px] font-bold text-zinc-500 uppercase tracking-widest">
+                  <div className="px-3 py-1 text-[10px] font-bold text-zinc-500 uppercase tracking-widest border-b border-white/[0.04] mb-1">
                     {cat}
                   </div>
-                  <div className="mt-1 space-y-0.5">
+                  <div className="space-y-0.5">
                     {items.map((item) => {
                       const isActive = item.id === selectedId;
                       return (
                         <button
                           key={item.id}
                           onClick={() => setSelectedId(item.id)}
-                          className={`w-full text-left px-3 py-2 flex items-center justify-between transition-colors group active:translate-y-px ${
+                          className={`w-full text-left px-3 py-2 flex items-center justify-between transition-all group active:translate-y-px ${
                             isActive
-                              ? "bg-white text-black font-bold shadow-md"
+                              ? "bg-[#2985b8]/15 border-l-2 border-[#2985b8] text-white font-bold"
                               : "text-zinc-400 hover:text-white hover:bg-white/[0.03]"
                           }`}
                         >
                           <div className="flex items-center gap-2 truncate">
-                            <span className={`text-[10px] ${isActive ? "text-zinc-600 font-normal" : "text-zinc-600"}`}>
+                            <span className={`text-[10px] ${isActive ? "text-[#52adcf]" : "text-zinc-600"}`}>
                               {item.itemNumber}
                             </span>
                             <span className="truncate">{item.title}</span>
                           </div>
-                          <TaiBadge
-                            tone={isActive ? "neutral" : item.status === "STABLE" ? "success" : item.status === "NEW" ? "accent" : "warning"}
-                            className={isActive ? "border-[#05070a] bg-[#05070a] text-white" : "px-1.5 py-0.5 text-[9px]"}
+                          <span
+                            className={`px-1.5 py-0.5 text-[9px] font-mono border ${
+                              isActive
+                                ? "border-[#2985b8]/50 bg-[#2985b8]/20 text-[#52adcf]"
+                                : "border-white/10 bg-black/40 text-zinc-500"
+                            }`}
                           >
                             {item.status}
-                          </TaiBadge>
+                          </span>
                         </button>
                       );
                     })}
@@ -411,10 +423,11 @@ export function StudioWorkbench({
 
         {/* Center Stage & Bottom Inspector */}
         <main className="flex-1 flex flex-col bg-[#08080a] min-w-0">
+          
           {/* Stage Controls Toolbar */}
-          <div className="h-11 border-b border-white/[0.08] bg-[#0d0d10] px-4 flex items-center justify-between shrink-0">
-            {/* Viewport Width Switchers */}
-            <div className="flex items-center gap-1 bg-[#131316] border border-white/[0.08] p-0.5 font-mono text-[10px]">
+          <div className="h-11 border-b border-white/[0.08] bg-[#0c0c10] px-4 flex items-center justify-between shrink-0">
+            {/* Viewport Mode Switchers */}
+            <div className="flex items-center gap-1 bg-[#121216] border border-white/[0.08] p-0.5 font-mono text-[10px]">
               <button
                 onClick={() => setViewport("desktop")}
                 className={`flex items-center gap-1.5 px-2.5 py-1 transition-colors ${
@@ -444,20 +457,24 @@ export function StudioWorkbench({
               </button>
             </div>
 
-            {/* Background Style Switcher */}
+            {/* Substrate Style Switcher */}
             <div className="flex items-center gap-2">
-              <div className="flex items-center bg-[#131316] border border-white/[0.08] p-0.5 font-mono text-[10px]">
+              <div className="flex items-center bg-[#121216] border border-white/[0.08] p-0.5 font-mono text-[10px]">
                 <button
                   onClick={() => setBgMode("matrix")}
-                  className={`px-2 py-0.5 ${bgMode === "matrix" ? "bg-white/20 text-white font-bold" : "text-zinc-500"}`}
+                  className={`px-2.5 py-1 transition-colors ${
+                    bgMode === "matrix" ? "bg-[#2985b8]/30 text-[#52adcf] font-bold border border-[#2985b8]/50" : "text-zinc-500 hover:text-zinc-300"
+                  }`}
                 >
                   MATRIX
                 </button>
                 <button
                   onClick={() => setBgMode("obsidian")}
-                  className={`px-2 py-0.5 ${bgMode === "obsidian" ? "bg-white/20 text-white font-bold" : "text-zinc-500"}`}
+                  className={`px-2.5 py-1 transition-colors ${
+                    bgMode === "obsidian" ? "bg-[#2985b8]/30 text-[#52adcf] font-bold border border-[#2985b8]/50" : "text-zinc-500 hover:text-zinc-300"
+                  }`}
                 >
-                  SOLID
+                  OBSIDIAN
                 </button>
               </div>
             </div>
@@ -465,29 +482,29 @@ export function StudioWorkbench({
 
           {/* THE STAGE: Component Rendering Sandbox */}
           <div
-            className={`flex-1 overflow-auto flex items-center justify-center p-6 min-h-[300px] relative transition-colors ${
+            className={`flex-1 overflow-auto flex items-center justify-center p-6 min-h-[340px] relative transition-colors ${
               bgMode === "matrix"
-                ? "tai-dot-matrix"
-                : "bg-tai-bg"
+                ? "tai-dot-matrix bg-[#08080a]"
+                : "bg-[#060608]"
             }`}
           >
             {/* Viewport Sizing Wrapper */}
             <div
-              className={`transition-colors duration-300 flex items-center justify-center w-full ${
+              className={`transition-all duration-300 flex items-center justify-center w-full ${
                 viewport === "tablet"
-                  ? "max-w-[768px] border border-white/10 bg-[#0d0d10]/90 p-4"
+                  ? "max-w-[768px] border border-white/10 bg-[#0d0d10]/95 p-6 shadow-2xl"
                   : viewport === "mobile"
-                  ? "max-w-[375px] border border-white/10 bg-[#0d0d10]/95 p-4"
+                  ? "max-w-[375px] border border-white/10 bg-[#0d0d10]/95 p-6 shadow-2xl"
                   : ""
               }`}
             >
               <AnimatePresence mode="wait" initial={false}>
                 <motion.div
                   key={current.id}
-                  initial={prefersReduced ? { opacity: 0 } : { opacity: 0, x: 12 }}
+                  initial={prefersReduced ? { opacity: 0 } : { opacity: 0, x: 10 }}
                   animate={{ opacity: 1, x: 0 }}
-                  exit={prefersReduced ? { opacity: 0 } : { opacity: 0, x: -12 }}
-                  transition={{ duration: prefersReduced ? 0 : 0.22, ease: [0.19, 1, 0.22, 1] }}
+                  exit={prefersReduced ? { opacity: 0 } : { opacity: 0, x: -10 }}
+                  transition={{ duration: prefersReduced ? 0 : 0.2, ease: [0.19, 1, 0.22, 1] }}
                   className="flex w-full items-center justify-center"
                 >
                   {current.render()}
@@ -496,10 +513,10 @@ export function StudioWorkbench({
             </div>
           </div>
 
-          {/* PANE 3: Code & CLI Inspector Drawer */}
-          <div className="border-t border-white/[0.08] bg-[#0d0d10] flex flex-col shrink-0">
+          {/* Inspector Drawer */}
+          <div className="border-t border-white/[0.08] bg-[#0c0c10] flex flex-col shrink-0">
             {/* Inspector Navigation Bar */}
-          <div className="h-10 min-w-0 border-b border-white/[0.08] px-4 flex items-center justify-between bg-[#131316]">
+            <div className="h-10 min-w-0 border-b border-white/[0.08] px-4 flex items-center justify-between bg-[#101014]">
               <div className="flex min-w-0 items-center gap-1 overflow-x-auto">
                 {[
                   { id: "cli", label: "CLI COMMAND", icon: Terminal },
@@ -535,17 +552,17 @@ export function StudioWorkbench({
                   if (inspectorTab === "registry")
                     handleCopy(`https://ui.thinkai.studio/r/${current.id}.json`);
                   if (inspectorTab === "tokens")
-                    handleCopy(`@theme {\n  --color-tai-bg: #08080a;\n  --color-tai-border: rgba(255,255,255,0.07);\n}`);
+                    handleCopy(`@theme {\n  --color-tai-bg: #08080a;\n  --color-tai-accent: #2985b8;\n  --color-tai-border: rgba(255,255,255,0.07);\n}`);
                 }}
-                className="flex items-center gap-1.5 px-3 py-1 font-mono text-[10.5px] uppercase tracking-wider bg-tai-bg border border-tai-border-strong hover:border-tai-text text-tai-text transition-colors active:opacity-80"
+                className="flex items-center gap-1.5 px-3 py-1 font-mono text-[10.5px] uppercase tracking-wider bg-[#08080a] border border-white/20 hover:border-[#2985b8] text-zinc-200 transition-colors active:opacity-80"
               >
-                {copied ? <Check className="w-3 h-3 text-emerald-400" /> : <Copy className="w-3 h-3" />}
+                {copied ? <Check className="w-3 h-3 text-[#52adcf]" /> : <Copy className="w-3 h-3" />}
                 <span>{copied ? "COPIED" : "COPY"}</span>
               </button>
             </div>
 
             {/* Inspector Code Body */}
-            <div className="p-4 font-mono text-xs bg-[#09090c] text-zinc-300 min-h-[120px] max-h-[180px] overflow-auto">
+            <div className="p-4 font-mono text-xs bg-[#070709] text-zinc-300 min-h-[120px] max-h-[190px] overflow-auto">
               {inspectorTab === "cli" && (
                 <div className="space-y-3">
                   <div className="flex items-center gap-2">
@@ -555,22 +572,22 @@ export function StudioWorkbench({
                         onClick={() => setPkgManager(pm)}
                         className={`px-2 py-0.5 text-[10px] uppercase border transition-colors ${
                           pkgManager === pm
-                            ? "bg-white text-black font-bold border-white"
-                            : "bg-[#131316] text-zinc-500 border-white/[0.08]"
+                            ? "bg-[#2985b8] text-white font-bold border-[#2985b8]"
+                            : "bg-[#121216] text-zinc-500 border-white/[0.08]"
                         }`}
                       >
                         {pm}
                       </button>
                     ))}
                   </div>
-                  <div className="p-2.5 bg-[#131316] border border-white/[0.08] flex items-center justify-between text-white select-all">
+                  <div className="p-2.5 bg-[#101014] border border-white/[0.08] flex items-center justify-between text-[#52adcf] select-all">
                     <code>{getCliCommand()}</code>
                   </div>
                   {current.dependencies.length > 0 && (
                     <div className="flex flex-wrap items-center gap-1.5 text-[10.5px] text-zinc-500">
                       <span>Dependencies:</span>
                       {current.dependencies.map((dep) => (
-                        <span key={dep} className="px-1.5 py-0.2 bg-black border border-white/10 text-zinc-300">
+                        <span key={dep} className="px-1.5 py-0.5 bg-black border border-white/10 text-zinc-300">
                           {dep}
                         </span>
                       ))}
@@ -610,14 +627,15 @@ export default function Example() {
               )}
 
               {inspectorTab === "tokens" && (
-                <pre className="select-all leading-relaxed text-emerald-400">
+                <pre className="select-all leading-relaxed text-[#52adcf]">
 {`@theme {
   --color-tai-bg: #08080a;
   --color-tai-sheet: #0d0d10;
   --color-tai-card: #131316;
-  --color-tai-border: rgba(255, 255, 255, 0.07);
-  --color-tai-border-strong: rgba(255, 255, 255, 0.18);
+  --color-tai-border: rgba(255, 255, 255, 0.08);
+  --color-tai-border-strong: rgba(41, 133, 184, 0.35);
   --color-tai-accent: #2985b8;
+  --color-tai-cyan: #52adcf;
   --ease-spring: cubic-bezier(0.32, 0.72, 0, 1);
   --ease-luxury: cubic-bezier(0.16, 1, 0.3, 1);
 }`}

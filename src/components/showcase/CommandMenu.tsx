@@ -94,7 +94,7 @@ export function CommandMenu({
       <div role="dialog" aria-modal="true" aria-label="Search ThinkAI UI primitives" className="relative z-10 w-full max-w-2xl bg-tai-sheet border border-white/[0.18] shadow-[0_0_50px_rgba(0,0,0,0.8),inset_0_1px_0_0_rgba(255,255,255,0.12)] overflow-hidden">
         {/* Search Header */}
         <div className="flex items-center gap-3 px-4 py-3.5 border-b border-white/[0.08] bg-black/50">
-          <Search className="w-4 h-4 text-emerald-400 shrink-0" />
+          <Search className="w-4 h-4 text-[#52adcf] shrink-0" />
           <input
             type="text"
             aria-label="Search primitives"
@@ -161,12 +161,12 @@ export function CommandMenu({
                     >
                       {isCopied ? (
                         <>
-                          <Check className="w-3 h-3 text-emerald-400" />
-                          <span className="text-emerald-400">COPIED</span>
+                          <Check className="w-3 h-3 text-[#52adcf]" />
+                          <span className="text-[#52adcf]">COPIED</span>
                         </>
                       ) : (
                         <>
-                          <Terminal className="w-3 h-3 text-emerald-400" />
+                          <Terminal className="w-3 h-3 text-[#52adcf]" />
                           <span>add {item.slug}</span>
                         </>
                       )}
