@@ -748,6 +748,128 @@
           "target": "components/tai-ui/TaiBottomSheet.tsx"
         }
       ]
+    },
+    {
+      "name": "tai-sparkline",
+      "type": "registry:ui",
+      "title": "Tai Sparkline",
+      "description": "Zero-dependency SVG micro trend chart with gradient area fill and 0px endpoints.",
+      "dependencies": [],
+      "files": [
+        {
+          "path": "ui/TaiSparkline.tsx",
+          "type": "registry:ui",
+          "target": "components/tai-ui/TaiSparkline.tsx"
+        }
+      ]
+    },
+    {
+      "name": "tai-kpi-tile",
+      "type": "registry:ui",
+      "title": "Tai KPI Tile",
+      "description": "Technical metric card with large monospace value, delta badge, and integrated sparkline.",
+      "dependencies": [
+        "lucide-react"
+      ],
+      "files": [
+        {
+          "path": "ui/TaiKpiTile.tsx",
+          "type": "registry:ui",
+          "target": "components/tai-ui/TaiKpiTile.tsx"
+        }
+      ]
+    },
+    {
+      "name": "tai-status-indicator",
+      "type": "registry:ui",
+      "title": "Tai Status Indicator",
+      "description": "0px square system health beacon with radiant ping pulse wave and status labels.",
+      "dependencies": [],
+      "files": [
+        {
+          "path": "ui/TaiStatusIndicator.tsx",
+          "type": "registry:ui",
+          "target": "components/tai-ui/TaiStatusIndicator.tsx"
+        }
+      ]
+    },
+    {
+      "name": "tai-code-block",
+      "type": "registry:ui",
+      "title": "Tai Code Block",
+      "description": "0px developer snippet frame with filename header, language badge, line numbering, and copy feedback.",
+      "dependencies": [
+        "lucide-react"
+      ],
+      "files": [
+        {
+          "path": "ui/TaiCodeBlock.tsx",
+          "type": "registry:ui",
+          "target": "components/tai-ui/TaiCodeBlock.tsx"
+        }
+      ]
+    },
+    {
+      "name": "tai-kbd",
+      "type": "registry:ui",
+      "title": "Tai Kbd",
+      "description": "Mechanical 0px hardware keyboard keycap with tactile bevel and pressed state.",
+      "dependencies": [],
+      "files": [
+        {
+          "path": "ui/TaiKbd.tsx",
+          "type": "registry:ui",
+          "target": "components/tai-ui/TaiKbd.tsx"
+        }
+      ]
+    },
+    {
+      "name": "tai-breadcrumb",
+      "type": "registry:ui",
+      "title": "Tai Breadcrumb",
+      "description": "Technical hierarchy path navigation primitive with configurable 0px separators.",
+      "dependencies": [
+        "lucide-react"
+      ],
+      "files": [
+        {
+          "path": "ui/TaiBreadcrumb.tsx",
+          "type": "registry:ui",
+          "target": "components/tai-ui/TaiBreadcrumb.tsx"
+        }
+      ]
+    },
+    {
+      "name": "tai-prompt-input",
+      "type": "registry:ui",
+      "title": "Tai Prompt Input",
+      "description": "Auto-expanding AI prompt input with model pill, token counter, and send/stop toggle.",
+      "dependencies": [
+        "lucide-react"
+      ],
+      "files": [
+        {
+          "path": "ui/TaiPromptInput.tsx",
+          "type": "registry:ui",
+          "target": "components/tai-ui/TaiPromptInput.tsx"
+        }
+      ]
+    },
+    {
+      "name": "tai-streaming-text",
+      "type": "registry:ui",
+      "title": "Tai Streaming Text",
+      "description": "Token-by-token typewriter reveal simulating real-time LLM stream outputs with blinking cursor.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "ui/TaiStreamingText.tsx",
+          "type": "registry:ui",
+          "target": "components/tai-ui/TaiStreamingText.tsx"
+        }
+      ]
     }
   ]
 }

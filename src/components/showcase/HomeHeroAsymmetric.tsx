@@ -203,7 +203,7 @@ export function HomeHeroAsymmetric() {
               <span>·</span>
               <span>NEXT.JS 16</span>
               <span>·</span>
-              <span>47 PRIMITIVES</span>
+              <span>55 PRIMITIVES</span>
               <span>·</span>
               <span>MIT</span>
             </motion.div>

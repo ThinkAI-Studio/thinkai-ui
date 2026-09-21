@@ -80,7 +80,7 @@ export function StudioFooter() {
             <span className="text-tai-subtle">|</span>
             <span>v1.0.0</span>
             <span className="text-tai-subtle">|</span>
-            <span>47 PRIMITIVES</span>
+            <span>55 PRIMITIVES</span>
             <span className="text-tai-subtle">|</span>
             <span className="text-tai-accent font-bold">MIT LICENSE</span>
           </div>

@@ -19,6 +19,10 @@ import {
   ClaudeIcon,
   PerplexityIcon,
 } from "@/components/tai-ui/AiBrandIcons";
+import { TaiKpiTile } from "@/components/tai-ui/TaiKpiTile";
+import { TaiStatusIndicator } from "@/components/tai-ui/TaiStatusIndicator";
+import { TaiPromptInput } from "@/components/tai-ui/TaiPromptInput";
+import { TaiCodeBlock } from "@/components/tai-ui/TaiCodeBlock";
 
 export function LiveUiTicker() {
   const [switchChecked, setSwitchChecked] = useState(true);
@@ -104,6 +108,37 @@ export function LiveUiTicker() {
         </div>
       ),
     },
+    {
+      id: "tai-kpi-tile",
+      slug: "tai-kpi-tile",
+      docPath: "/docs/ui/tai-kpi-tile",
+      title: "TaiKpiTile",
+      category: "Telemetry",
+      render: () => (
+        <div className="p-3">
+          <TaiKpiTile
+            title="Cluster Latency"
+            value="18.4"
+            unit="ms"
+            delta={{ value: "-6.2%", trend: "down", isPositive: true }}
+            sparklineData={[36, 32, 28, 22, 19, 18]}
+          />
+        </div>
+      ),
+    },
+    {
+      id: "tai-status-indicator",
+      slug: "tai-status-indicator",
+      docPath: "/docs/ui/tai-status-indicator",
+      title: "TaiStatusIndicator",
+      category: "Observability",
+      render: () => (
+        <div className="p-4 flex flex-col gap-2.5">
+          <TaiStatusIndicator status="operational" label="Edge Ingress" sublabel="99.98% up" />
+          <TaiStatusIndicator status="syncing" label="Worker Pool" sublabel="Syncing" />
+        </div>
+      ),
+    },
   ];
 
   // Column 2 primitives
@@ -177,6 +212,38 @@ export function LiveUiTicker() {
             ]}
             defaultValue="react"
             className="text-xs"
+          />
+        </div>
+      ),
+    },
+    {
+      id: "tai-prompt-input",
+      slug: "tai-prompt-input",
+      docPath: "/docs/ui/tai-prompt-input",
+      title: "TaiPromptInput",
+      category: "AI Console",
+      render: () => (
+        <div className="p-3">
+          <TaiPromptInput
+            placeholder="Prompt AI Agent..."
+            modelName="claude-3-7"
+            minHeight={40}
+          />
+        </div>
+      ),
+    },
+    {
+      id: "tai-code-block",
+      slug: "tai-code-block",
+      docPath: "/docs/ui/tai-code-block",
+      title: "TaiCodeBlock",
+      category: "DevTools",
+      render: () => (
+        <div className="p-3">
+          <TaiCodeBlock
+            filename="agent.config.ts"
+            language="ts"
+            code="export const model = 'gemini-2.5';"
           />
         </div>
       ),

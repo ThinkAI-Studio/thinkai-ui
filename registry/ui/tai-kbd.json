@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.thinkai.studio/schema/registry-item.json",
+  "name": "tai-kbd",
+  "type": "registry:ui",
+  "title": "Tai Kbd",
+  "description": "Mechanical 0px hardware keyboard keycap with tactile bevel and pressed state.",
+  "dependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "name": "TaiKbd.tsx",
+      "content": "\"use client\";\n\nimport React from \"react\";\nimport { cn } from \"@/lib/utils\";\n\nexport interface TaiKbdProps extends React.HTMLAttributes<HTMLElement> {\n  children: React.ReactNode;\n  size?: \"sm\" | \"md\" | \"lg\";\n}\n\nexport function TaiKbd({\n  children,\n  size = \"md\",\n  className,\n  ...props\n}: TaiKbdProps) {\n  const sizeStyles = {\n    sm: \"px-1 py-0.5 text-[9px] min-w-[16px] h-4\",\n    md: \"px-1.5 py-0.5 text-[10px] min-w-[20px] h-5\",\n    lg: \"px-2 py-1 text-xs min-w-[24px] h-6\",\n  }[size];\n\n  return (\n    <kbd\n      className={cn(\n        \"inline-flex items-center justify-center font-mono font-bold tracking-tight text-tai-text bg-tai-surface border border-tai-border border-b-2 border-b-tai-border-strong select-none shadow-[0_1px_0_0_rgba(0,0,0,0.2)] active:translate-y-px active:border-b\",\n        sizeStyles,\n        className\n      )}\n      style={{ borderRadius: 0 }}\n      {...props}\n    >\n      {children}\n    </kbd>\n  );\n}\n"
+    }
+  ]
+}

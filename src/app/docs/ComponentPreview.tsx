@@ -44,6 +44,14 @@ import { Highlight } from "@/components/tai-ui/Highlight";
 import { ProgressiveBlur } from "@/components/tai-ui/ProgressiveBlur";
 import { SkeletonShimmer } from "@/components/tai-ui/SkeletonShimmer";
 import { TaiBottomSheet } from "@/components/tai-ui/TaiBottomSheet";
+import { TaiSparkline } from "@/components/tai-ui/TaiSparkline";
+import { TaiKpiTile } from "@/components/tai-ui/TaiKpiTile";
+import { TaiStatusIndicator } from "@/components/tai-ui/TaiStatusIndicator";
+import { TaiCodeBlock } from "@/components/tai-ui/TaiCodeBlock";
+import { TaiKbd } from "@/components/tai-ui/TaiKbd";
+import { TaiBreadcrumb } from "@/components/tai-ui/TaiBreadcrumb";
+import { TaiPromptInput } from "@/components/tai-ui/TaiPromptInput";
+import { TaiStreamingText } from "@/components/tai-ui/TaiStreamingText";
 import { Settings } from "lucide-react";
 import type { CatalogItem } from "@/data/catalog";
 
@@ -99,5 +107,77 @@ export function ComponentPreview({ item, compact = false }: { item: CatalogItem;
     {item.previewId === "progressive-blur" && <ProgressiveBlur><div className="h-20 w-56 border border-tai-border bg-tai-card" /></ProgressiveBlur>}
     {item.previewId === "skeleton-shimmer" && <SkeletonShimmer className="h-5 w-48" />}
     {item.previewId === "tai-bottom-sheet" && <><TaiButton onClick={() => setOpen(true)}>Open sheet</TaiButton><TaiBottomSheet open={open} onOpenChange={setOpen} title="Install source">A short, mobile-first task surface with a clear close path.</TaiBottomSheet></>}
+    {item.previewId === "tai-sparkline" && (
+      <div className="flex flex-col items-center gap-2 p-4">
+        <TaiSparkline data={[12, 19, 14, 28, 22, 34, 40]} width={160} height={44} color="accent" />
+        <span className="font-mono text-[10px] text-tai-subtle uppercase">Telemetry Trend (+18.4%)</span>
+      </div>
+    )}
+    {item.previewId === "tai-kpi-tile" && (
+      <div className="w-full max-w-sm">
+        <TaiKpiTile
+          title="Edge Latency"
+          value="24.8"
+          unit="ms"
+          delta={{ value: "-4.2%", trend: "down", isPositive: true }}
+          sparklineData={[42, 38, 30, 26, 25, 24]}
+        />
+      </div>
+    )}
+    {item.previewId === "tai-status-indicator" && (
+      <div className="flex flex-col gap-3 p-4">
+        <TaiStatusIndicator status="operational" label="API Gateway" sublabel="99.98% uptime" />
+        <TaiStatusIndicator status="syncing" label="Edge Nodes" sublabel="Syncing state" />
+        <TaiStatusIndicator status="degraded" label="Worker Queue" sublabel="High load" />
+      </div>
+    )}
+    {item.previewId === "tai-code-block" && (
+      <div className="w-full max-w-md">
+        <TaiCodeBlock
+          filename="thinkai.config.ts"
+          language="typescript"
+          code={`export default {\n  theme: "obsidian",\n  radius: 0,\n  runtime: "edge"\n};`}
+          showLineNumbers
+        />
+      </div>
+    )}
+    {item.previewId === "tai-kbd" && (
+      <div className="flex items-center gap-2">
+        <TaiKbd>⌘</TaiKbd>
+        <TaiKbd>K</TaiKbd>
+        <span className="font-mono text-xs text-tai-muted px-2">or</span>
+        <TaiKbd>Shift</TaiKbd>
+        <TaiKbd>↵</TaiKbd>
+      </div>
+    )}
+    {item.previewId === "tai-breadcrumb" && (
+      <div className="p-4">
+        <TaiBreadcrumb
+          items={[
+            { label: "Console", href: "#" },
+            { label: "Clusters", href: "#" },
+            { label: "edge-us-east-1", active: true },
+          ]}
+          separator="slash"
+        />
+      </div>
+    )}
+    {item.previewId === "tai-prompt-input" && (
+      <div className="w-full max-w-md p-2">
+        <TaiPromptInput
+          placeholder="Ask ThinkAI Agent to architect a service..."
+          modelName="claude-3-7-sonnet"
+          tokenCount={1420}
+        />
+      </div>
+    )}
+    {item.previewId === "tai-streaming-text" && (
+      <div className="max-w-md p-4 bg-tai-sheet border border-tai-border">
+        <TaiStreamingText
+          text="System initialized. Deploying zero-radius UI primitives across edge clusters with verified telemetry..."
+          speed={22}
+        />
+      </div>
+    )}
   </div>;
 }
