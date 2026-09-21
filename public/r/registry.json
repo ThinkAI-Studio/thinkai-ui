@@ -296,6 +296,7 @@
       "title": "Tai Select",
       "description": "Native select with focused visual shell and explicit options.",
       "dependencies": [
+        "motion",
         "lucide-react"
       ],
       "files": [
@@ -312,6 +313,7 @@
       "title": "Tai Checkbox",
       "description": "Labelled binary choice with native checkbox semantics.",
       "dependencies": [
+        "motion",
         "lucide-react"
       ],
       "files": [
@@ -327,7 +329,9 @@
       "type": "registry:ui",
       "title": "Tai Switch",
       "description": "Immediate on/off control with a native switch role.",
-      "dependencies": [],
+      "dependencies": [
+        "motion"
+      ],
       "files": [
         {
           "path": "ui/TaiSwitch.tsx",
@@ -341,7 +345,9 @@
       "type": "registry:ui",
       "title": "Tai Tabs",
       "description": "Tablist with roving keyboard navigation and explicit panels.",
-      "dependencies": [],
+      "dependencies": [
+        "motion"
+      ],
       "files": [
         {
           "path": "ui/TaiTabs.tsx",
@@ -356,6 +362,7 @@
       "title": "Tai Accordion",
       "description": "Single-open disclosure list for progressive information density.",
       "dependencies": [
+        "motion",
         "lucide-react"
       ],
       "files": [
@@ -515,7 +522,9 @@
       "type": "registry:ui",
       "title": "Tai Popover",
       "description": "Lightweight anchored surface for secondary context.",
-      "dependencies": [],
+      "dependencies": [
+        "motion"
+      ],
       "files": [
         {
           "path": "ui/TaiPopover.tsx",
@@ -613,7 +622,9 @@
       "type": "registry:ui",
       "title": "Tai Icon Button",
       "description": "Accessible icon-only action with a consistent focus target.",
-      "dependencies": [],
+      "dependencies": [
+        "motion"
+      ],
       "files": [
         {
           "path": "ui/TaiIconButton.tsx",
@@ -868,6 +879,22 @@
           "path": "ui/TaiStreamingText.tsx",
           "type": "registry:ui",
           "target": "components/tai-ui/TaiStreamingText.tsx"
+        }
+      ]
+    },
+    {
+      "name": "kinetic-icons",
+      "type": "registry:ui",
+      "title": "Kinetic Icons",
+      "description": "Architectural 0px kinetic interface icons with spring-driven physics and micro-interactions.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "ui/KineticIcons.tsx",
+          "type": "registry:ui",
+          "target": "components/tai-ui/KineticIcons.tsx"
         }
       ]
     }

@@ -52,6 +52,14 @@ import { TaiKbd } from "@/components/tai-ui/TaiKbd";
 import { TaiBreadcrumb } from "@/components/tai-ui/TaiBreadcrumb";
 import { TaiPromptInput } from "@/components/tai-ui/TaiPromptInput";
 import { TaiStreamingText } from "@/components/tai-ui/TaiStreamingText";
+import {
+  KineticCheckmark,
+  KineticChevron,
+  KineticCopy,
+  KineticTerminalIcon,
+  KineticSearchIcon,
+  KineticTrashIcon,
+} from "@/components/tai-ui/KineticIcons";
 import { Settings } from "lucide-react";
 import type { CatalogItem } from "@/data/catalog";
 
@@ -177,6 +185,16 @@ export function ComponentPreview({ item, compact = false }: { item: CatalogItem;
           text="System initialized. Deploying zero-radius UI primitives across edge clusters with verified telemetry..."
           speed={22}
         />
+      </div>
+    )}
+    {item.previewId === "kinetic-icons" && (
+      <div className="flex flex-wrap items-center justify-center gap-6 p-4 bg-tai-sheet border border-tai-border">
+        <KineticCheckmark size={22} trigger={true} />
+        <KineticChevron expanded={true} size={22} />
+        <KineticCopy value="npm install thinkai-ui" size={16} />
+        <KineticTerminalIcon size={20} />
+        <KineticSearchIcon size={20} />
+        <KineticTrashIcon size={20} />
       </div>
     )}
   </div>;

@@ -5,7 +5,7 @@ import { motion, useReducedMotion } from "motion/react";
 import { Slot } from "@radix-ui/react-slot";
 import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "@/lib/utils";
-import { TAI_EASE } from "@/lib/motion";
+import { TAI_EASE, TAI_PHYSICS } from "@/lib/motion";
 
 export const taiButtonVariants = cva(
   "relative inline-flex items-center justify-center gap-2 overflow-hidden rounded-none font-mono text-xs tracking-wider uppercase transition-colors duration-400 group cursor-pointer select-none outline-none focus-visible:ring-1 focus-visible:ring-tai-focus",
@@ -74,13 +74,7 @@ export const TaiButton = React.forwardRef<HTMLButtonElement, TaiButtonProps>(
     const Component = href ? motion.a : motion.button;
     const tapAnimation = prefersReduced
       ? {}
-      : variant === "primary"
-        ? { scale: 0.98 }
-        : variant === "secondary"
-          ? { y: 1 }
-          : variant === "outline"
-            ? { backgroundColor: "rgba(255,255,255,0.08)" }
-            : { opacity: 0.72 };
+      : { scale: 0.988, y: 1 };
 
     const bgVariants = prefersReduced
       ? { hover: { opacity: 1 } }
@@ -90,11 +84,11 @@ export const TaiButton = React.forwardRef<HTMLButtonElement, TaiButtonProps>(
       ? { opacity: 0 }
       : { y: "100%", opacity: 0 };
 
-    const contentVariants = prefersReduced ? { hover: { y: 0 } } : { hover: { y: -1 } };
+    const contentVariants = prefersReduced ? { hover: { y: 0 } } : { hover: { y: -0.5 } };
 
     const iconVariants = prefersReduced
       ? { hover: { x: 0 } }
-      : { hover: { x: 3 } };
+      : { hover: { x: 2 } };
 
     return (
       <Component
@@ -103,9 +97,9 @@ export const TaiButton = React.forwardRef<HTMLButtonElement, TaiButtonProps>(
         href={href}
         className={cn(taiButtonVariants({ variant, size, className }))}
         whileHover="hover"
-        variants={{ hover: prefersReduced ? { y: 0 } : { y: -1 } }}
+        variants={{ hover: prefersReduced ? { y: 0 } : { y: -0.5 } }}
         whileTap={tapAnimation}
-        transition={{ type: "spring", stiffness: 220, damping: 22, mass: 0.8 }}
+        transition={TAI_PHYSICS.microswitch}
         {...(props as any)}
       >
         {/* Ambient Top Light Reflection Sweep */}

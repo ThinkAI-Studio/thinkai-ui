@@ -4,6 +4,14 @@ const nextConfig: NextConfig = {
   turbopack: {
     root: process.cwd(),
   },
+  experimental: {
+    optimizePackageImports: [
+      "@/components/tai-ui",
+      "motion",
+      "lucide-react",
+      "three",
+    ],
+  },
   async headers() {
     return [
       {

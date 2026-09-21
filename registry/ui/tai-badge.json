@@ -9,7 +9,7 @@
   "files": [
     {
       "name": "TaiBadge.tsx",
-      "content": "import { cn } from \"@/lib/utils\";\n\nexport function TaiBadge({ children, tone = \"neutral\", className }: { children: React.ReactNode; tone?: \"neutral\" | \"accent\" | \"success\" | \"warning\"; className?: string }) {\n  return <span className={cn(\"inline-flex items-center border px-2 py-1 font-mono text-[10px] uppercase tracking-widest\", tone === \"accent\" && \"border-tai-accent/50 text-tai-accent\", tone === \"success\" && \"border-tai-success/50 text-tai-success\", tone === \"warning\" && \"border-tai-warning/50 text-tai-warning\", tone === \"neutral\" && \"border-tai-border text-tai-muted\", className)}>{children}</span>;\n}\n"
+      "content": "import React from \"react\";\nimport { cn } from \"@/lib/utils\";\n\nexport interface TaiBadgeProps {\n  children: React.ReactNode;\n  tone?: \"neutral\" | \"accent\" | \"success\" | \"warning\";\n  className?: string;\n}\n\nexport function TaiBadge({ children, tone = \"neutral\", className }: TaiBadgeProps) {\n  return (\n    <span\n      className={cn(\n        \"inline-flex items-center border px-2 py-1 font-mono text-[10px] uppercase tracking-widest transition-transform duration-150 ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-px active:scale-[0.98] select-none\",\n        tone === \"accent\" && \"border-tai-accent/50 text-tai-accent\",\n        tone === \"success\" && \"border-tai-success/50 text-tai-success\",\n        tone === \"warning\" && \"border-tai-warning/50 text-tai-warning\",\n        tone === \"neutral\" && \"border-tai-border text-tai-muted\",\n        className\n      )}\n      style={{ borderRadius: 0 }}\n    >\n      {children}\n    </span>\n  );\n}\n"
     }
   ]
 }

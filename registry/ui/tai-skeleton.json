@@ -9,7 +9,7 @@
   "files": [
     {
       "name": "TaiSkeleton.tsx",
-      "content": "import { cn } from \"@/lib/utils\";\n\nexport function TaiSkeleton({ className }: { className?: string }) {\n  return <span aria-hidden=\"true\" className={cn(\"block bg-tai-surface\", className)} />;\n}\n"
+      "content": "import React from \"react\";\nimport { cn } from \"@/lib/utils\";\n\nexport function TaiSkeleton({ className }: { className?: string }) {\n  return (\n    <span\n      aria-hidden=\"true\"\n      className={cn(\"block bg-tai-surface animate-pulse select-none\", className)}\n      style={{ borderRadius: 0 }}\n    />\n  );\n}\n"
     }
   ]
 }

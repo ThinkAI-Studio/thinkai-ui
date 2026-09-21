@@ -65,3 +65,4 @@ export * from "./ArchitectureModal";
 export * from "./ContactModal";
 export * from "./AiBrandIcons";
 export * from "./TechLogos";
+export * from "./KineticIcons";

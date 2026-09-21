@@ -33,6 +33,24 @@ export const TAI_SPRING = {
   gentle: { type: "spring", damping: 38, stiffness: 200, mass: 1.2 },
 } as const;
 
+/**
+ * Sub-Perceptual Tactile Physics (Hallmark & Impeccable Standard)
+ * Mathematically calibrated for Weber-Fechner sub-perceptual thresholds.
+ */
+export const TAI_PHYSICS = {
+  /** 95ms mechanical bottom-out: buttons, checkboxes, keycaps, icons */
+  microswitch: { type: "spring", stiffness: 650, damping: 38, mass: 0.5 } as const,
+  /** 120ms tactile detent: switches, sliders, segment toggles (micro-overshoot zeta=0.84) */
+  detent: { type: "spring", stiffness: 520, damping: 32, mass: 0.7 } as const,
+  /** 85ms laser hairline / vector path drawing */
+  laser: { type: "spring", stiffness: 750, damping: 46, mass: 0.4 } as const,
+  /** 140ms structural glider: tabs layoutId, accordions */
+  tectonic: { type: "spring", stiffness: 380, damping: 34, mass: 0.6 } as const,
+  /** 110ms airlock settle: tooltips, popovers, small overlays */
+  airlock: { type: "spring", stiffness: 540, damping: 36, mass: 0.5 } as const,
+} as const;
+
+
 export const defaultTransition: Transition = {
   duration: 0.5,
   ease: TAI_EASE.luxury,
