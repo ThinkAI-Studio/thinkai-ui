@@ -84,44 +84,30 @@
   filter: invert(1);
 }
 
-::view-transition-group(root) {
-  animation-duration: 0ms;
-}
-
 ::view-transition-old(root),
 ::view-transition-new(root) {
+  animation: none;
   mix-blend-mode: normal;
 }
 
 ::view-transition-old(root) {
-  animation: none;
   z-index: 1;
 }
 
 ::view-transition-new(root) {
-  animation: tai-theme-aperture-0px 650ms cubic-bezier(0.16, 1, 0.3, 1) both;
-  z-index: 2;
+  z-index: 9999;
 }
 
-@keyframes tai-theme-aperture-0px {
-  from {
-    clip-path: inset(
-      var(--tai-theme-origin-top, 24px)
-      var(--tai-theme-origin-right, 24px)
-      var(--tai-theme-origin-bottom, calc(100vh - 48px))
-      var(--tai-theme-origin-left, calc(100vw - 48px))
-    );
-  }
-  to {
-    clip-path: inset(0px 0px 0px 0px);
-  }
-}
-
-[data-theme-transitioning] *,
-[data-theme-transitioning] *::before,
-[data-theme-transitioning] *::after {
-  transition-property: background-color, border-color, box-shadow, color, fill, stroke;
-  transition-duration: 550ms;
+[data-theme-transitioning],
+[data-theme-transitioning] body,
+[data-theme-transitioning] header,
+[data-theme-transitioning] nav,
+[data-theme-transitioning] footer,
+[data-theme-transitioning] main,
+[data-theme-transitioning] [class*="bg-tai-"],
+[data-theme-transitioning] [class*="border-tai-"] {
+  transition-property: background-color, border-color, color, fill, stroke;
+  transition-duration: 350ms;
   transition-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
 }
 

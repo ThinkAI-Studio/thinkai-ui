@@ -122,6 +122,7 @@ export function StudioHeader({ onOpenCommandMenu }: StudioHeaderProps) {
             transition={{ duration: 0.45, ease: TAI_EASE.luxury, delay: 0 }}
             className="pointer-events-auto md:hidden flex items-center gap-2 px-3 py-2 bg-tai-sheet/90 backdrop-blur-xl border border-tai-border text-tai-text"
           >
+            <ThemeToggle />
             <button
               onClick={onOpenCommandMenu}
               className="p-1 text-tai-muted hover:text-tai-text"

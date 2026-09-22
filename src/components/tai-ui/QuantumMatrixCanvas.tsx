@@ -31,6 +31,8 @@ export function QuantumMatrixCanvas({
     let targetMouseX = -1000;
     let targetMouseY = -1000;
     let isLight = document.documentElement.dataset.theme === "light";
+    let currentDotRGB = isLight ? [24, 24, 27] : [224, 230, 236];
+    let currentLineRGB = isLight ? [24, 24, 27] : [220, 226, 232];
 
     const handleMouseMove = (e: MouseEvent) => {
       const rect = canvas.getBoundingClientRect();
@@ -57,8 +59,20 @@ export function QuantumMatrixCanvas({
       if (!ctx || !canvas) return;
       const displayWidth = canvas.offsetWidth;
       const displayHeight = canvas.offsetHeight;
-      const dotColor = isLight ? "24, 24, 27" : "224, 230, 236";
-      const lineColor = isLight ? "24, 24, 27" : "220, 226, 232";
+
+      // Smooth color lerp across theme switch
+      const targetDot = isLight ? [24, 24, 27] : [224, 230, 236];
+      const targetLine = isLight ? [24, 24, 27] : [220, 226, 232];
+      currentDotRGB[0] += (targetDot[0] - currentDotRGB[0]) * 0.1;
+      currentDotRGB[1] += (targetDot[1] - currentDotRGB[1]) * 0.1;
+      currentDotRGB[2] += (targetDot[2] - currentDotRGB[2]) * 0.1;
+
+      currentLineRGB[0] += (targetLine[0] - currentLineRGB[0]) * 0.1;
+      currentLineRGB[1] += (targetLine[1] - currentLineRGB[1]) * 0.1;
+      currentLineRGB[2] += (targetLine[2] - currentLineRGB[2]) * 0.1;
+
+      const dotColor = `${Math.round(currentDotRGB[0])}, ${Math.round(currentDotRGB[1])}, ${Math.round(currentDotRGB[2])}`;
+      const lineColor = `${Math.round(currentLineRGB[0])}, ${Math.round(currentLineRGB[1])}, ${Math.round(currentLineRGB[2])}`;
       const accentColor = isLight ? "8, 127, 69" : "74, 222, 128";
       const baseAlpha = isLight ? 0.16 : 0.24;
       const hoverAlpha = isLight ? 0.42 : 0.5;
