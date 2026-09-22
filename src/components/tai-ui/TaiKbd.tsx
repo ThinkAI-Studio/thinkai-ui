@@ -27,7 +27,7 @@ export function TaiKbd({
         sizeStyles,
         className
       )}
-      style={{ borderRadius: 0 }}
+      style={{ borderRadius: "var(--tai-radius-sm)" }}
       {...props}
     >
       {children}

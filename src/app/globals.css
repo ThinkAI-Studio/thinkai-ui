@@ -22,6 +22,10 @@
   --font-tai-body: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
   --font-mono: var(--font-tai-display);
   --font-sans: var(--font-tai-body);
+  --radius-tai-sm: var(--tai-radius-sm);
+  --radius-tai-md: var(--tai-radius-md);
+  --radius-tai-lg: var(--tai-radius-lg);
+  --radius-tai-xl: var(--tai-radius-xl);
   --ease-spring: cubic-bezier(0.32, 0.72, 0, 1);
   --ease-luxury: cubic-bezier(0.16, 1, 0.3, 1);
   --ease-snappy: cubic-bezier(0.19, 1, 0.22, 1);
@@ -74,6 +78,50 @@
   --tai-matrix-dot-hover: color-mix(in srgb, var(--tai-text) 30%, transparent);
   --tai-matrix-opacity: 0.9;
   --tai-matrix-hover-opacity: 1;
+}
+
+/* =========================================================================
+   ThinkAI Radius Scale: Machined Precision Micro-Fillet
+   Default: 2px (Machined). Configurable via [data-radius="sharp"|"machined"|"smooth"]
+   ========================================================================= */
+:root {
+  --tai-radius-base: 2px;
+  --tai-radius-sm: 1.5px;
+  --tai-radius-md: 2px;
+  --tai-radius-lg: 4px;
+  --tai-radius-xl: 6px;
+  --tai-radius-control: var(--tai-radius-md);
+  --tai-radius-surface: var(--tai-radius-lg);
+}
+
+[data-radius="sharp"] {
+  --tai-radius-base: 0px;
+  --tai-radius-sm: 0px;
+  --tai-radius-md: 0px;
+  --tai-radius-lg: 0px;
+  --tai-radius-xl: 0px;
+  --tai-radius-control: 0px;
+  --tai-radius-surface: 0px;
+}
+
+[data-radius="machined"] {
+  --tai-radius-base: 2px;
+  --tai-radius-sm: 1.5px;
+  --tai-radius-md: 2px;
+  --tai-radius-lg: 4px;
+  --tai-radius-xl: 6px;
+  --tai-radius-control: 2px;
+  --tai-radius-surface: 4px;
+}
+
+[data-radius="smooth"] {
+  --tai-radius-base: 4px;
+  --tai-radius-sm: 2px;
+  --tai-radius-md: 4px;
+  --tai-radius-lg: 8px;
+  --tai-radius-xl: 12px;
+  --tai-radius-control: 4px;
+  --tai-radius-surface: 8px;
 }
 
 .tai-brand-mark {
@@ -198,8 +246,42 @@
     border-color: var(--color-tai-border, rgba(255, 255, 255, 0.07));
   }
 
-  * {
+  /* Universal machined precision micro-fillet: controls & inputs receive calibrated control radius */
+  button,
+  input,
+  select,
+  textarea,
+  kbd,
+  [role="button"],
+  [role="tab"] {
+    border-radius: var(--tai-radius-control);
+  }
+
+  /* Adaptive radius mapping for elements */
+  [data-radius="sharp"] *,
+  [data-radius="sharp"] .rounded-none {
     border-radius: 0px !important;
+  }
+
+  [data-radius="machined"] .rounded-none {
+    border-radius: var(--tai-radius-control);
+  }
+
+  [data-radius="smooth"] .rounded-none {
+    border-radius: var(--tai-radius-control);
+  }
+
+  /* Card, sheet, and surface radius mapping */
+  [data-radius="machined"] [class*="bg-tai-card"],
+  [data-radius="machined"] [class*="bg-tai-sheet"],
+  [data-radius="machined"] [class*="bg-tai-surface"] {
+    border-radius: var(--tai-radius-surface);
+  }
+
+  [data-radius="smooth"] [class*="bg-tai-card"],
+  [data-radius="smooth"] [class*="bg-tai-sheet"],
+  [data-radius="smooth"] [class*="bg-tai-surface"] {
+    border-radius: var(--tai-radius-surface);
   }
 
   html {
@@ -413,6 +495,19 @@
 /* Micro-noise overlay */
 .tai-grain {
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.03'/%3E%3C/svg%3E");
+}
+
+@utility rounded-tai-sm {
+  border-radius: var(--tai-radius-sm);
+}
+@utility rounded-tai-md {
+  border-radius: var(--tai-radius-md);
+}
+@utility rounded-tai-lg {
+  border-radius: var(--tai-radius-lg);
+}
+@utility rounded-tai-xl {
+  border-radius: var(--tai-radius-xl);
 }
 
 /* Custom Minimalist Scrollbar */

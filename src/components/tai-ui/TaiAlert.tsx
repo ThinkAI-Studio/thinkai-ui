@@ -20,7 +20,7 @@ export function TaiAlert({ title, children, tone = "info", className }: TaiAlert
         tone === "info" && "border-tai-accent",
         className
       )}
-      style={{ borderRadius: 0 }}
+      style={{ borderRadius: "var(--tai-radius-md)" }}
     >
       <p className="font-mono text-[10px] uppercase tracking-widest font-bold">{title}</p>
       <div className="mt-2 leading-6 text-tai-muted">{children}</div>

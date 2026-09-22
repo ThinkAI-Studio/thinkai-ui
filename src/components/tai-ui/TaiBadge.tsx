@@ -18,7 +18,7 @@ export function TaiBadge({ children, tone = "neutral", className }: TaiBadgeProp
         tone === "neutral" && "border-tai-border text-tai-muted",
         className
       )}
-      style={{ borderRadius: 0 }}
+      style={{ borderRadius: "var(--tai-radius-sm)" }}
     >
       {children}
     </span>

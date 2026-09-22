@@ -6,7 +6,7 @@ export function TaiSkeleton({ className }: { className?: string }) {
     <span
       aria-hidden="true"
       className={cn("block bg-tai-surface animate-pulse select-none", className)}
-      style={{ borderRadius: 0 }}
+      style={{ borderRadius: "var(--tai-radius-sm)" }}
     />
   );
 }

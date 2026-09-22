@@ -142,7 +142,7 @@ export function KineticCopy({ value, className, size = 16, onCopy }: KineticCopy
         copied && "border-tai-success/40 text-tai-success",
         className
       )}
-      style={{ borderRadius: 0 }}
+      style={{ borderRadius: "var(--tai-radius-sm)" }}
     >
       <AnimatePresence mode="wait" initial={false}>
         {copied ? (

@@ -59,7 +59,7 @@ export const TaiIconButton = React.forwardRef<HTMLButtonElement, TaiIconButtonPr
           "inline-grid h-11 w-11 place-items-center border border-tai-border bg-tai-sheet text-tai-muted transition-colors hover:border-tai-border-strong hover:text-tai-text focus-visible:outline-2 focus-visible:outline-tai-focus disabled:cursor-not-allowed disabled:opacity-40 select-none",
           className
         )}
-        style={{ borderRadius: 0 }}
+        style={{ borderRadius: "var(--tai-radius-md)" }}
         {...(props as any)}
       >
         <motion.span

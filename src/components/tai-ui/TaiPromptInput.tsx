@@ -92,7 +92,7 @@ export function TaiPromptInput({
         disabled && "opacity-60 cursor-not-allowed",
         className
       )}
-      style={{ borderRadius: 0 }}
+      style={{ borderRadius: "var(--tai-radius-md)" }}
     >
       {/* Auto-expanding Textarea */}
       <textarea

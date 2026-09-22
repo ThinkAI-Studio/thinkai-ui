@@ -48,7 +48,7 @@ export const TaiSelect = React.forwardRef<HTMLSelectElement, TaiSelectProps>(
               error ? "border-tai-warning/80" : "hover:border-tai-border-strong",
               className,
             )}
-            style={{ borderRadius: 0 }}
+            style={{ borderRadius: "var(--tai-radius-md)" }}
             {...props}
           >
             {options.map((option) => (

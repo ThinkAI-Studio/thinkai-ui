@@ -72,7 +72,7 @@ export function TaiPopover({
             exit={prefersReduced ? { opacity: 0 } : { opacity: 0, y: 4, scale: 0.98 }}
             transition={prefersReduced ? { duration: 0 } : TAI_PHYSICS.airlock}
             className="absolute left-0 top-full z-30 mt-2 min-w-56 border border-tai-border bg-tai-sheet p-4 text-sm text-tai-text shadow-xl"
-            style={{ borderRadius: 0 }}
+            style={{ borderRadius: "var(--tai-radius-lg)" }}
           >
             {children}
           </motion.div>

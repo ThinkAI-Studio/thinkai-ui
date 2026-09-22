@@ -51,7 +51,7 @@ export const TaiCheckbox = React.forwardRef<HTMLInputElement, TaiCheckboxProps>(
             "relative mt-0.5 grid h-5 w-5 shrink-0 place-items-center border border-tai-border bg-tai-bg transition-colors duration-200 group-hover:border-tai-accent group-focus-within:ring-2 group-focus-within:ring-tai-focus/30",
             isChecked && "border-tai-accent bg-tai-accent/15"
           )}
-          style={{ borderRadius: 0 }}
+          style={{ borderRadius: "var(--tai-radius-sm)" }}
         >
           <input
             ref={ref}

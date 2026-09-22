@@ -58,7 +58,7 @@ export const WipeButton = React.forwardRef<HTMLButtonElement, WipeButtonProps>(
       return (
         <Slot
           className={cn(
-            "relative inline-flex items-center justify-center overflow-hidden rounded-none cursor-pointer select-none transition-transform active:scale-[0.98]",
+            "relative inline-flex items-center justify-center overflow-hidden rounded-[var(--tai-radius-md)] cursor-pointer select-none transition-transform active:scale-[0.98]",
             className
           )}
           ref={ref as any}
@@ -92,7 +92,7 @@ export const WipeButton = React.forwardRef<HTMLButtonElement, WipeButtonProps>(
                 setWipeState("idle");
               }
             }}
-            className="absolute inset-0 pointer-events-none rounded-none"
+            className="absolute inset-0 pointer-events-none rounded-[var(--tai-radius-md)]"
             style={{ backgroundColor: wipeColor, zIndex: 0 }}
           />
         )}
@@ -113,7 +113,7 @@ export const WipeButton = React.forwardRef<HTMLButtonElement, WipeButtonProps>(
     );
 
     const baseClasses = cn(
-      "relative inline-flex items-center justify-center overflow-hidden rounded-none font-mono text-xs tracking-wider uppercase transition-[border-color,transform] duration-300 cursor-pointer select-none outline-none focus-visible:ring-1 focus-visible:ring-tai-focus active:scale-[0.98] shadow-[inset_0_1px_0_0_rgba(255,255,255,0.06)]",
+      "relative inline-flex items-center justify-center overflow-hidden rounded-[var(--tai-radius-md)] font-mono text-xs tracking-wider uppercase transition-[border-color,transform] duration-300 cursor-pointer select-none outline-none focus-visible:ring-1 focus-visible:ring-tai-focus active:scale-[0.98] shadow-[inset_0_1px_0_0_rgba(255,255,255,0.06)]",
       className
     );
 

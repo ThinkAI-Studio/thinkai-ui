@@ -19,7 +19,7 @@ export function TaiAvatar({ src, alt, fallback, size = "md", className }: TaiAva
         sizeClass,
         className
       )}
-      style={{ borderRadius: 0 }}
+      style={{ borderRadius: "var(--tai-radius-md)" }}
     >
       {src ? (
         <Image src={src} alt={alt} fill sizes="56px" className="object-cover" />

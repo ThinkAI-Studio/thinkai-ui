@@ -44,7 +44,7 @@ export const TaiInput = React.forwardRef<HTMLInputElement, TaiInputProps>(
               error ? "border-tai-warning/80" : "hover:border-tai-border-strong",
               className,
             )}
-            style={{ borderRadius: 0 }}
+            style={{ borderRadius: "var(--tai-radius-md)" }}
             {...props}
           />
           {/* Symmetrical Laser Hairline Focus Expansion */}

@@ -53,7 +53,7 @@ export const TaiSwitch = React.forwardRef<HTMLInputElement, TaiSwitchProps>(
             "relative mt-0.5 h-6 w-11 shrink-0 border border-tai-border bg-tai-bg transition-colors duration-200 group-hover:border-tai-accent group-focus-within:ring-2 group-focus-within:ring-tai-focus/30",
             isChecked && "border-tai-accent bg-tai-accent/15"
           )}
-          style={{ borderRadius: 0 }}
+          style={{ borderRadius: "var(--tai-radius-sm)" }}
         >
           <input
             ref={ref}
@@ -72,7 +72,7 @@ export const TaiSwitch = React.forwardRef<HTMLInputElement, TaiSwitchProps>(
               "pointer-events-none absolute left-1 top-1 h-4 w-4",
               isChecked ? "bg-tai-accent" : "bg-tai-subtle"
             )}
-            style={{ borderRadius: 0 }}
+            style={{ borderRadius: "var(--tai-radius-sm)" }}
             animate={
               prefersReduced
                 ? { x: isChecked ? 20 : 0 }

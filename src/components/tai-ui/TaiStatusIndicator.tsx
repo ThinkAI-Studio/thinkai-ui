@@ -96,7 +96,7 @@ export function TaiStatusIndicator({
               sizeStyles.beacon,
               config.pulseColor
             )}
-            style={{ borderRadius: 0 }}
+            style={{ borderRadius: "var(--tai-radius-sm)" }}
           />
         )}
         <span
@@ -106,7 +106,7 @@ export function TaiStatusIndicator({
             config.color,
             config.shadow
           )}
-          style={{ borderRadius: 0 }}
+          style={{ borderRadius: "var(--tai-radius-sm)" }}
         />
       </span>
 
