@@ -32,8 +32,8 @@ export const docPages: DocPage[] = [
     category: "Guide",
     sections: [
       { id: "initialize", title: "Initialize the registry", body: "Run the init command from the project where you want the primitives to live. It prepares the local registry configuration without hiding the resulting files.", code: "npx thinkai-ui init" },
-      { id: "add", title: "Add a component", body: "Choose a primitive from the catalog and copy it into your own UI folder. The output is regular source code: inspect it, rename it, or change its behavior.", code: "npx thinkai-ui add wipe-button" },
-      { id: "compose", title: "Import the source", body: "Import the installed component using your project alias and compose it with your own product UI.", code: "import { WipeButton } from \"@/components/ui/wipe-button\";" },
+      { id: "add", title: "Add a component", body: "Choose a primitive from the catalog and copy it into your own UI folder. The output is regular source code: inspect it, rename it, or change its behavior.", code: "npx thinkai-ui add tai-button" },
+      { id: "compose", title: "Import the source", body: "Import the installed component using your project alias and compose it with your own product UI.", code: "import { TaiButton } from \"@/components/ui/tai-button\";" },
     ],
   },
   {
@@ -45,17 +45,6 @@ export const docPages: DocPage[] = [
       { id: "usage", title: "Usage", body: "Use TaiButton for actions that change state or submit an intent. Keep the label short and let the variant communicate priority.", code: "<TaiButton variant=\"primary\">Deploy service</TaiButton>" },
       { id: "variants", title: "Variants", body: "Primary is the strongest action. Secondary and outline support adjacent actions. Ghost is for low-emphasis utility controls." },
       { id: "motion", title: "Motion behavior", body: "Hover uses a small spring lift and the icon follows the content. Tap settles one pixel down instead of applying a rigid scale." },
-    ],
-  },
-  {
-    slug: "wipe-button",
-    title: "WipeButton",
-    summary: "A source-owned forward wipe for high-intent actions and links.",
-    category: "Components",
-    sections: [
-      { id: "usage", title: "Usage", body: "Use the wipe sparingly for a primary call to action. The text color inherits from the host class unless an explicit color is provided.", code: "<WipeButton className=\"bg-white text-black\">Explore</WipeButton>" },
-      { id: "colors", title: "Color contract", body: "The wipe layer is independent from the foreground label. This prevents white-on-white failures when the button uses a light surface." },
-      { id: "accessibility", title: "Accessibility", body: "Use a real button for actions and an anchor for navigation. Focus-visible styles remain available and reduced motion removes the sweep." },
     ],
   },
   {
@@ -155,7 +144,7 @@ export function answerQuestion(question: string): Answer {
     { terms: ["install", "setup", "start", "registry", "add component"], answer: "Run `npx thinkai-ui init`, then add a primitive with `npx thinkai-ui add tai-button`. The CLI copies source into your project so you can own and edit it.", sourceSlug: "installation", sourceTitle: "Installation" },
     { terms: ["motion", "animation", "spring", "reduced motion"], answer: "Use Motion for intentional reveals, gentle springs, and component feedback. Reduced-motion users receive the same state change without travel.", sourceSlug: "motion-system", sourceTitle: "Motion system" },
     { terms: ["tai-button", "tai button", "component variant"], answer: "Use TaiButton for actions that change state or submit an intent. Choose primary for the strongest action, then secondary, outline, or ghost for supporting actions.", sourceSlug: "tai-button", sourceTitle: "TaiButton" },
-    { terms: ["wipebutton", "wipe button"], answer: "Use WipeButton sparingly for a primary forward action or link. Keep the label short and use a real anchor when the action navigates.", sourceSlug: "wipe-button", sourceTitle: "WipeButton" },
+    { terms: ["wipebutton", "wipe button"], answer: "The forward-wipe interaction is folded into TaiButton as variant=\"wipe\". Use TaiButton sparingly for a primary forward action; keep the label short and use a real anchor when the action navigates.", sourceSlug: "tai-button", sourceTitle: "TaiButton" },
     { terms: ["accessibility", "a11y", "keyboard", "focus", "aria", "semantic"], answer: "Use semantic buttons and links, visible focus styles, labelled controls, and `aria-expanded` for disclosures. Native keyboard behavior should remain predictable.", sourceSlug: "accessibility", sourceTitle: "Accessibility" },
     { terms: ["license", "ownership", "source", "telemetry", "principle", "design"], answer: "The primitives are distributed as source files. You own the runtime in your repository; components do not include tracking hooks or background telemetry.", sourceSlug: "design-principles", sourceTitle: "Design principles" },
   ];

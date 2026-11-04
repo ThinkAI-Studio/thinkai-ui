@@ -378,6 +378,21 @@ export interface TaiButtonProps
   wipeColor?: string;
 }
 
+const bgInitial = { opacity: 0, scale: 1.02 };
+const bgVariants = {
+  hover: { opacity: 1, scale: 1 },
+  idle: { opacity: 0, scale: 1.02 },
+};
+const contentVariants = {
+  hover: { y: 0 },
+  idle: { y: 0 },
+};
+const iconVariants = {
+  hover: { x: 1 },
+  idle: { x: 0 },
+};
+const tapAnimation = { scale: 0.97 };
+
 export const TaiButton = React.forwardRef<HTMLButtonElement, TaiButtonProps>(
   (
     {
@@ -485,7 +500,7 @@ export const TaiButton = React.forwardRef<HTMLButtonElement, TaiButtonProps>(
           variants={{ hover: prefersReduced ? { y: 0 } : { y: -0.5 } }}
           whileTap={tapAnimation}
           transition={TAI_PHYSICS.microswitch}
-          {...(props as unknown as React.AnchorHTMLAttributes<HTMLAnchorElement>)}
+          {...(props as unknown as Record<string, unknown>)}
         >
           {sharedInner}
         </motion.a>
@@ -500,7 +515,7 @@ export const TaiButton = React.forwardRef<HTMLButtonElement, TaiButtonProps>(
         variants={{ hover: prefersReduced ? { y: 0 } : { y: -0.5 } }}
         whileTap={tapAnimation}
         transition={TAI_PHYSICS.microswitch}
-        {...props}
+        {...(props as unknown as Record<string, unknown>)}
       >
         {sharedInner}
       </motion.button>

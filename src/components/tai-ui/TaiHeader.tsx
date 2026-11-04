@@ -4,9 +4,7 @@ import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "motion/react";
 import { ArrowUpRight } from "lucide-react";
-import { WipeButton } from "./WipeButton";
-import { ButtonTextRoll } from "./ButtonTextRoll";
-import { ArrowRoll } from "./ArrowRoll";
+import { WipeButton, ButtonTextRoll, ArrowRoll } from "./TaiButton";
 
 interface TaiHeaderProps {
   onOpenAbout: () => void;

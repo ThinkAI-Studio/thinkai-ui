@@ -49,8 +49,7 @@
         "lucide-react"
       ],
       "registryDependencies": [
-        "tai-button",
-        "wipe-button"
+        "tai-button"
       ],
       "files": [
         {
@@ -75,6 +74,9 @@
           "type": "registry:ui",
           "target": "components/tai-ui/AboutDrawer.tsx"
         }
+      ],
+      "registryDependencies": [
+        "tai-button"
       ]
     },
     {
@@ -92,6 +94,9 @@
           "type": "registry:ui",
           "target": "components/tai-ui/ContactModal.tsx"
         }
+      ],
+      "registryDependencies": [
+        "tai-button"
       ]
     },
     {

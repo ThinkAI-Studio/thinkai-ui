@@ -3,8 +3,7 @@
 import React, { useRef, useState } from "react";
 import { motion, AnimatePresence, useReducedMotion } from "motion/react";
 import { Copy, Check, ExternalLink, Mail } from "lucide-react";
-import { ButtonTextRoll } from "./ButtonTextRoll";
-import { WipeButton } from "./WipeButton";
+import { ButtonTextRoll, WipeButton } from "./TaiButton";
 import { useModalFocus } from "@/lib/useModalFocus";
 
 interface ContactModalProps {

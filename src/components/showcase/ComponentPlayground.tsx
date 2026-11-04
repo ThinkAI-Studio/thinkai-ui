@@ -3,10 +3,10 @@
 import { useState } from "react";
 import { Copy, Check, Terminal, Code, Eye } from "lucide-react";
 import { TaiButton } from "@/components/tai-ui/TaiButton";
-import { WipeButton } from "@/components/tai-ui/WipeButton";
-import { ArrowRoll } from "@/components/tai-ui/ArrowRoll";
-import { ButtonTextRoll } from "@/components/tai-ui/ButtonTextRoll";
-import { TextRoll } from "@/components/tai-ui/TextRoll";
+import { WipeButton } from "@/components/tai-ui/TaiButton";
+import { ArrowRoll } from "@/components/tai-ui/TaiButton";
+import { ButtonTextRoll } from "@/components/tai-ui/TaiButton";
+import { TextRoll } from "@/components/tai-ui/TaiButton";
 import { MaskedTextReveal } from "@/components/tai-ui/MaskedTextReveal";
 import { TechLogo } from "@/components/tai-ui/TechLogos";
 import { OpenAiIcon, GeminiIcon, ClaudeIcon, PerplexityIcon, ManusIcon } from "@/components/tai-ui/AiBrandIcons";
@@ -72,7 +72,7 @@ export function ComponentPlayground() {
       category: "Action",
       description: "Signature Forward-Wipe interactive button with luxury easing curve [0.16, 1, 0.3, 1].",
       dependencies: ["@radix-ui/react-slot", "clsx", "tailwind-merge", "motion"],
-      codeSnippet: `import { WipeButton } from "@/components/tai-ui/WipeButton";\n\nexport default function Example() {\n  return (\n    <div className="flex gap-4">\n      <WipeButton className="px-6 py-3 bg-white text-black font-bold">Explore Registry</WipeButton>\n      <WipeButton className="px-6 py-3 bg-zinc-900 border border-white/20 text-white">View Source</WipeButton>\n    </div>\n  );\n}`,
+      codeSnippet: `import { WipeButton } from "@/components/tai-ui/TaiButton";\n\nexport default function Example() {\n  return (\n    <div className="flex gap-4">\n      <WipeButton className="px-6 py-3 bg-white text-black font-bold">Explore Registry</WipeButton>\n      <WipeButton className="px-6 py-3 bg-zinc-900 border border-white/20 text-white">View Source</WipeButton>\n    </div>\n  );\n}`,
       renderPreview: () => (
         <div className="flex flex-wrap gap-4 items-center justify-center p-6">
           <WipeButton className="px-6 py-3 bg-white text-black font-bold">Explore Registry</WipeButton>
@@ -119,7 +119,7 @@ export function ComponentPlayground() {
       category: "Typography",
       description: "Dual-layer micro-tumbler for kinetic button labels with spring transitions.",
       dependencies: ["motion"],
-      codeSnippet: `import { ButtonTextRoll } from "@/components/tai-ui/ButtonTextRoll";\n\nexport default function Example() {\n  return (\n    <button className="px-6 py-3 bg-zinc-900 border border-white/20 text-white font-mono uppercase text-xs tracking-wider">\n      <ButtonTextRoll text="VERIFY SIGNATURE" />\n    </button>\n  );\n}`,
+      codeSnippet: `import { ButtonTextRoll } from "@/components/tai-ui/TaiButton";\n\nexport default function Example() {\n  return (\n    <button className="px-6 py-3 bg-zinc-900 border border-white/20 text-white font-mono uppercase text-xs tracking-wider">\n      <ButtonTextRoll text="VERIFY SIGNATURE" />\n    </button>\n  );\n}`,
       renderPreview: () => (
         <div className="flex items-center justify-center p-6">
           <div className="px-6 py-3 bg-zinc-900 border border-white/20 text-white font-mono uppercase text-xs tracking-wider cursor-pointer hover:border-emerald-400 transition-colors">
@@ -134,7 +134,7 @@ export function ComponentPlayground() {
       category: "Action",
       description: "Directional forward translation arrow with spring physics.",
       dependencies: ["motion"],
-      codeSnippet: `import { ArrowRoll } from "@/components/tai-ui/ArrowRoll";\n\nexport default function Example() {\n  return (\n    <button className="group flex items-center gap-3 px-5 py-2.5 bg-tai-sheet border border-white/10 text-white font-mono text-xs">\n      <span>ACCESS PORTAL</span>\n      <ArrowRoll />\n    </button>\n  );\n}`,
+      codeSnippet: `import { ArrowRoll } from "@/components/tai-ui/TaiButton";\n\nexport default function Example() {\n  return (\n    <button className="group flex items-center gap-3 px-5 py-2.5 bg-tai-sheet border border-white/10 text-white font-mono text-xs">\n      <span>ACCESS PORTAL</span>\n      <ArrowRoll />\n    </button>\n  );\n}`,
       renderPreview: () => (
         <div className="flex items-center justify-center p-6">
           <button className="group flex items-center gap-3 px-6 py-3 bg-tai-sheet border border-white/20 hover:border-white text-white font-mono text-xs tracking-widest uppercase transition-colors active:translate-y-px">
@@ -150,7 +150,7 @@ export function ComponentPlayground() {
       category: "Typography",
       description: "High-speed tumbler slot-machine roll for display headlines and metrics.",
       dependencies: ["motion"],
-      codeSnippet: `import { TextRoll } from "@/components/tai-ui/TextRoll";\n\nexport default function Example() {\n  return (\n    <h2 className="text-3xl font-mono font-bold uppercase tracking-tight text-white">\n      <TextRoll text="ZERO LATENCY" />\n    </h2>\n  );\n}`,
+      codeSnippet: `import { TextRoll } from "@/components/tai-ui/TaiButton";\n\nexport default function Example() {\n  return (\n    <h2 className="text-3xl font-mono font-bold uppercase tracking-tight text-white">\n      <TextRoll text="ZERO LATENCY" />\n    </h2>\n  );\n}`,
       renderPreview: () => (
         <div className="flex items-center justify-center p-8">
           <div className="text-2xl sm:text-3xl font-mono font-bold tracking-tight text-white uppercase text-center">
@@ -213,7 +213,7 @@ export function ComponentPlayground() {
       category: "Overlay",
       description: "Sharp geometric contact dialog with 1-click clipboard actions and toast feedback.",
       dependencies: ["motion", "lucide-react"],
-      codeSnippet: `import { useState } from "react";\nimport { ContactModal } from "@/components/tai-ui/ContactModal";\nimport { WipeButton } from "@/components/tai-ui/WipeButton";\n\nexport default function Example() {\n  const [open, setOpen] = useState(false);\n  return (\n    <>\n      <WipeButton className="px-6 py-3 bg-white text-black font-bold" onClick={() => setOpen(true)}>Initiate Contact</WipeButton>\n      <ContactModal isOpen={open} onClose={() => setOpen(false)} />\n    </>\n  );\n}`,
+      codeSnippet: `import { useState } from "react";\nimport { ContactModal } from "@/components/tai-ui/ContactModal";\nimport { WipeButton } from "@/components/tai-ui/TaiButton";\n\nexport default function Example() {\n  const [open, setOpen] = useState(false);\n  return (\n    <>\n      <WipeButton className="px-6 py-3 bg-white text-black font-bold" onClick={() => setOpen(true)}>Initiate Contact</WipeButton>\n      <ContactModal isOpen={open} onClose={() => setOpen(false)} />\n    </>\n  );\n}`,
       renderPreview: ({ setContactOpen }) => (
         <div className="flex flex-col items-center justify-center p-6 gap-3">
           <WipeButton className="px-6 py-3 bg-white text-black font-bold" onClick={() => setContactOpen(true)}>

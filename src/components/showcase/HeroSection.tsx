@@ -3,10 +3,10 @@
 import { useState } from "react";
 import { Terminal, Copy, Check, Box, Search } from "lucide-react";
 import Link from "next/link";
-import { WipeButton } from "@/components/tai-ui/WipeButton";
-import { QuantumMatrixCanvas } from "@/components/tai-ui/QuantumMatrixCanvas";
-import { ButtonTextRoll } from "@/components/tai-ui/ButtonTextRoll";
-import { ArrowRoll } from "@/components/tai-ui/ArrowRoll";
+import { WipeButton } from "@/components/tai-ui/TaiButton";
+import { ThreeHalftoneCanvas } from "@/components/tai-ui/ThreeHalftoneCanvas";
+import { ButtonTextRoll } from "@/components/tai-ui/TaiButton";
+import { ArrowRoll } from "@/components/tai-ui/TaiButton";
 import { catalogItems } from "@/data/catalog";
 
 export function HeroSection({ onOpenCommandMenu }: { onOpenCommandMenu: () => void }) {
@@ -22,7 +22,7 @@ export function HeroSection({ onOpenCommandMenu }: { onOpenCommandMenu: () => vo
     <section className="relative min-w-0 overflow-hidden border-b border-white/[0.08] px-4 pb-20 pt-24 md:pb-28 md:pt-36">
       {/* Background Dynamic Quantum Matrix (Distinctive Infrastructure Substrate) */}
       <div className="absolute inset-0 pointer-events-auto opacity-95 z-0">
-        <QuantumMatrixCanvas className="w-full h-full" gridSize={28} />
+        <ThreeHalftoneCanvas className="w-full h-full" />
       </div>
 
       {/* Dark Obsidian Gradient Vignette */}

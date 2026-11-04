@@ -4,8 +4,7 @@ import React, { useRef } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence, useReducedMotion } from "motion/react";
 import { ArrowUpRight } from "lucide-react";
-import { ButtonTextRoll } from "./ButtonTextRoll";
-import { WipeButton } from "./WipeButton";
+import { ButtonTextRoll, WipeButton } from "./TaiButton";
 import { TAI_SPRING, TAI_EASE } from "@/lib/motion";
 import { useModalFocus } from "@/lib/useModalFocus";
 

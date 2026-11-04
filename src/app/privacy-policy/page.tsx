@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { ArrowLeft, Shield } from "lucide-react";
-import { WipeButton } from "@/components/tai-ui/WipeButton";
+import { WipeButton } from "@/components/tai-ui/TaiButton";
 
 export const metadata = {
   title: "Privacy Policy",

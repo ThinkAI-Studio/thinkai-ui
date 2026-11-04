@@ -16,15 +16,14 @@ import {
   Layers,
 } from "lucide-react";
 import { TaiButton } from "@/components/tai-ui/TaiButton";
-import { WipeButton } from "@/components/tai-ui/WipeButton";
-import { ArrowRoll } from "@/components/tai-ui/ArrowRoll";
-import { ButtonTextRoll } from "@/components/tai-ui/ButtonTextRoll";
-import { TextRoll } from "@/components/tai-ui/TextRoll";
+import { WipeButton } from "@/components/tai-ui/TaiButton";
+import { ArrowRoll } from "@/components/tai-ui/TaiButton";
+import { ButtonTextRoll } from "@/components/tai-ui/TaiButton";
+import { TextRoll } from "@/components/tai-ui/TaiButton";
 import { MaskedTextReveal } from "@/components/tai-ui/MaskedTextReveal";
 import { TechLogo } from "@/components/tai-ui/TechLogos";
 import { OpenAiIcon, GeminiIcon, ClaudeIcon, PerplexityIcon, ManusIcon } from "@/components/tai-ui/AiBrandIcons";
 import { ProductMockup } from "@/components/tai-ui/ProductMockup";
-import { QuantumMatrixCanvas } from "@/components/tai-ui/QuantumMatrixCanvas";
 import { ThreeHalftoneCanvas } from "@/components/tai-ui/ThreeHalftoneCanvas";
 import { AnimatePresence, motion, useReducedMotion } from "motion/react";
 import { catalogItems } from "@/data/catalog";
@@ -266,26 +265,9 @@ export function StudioWorkbench({
       ),
     },
     {
-      id: "quantum-matrix-canvas",
-      category: "04 · RUNTIMES",
-      itemNumber: "04.01",
-      title: "QuantumMatrixCanvas",
-      status: "NEW",
-      description: "Interactive monochromatic dot-lattice field with cursor strain and 1px bus scanlines.",
-      dependencies: ["motion"],
-      render: () => (
-        <div className="w-full h-64 relative overflow-hidden bg-[#08080a] border border-white/10">
-          <QuantumMatrixCanvas className="w-full h-full" />
-          <div className="absolute top-3 left-3 px-3 py-1 bg-black/80 border border-[#2985b8]/40 text-[10px] font-mono text-[#52adcf]">
-            INTERACTIVE: MOVE MOUSE OVER GRID
-          </div>
-        </div>
-      ),
-    },
-    {
       id: "three-halftone-canvas",
       category: "04 · RUNTIMES",
-      itemNumber: "04.02",
+      itemNumber: "04.01",
       title: "ThreeHalftoneCanvas",
       status: "WEBGL",
       description: "Optimized Three.js WebGL procedural ocean halftone shader canvas with 60/120fps throttle.",
