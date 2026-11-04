@@ -142,7 +142,7 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} font-sans bg-tai-bg text-tai-text antialiased min-h-screen`}
       >
-        <Script id="thinkai-theme-init" strategy="beforeInteractive">{`(() => { try { const saved = localStorage.getItem('thinkai-ui-theme'); const system = matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark'; const theme = saved === 'light' || saved === 'dark' ? saved : system; document.documentElement.dataset.theme = theme; document.documentElement.style.colorScheme = theme; const savedRadius = localStorage.getItem('thinkai-ui-radius'); const radius = savedRadius === 'sharp' || savedRadius === 'smooth' || savedRadius === 'machined' ? savedRadius : 'machined'; document.documentElement.dataset.radius = radius; } catch (_) {} })()`}</Script>
+        <Script id="thinkai-theme-init" strategy="beforeInteractive">{`(() => { try { const saved = localStorage.getItem('thinkai-ui-theme'); const system = matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark'; const theme = saved === 'light' || saved === 'dark' ? saved : system; document.documentElement.dataset.theme = theme; document.documentElement.style.colorScheme = theme; const savedRadius = localStorage.getItem('thinkai-ui-radius'); const radius = savedRadius === '0' || savedRadius === 'sharp' ? '0' : '12'; document.documentElement.dataset.radius = radius; } catch (_) {} })()`}</Script>
         <script
           id="thinkai-jsonld"
           type="application/ld+json"

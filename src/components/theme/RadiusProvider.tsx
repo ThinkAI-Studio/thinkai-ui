@@ -2,10 +2,10 @@
 
 import * as React from "react";
 
-export type RadiusPreference = "sharp" | "machined" | "smooth";
+export type RadiusPreference = "0" | "12";
 
 const STORAGE_KEY = "thinkai-ui-radius";
-const DEFAULT_RADIUS: RadiusPreference = "machined";
+const DEFAULT_RADIUS: RadiusPreference = "12";
 const radiusListeners = new Set<() => void>();
 
 function applyRadius(preference: RadiusPreference) {
@@ -17,9 +17,9 @@ function applyRadius(preference: RadiusPreference) {
 function getPreference(): RadiusPreference {
   if (typeof window === "undefined") return DEFAULT_RADIUS;
   const saved = window.localStorage.getItem(STORAGE_KEY);
-  return saved === "sharp" || saved === "machined" || saved === "smooth"
-    ? (saved as RadiusPreference)
-    : DEFAULT_RADIUS;
+  if (saved === "0" || saved === "sharp") return "0";
+  if (saved === "12" || saved === "machined" || saved === "smooth") return "12";
+  return DEFAULT_RADIUS;
 }
 
 function subscribeToRadius(callback: () => void) {

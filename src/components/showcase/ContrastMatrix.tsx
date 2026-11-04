@@ -3,7 +3,7 @@ export function ContrastMatrix() {
     {
       dimension: "Corner Geometry",
       generic: "rounded-xl / rounded-full pill shapes",
-      thinkai: "100% Zero-Radius (rounded-none, sharp 90°)",
+      thinkai: "Unified 12px Default Radius (interactive 0px ↔ 12px toggle)",
     },
     {
       dimension: "Surface Layers",

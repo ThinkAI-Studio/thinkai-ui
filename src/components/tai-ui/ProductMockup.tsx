@@ -32,7 +32,7 @@ export function ProductMockup({
       whileInView={prefersReduced ? { opacity: 1 } : { opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-40px" }}
       transition={{ duration: 0.7, ease: TAI_EASE.luxury }}
-      className="relative w-full rounded-none overflow-hidden border border-white/[0.08] bg-[#0a0a0c] shadow-[inset_0_1px_0_0_rgba(255,255,255,0.08),0_24px_60px_-15px_rgba(0,0,0,0.9)] group transition-[border-color,box-shadow] duration-500 hover:border-white/[0.22] hover:shadow-[inset_0_1px_0_0_rgba(255,255,255,0.12),0_32px_80px_-15px_rgba(0,0,0,0.95)]"
+      className="relative w-full rounded-[var(--tai-radius-lg)] overflow-hidden border border-white/[0.08] bg-[#0a0a0c] shadow-[inset_0_1px_0_0_rgba(255,255,255,0.08),0_24px_60px_-15px_rgba(0,0,0,0.9)] group transition-[border-color,box-shadow] duration-500 hover:border-white/[0.22] hover:shadow-[inset_0_1px_0_0_rgba(255,255,255,0.12),0_32px_80px_-15px_rgba(0,0,0,0.95)]"
     >
       {/* Real product screenshot; the user's browser supplies the chrome. */}
       <a

@@ -32,10 +32,10 @@ export function HalftoneBanner({
 export function TaiLogoMark({ className = "w-4 h-4" }: { className?: string }) {
   return (
     <div className={`grid grid-cols-2 gap-[2px] ${className}`}>
-      <div className="w-full h-full bg-white rounded-none" />
-      <div className="w-full h-full bg-white rounded-none" />
-      <div className="w-full h-full bg-white rounded-none" />
-      <div className="w-full h-full bg-white rounded-none" />
+      <div className="w-full h-full bg-white rounded-[var(--tai-radius-sm)]" />
+      <div className="w-full h-full bg-white rounded-[var(--tai-radius-sm)]" />
+      <div className="w-full h-full bg-white rounded-[var(--tai-radius-sm)]" />
+      <div className="w-full h-full bg-white rounded-[var(--tai-radius-sm)]" />
     </div>
   );
 }

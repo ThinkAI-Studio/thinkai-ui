@@ -21,14 +21,14 @@ ThinkAI Studio được xây dựng dựa trên nguyên lý **"Infrastructure-Gr
    - **Dynamic Alpha Hairlines:** Dùng viền trong suốt `border-white/[0.07]` và `border-white/[0.18]` để thích ứng hoàn hảo trên mọi lớp nền.
    - **LED Status Glow:** Màu xanh danh nghĩa `#4ade80` đi kèm hiệu ứng quang học vi mô `drop-shadow-[0_0_6px_rgba(74,222,128,0.45)]`.
 
-2. **Sharp Architectural Geometry (Hình Học Góc Cạnh Kiến Trúc 4px Grid):**
-   - **100% Zero Border-Radius**: Toàn bộ buttons, cards, dialogs, drawers, inputs và pills đều giữ góc vuông 90° sắc nét (`border-radius: 0px !important`).
+2. **Architectural Geometry (Hình Học Kiến Trúc 4px Grid):**
+   - **Unified 12px Default Radius**: Hệ thống thiết kế chuẩn hóa bán kính bo góc mặc định là 12px (`--tai-radius-base: 12px`), đồng thời hỗ trợ chuyển đổi tương tác linh hoạt giữa 0px (Sharp Architectural) và 12px (Precision Fillet). Loại bỏ quy tắc ép góc nhọn toàn cục.
    - **Mathematical 4px Grid**: Mọi padding, margin đều là bội số nghiêm ngặt của 4 (không có số ngẫu nhiên).
-   - **Crisp Focus Rings**: Khung focus bàn phím vuông vức, độ tương phản sắc nét (`outline: 2px solid rgba(255,255,255,0.85)`).
+   - **Crisp Focus Rings**: Khung focus bàn phím độ tương phản sắc nét (`outline: 2px solid var(--tai-focus)`).
 
 3. **Analog Micro-Grain Tactility (Chất Cảm Vật Lý Tương Tự):**
    - Phủ một lớp film micro-grain (`SVG feTurbulence baseFrequency 1.4, opacity 0.135, background-size: 80px`) lên toàn bộ màn hình.
-   - Hiệu ứng kính mờ `backdrop-blur-xl bg-black/40` trên thanh điều hướng để tương phản với hình khối 0px phía dưới.
+   - Hiệu ứng kính mờ `backdrop-blur-xl bg-black/40` trên thanh điều hướng để tương phản với các bề mặt nội dung phía dưới.
 
 4. **Tectonic Motion Mechanics (Vật Lý Chuyển Động Kiến Trúc):**
    - Chuyển động không bồng bềnh mà mang trọng lượng cơ học (Heavy Frictionless Mechanics).
@@ -176,7 +176,7 @@ src/components/tai-ui/
   1. `asChild` Polymorphism thông qua `@radix-ui/react-slot`.
   2. Variant Typed Control với `cva` (Class Variance Authority).
   3. Safe Tailwind merging với `cn()` (`clsx` + `tailwind-merge`).
-  4. 0px Architectural Focus State & Tactility (`active:scale-[0.98]`).
+  4. Architectural Focus State & Tactility (`active:scale-[0.98]`).
 
 ---
 

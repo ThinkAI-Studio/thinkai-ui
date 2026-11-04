@@ -12,9 +12,8 @@ interface RadiusOption {
 }
 
 const RADIUS_OPTIONS: readonly RadiusOption[] = [
-  { value: "sharp", label: "0", tooltip: "Sharp (0px) — Pure 90° Brutalism" },
-  { value: "machined", label: "2", tooltip: "Machined (2px) — Default Precision Chamfer" },
-  { value: "smooth", label: "4", tooltip: "Smooth (4px) — Modern Engineering Radius" },
+  { value: "0", label: "0", tooltip: "Sharp (0px) — Architectural 90° Geometry" },
+  { value: "12", label: "12", tooltip: "Fillet (12px) — Default Precision Fillet" },
 ];
 
 export function RadiusToggle({ className = "" }: { className?: string }) {
@@ -30,7 +29,7 @@ export function RadiusToggle({ className = "" }: { className?: string }) {
       role="radiogroup"
       aria-label="Border radius geometry switcher"
       className={`inline-flex items-center p-0.5 bg-tai-surface/60 border border-tai-border text-[10px] font-mono select-none ${className}`}
-      style={{ borderRadius: "var(--tai-radius-sm, 2px)" }}
+      style={{ borderRadius: "var(--tai-radius-sm, 8px)" }}
     >
       <span className="px-1.5 text-tai-subtle font-bold tracking-wider uppercase text-[9px]">
         R
@@ -46,19 +45,19 @@ export function RadiusToggle({ className = "" }: { className?: string }) {
               aria-checked={isActive}
               title={opt.tooltip}
               onClick={() => setRadius(opt.value)}
-              className={`relative px-1.5 py-0.5 text-xs font-mono transition-colors duration-150 cursor-pointer ${
+              className={`relative px-2 py-0.5 text-xs font-mono transition-colors duration-150 cursor-pointer ${
                 isActive
                   ? "text-tai-text font-bold"
                   : "text-tai-muted hover:text-tai-text"
               }`}
-              style={{ borderRadius: "var(--tai-radius-sm, 1.5px)" }}
+              style={{ borderRadius: "var(--tai-radius-sm, 6px)" }}
             >
               {isActive && (
                 <motion.span
                   layoutId="radius-active-glider"
                   transition={TAI_PHYSICS.detent}
                   className="absolute inset-0 bg-tai-card border border-tai-border-strong shadow-[inset_0_1px_0_rgba(255,255,255,0.1)]"
-                  style={{ borderRadius: "var(--tai-radius-sm, 1.5px)" }}
+                  style={{ borderRadius: "var(--tai-radius-sm, 6px)" }}
                 />
               )}
               <span className="relative z-10">{opt.label}</span>
