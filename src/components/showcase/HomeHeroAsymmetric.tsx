@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import Link from "next/link";
 import { motion, AnimatePresence } from "motion/react";
 import { Terminal, Copy, Check, ArrowRight, Github, BookOpen } from "lucide-react";
-import { QuantumMatrixCanvas } from "@/components/tai-ui/QuantumMatrixCanvas";
+import { ThreeHalftoneCanvas } from "@/components/tai-ui/ThreeHalftoneCanvas";
 import { LiveUiTicker } from "@/components/showcase/LiveUiTicker";
 import { TAI_EASE } from "@/lib/motion";
 
@@ -26,7 +26,7 @@ export function HomeHeroAsymmetric() {
   };
 
   const handleCopy = () => {
-    navigator.clipboard.writeText(getCommand());
+    void navigator.clipboard.writeText(getCommand());
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);
   };
@@ -35,7 +35,7 @@ export function HomeHeroAsymmetric() {
     <section id="showcase" className="relative min-w-0 overflow-hidden bg-tai-bg pt-28 pb-16 md:pt-36 md:pb-24 border-b border-tai-border transition-colors duration-300">
       {/* Subtle Atmospheric Dot Matrix Substrate */}
       <div className="absolute inset-0 pointer-events-none opacity-20 z-0">
-        <QuantumMatrixCanvas className="w-full h-full" gridSize={36} />
+        <ThreeHalftoneCanvas className="w-full h-full" />
       </div>
 
       {/* Ambient Venice Cyan Radial Glow */}
@@ -203,7 +203,7 @@ export function HomeHeroAsymmetric() {
               <span>·</span>
               <span>NEXT.JS 16</span>
               <span>·</span>
-              <span>47 PRIMITIVES</span>
+              <span>55 PRIMITIVES</span>
               <span>·</span>
               <span>MIT</span>
             </motion.div>

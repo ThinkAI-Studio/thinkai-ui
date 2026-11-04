@@ -4,9 +4,7 @@ import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "motion/react";
 import { ArrowUpRight } from "lucide-react";
-import { WipeButton } from "./WipeButton";
-import { ButtonTextRoll } from "./ButtonTextRoll";
-import { ArrowRoll } from "./ArrowRoll";
+import { WipeButton, ButtonTextRoll, ArrowRoll } from "./TaiButton";
 
 interface TaiHeaderProps {
   onOpenAbout: () => void;
@@ -131,7 +129,7 @@ export function TaiHeader({ onOpenAbout, onOpenContact }: TaiHeaderProps) {
             hoverTextColor="#ffffff"
             borderColor="transparent"
             hoverBorderColor="transparent"
-            className="group h-8.5 sm:h-9 inline-flex items-center justify-center px-3.5 sm:px-4 rounded-none text-sm sm:text-[15px] font-bold tracking-tight cursor-pointer select-none bg-transparent border-0 active:scale-[0.96] transition-transform duration-150 leading-none shadow-none drop-shadow-[0_2px_8px_rgba(0,0,0,0.85)]"
+            className="group h-8.5 sm:h-9 inline-flex items-center justify-center px-3.5 sm:px-4 rounded-[var(--tai-radius-sm)] text-sm sm:text-[15px] font-bold tracking-tight cursor-pointer select-none bg-transparent border-0 active:scale-[0.96] transition-transform duration-150 leading-none shadow-none drop-shadow-[0_2px_8px_rgba(0,0,0,0.85)]"
           >
             About
           </WipeButton>
@@ -143,7 +141,7 @@ export function TaiHeader({ onOpenAbout, onOpenContact }: TaiHeaderProps) {
             hoverTextColor="#ffffff"
             borderColor="transparent"
             hoverBorderColor="transparent"
-            className="group h-8.5 sm:h-9 inline-flex items-center justify-center px-3.5 sm:px-4 rounded-none text-sm sm:text-[15px] font-bold tracking-tight cursor-pointer select-none bg-transparent border-0 active:scale-[0.96] transition-transform duration-150 leading-none shadow-none drop-shadow-[0_2px_8px_rgba(0,0,0,0.85)]"
+            className="group h-8.5 sm:h-9 inline-flex items-center justify-center px-3.5 sm:px-4 rounded-[var(--tai-radius-sm)] text-sm sm:text-[15px] font-bold tracking-tight cursor-pointer select-none bg-transparent border-0 active:scale-[0.96] transition-transform duration-150 leading-none shadow-none drop-shadow-[0_2px_8px_rgba(0,0,0,0.85)]"
           >
             Products
           </WipeButton>
@@ -155,7 +153,7 @@ export function TaiHeader({ onOpenAbout, onOpenContact }: TaiHeaderProps) {
             hoverTextColor="#ffffff"
             borderColor="transparent"
             hoverBorderColor="transparent"
-            className="group h-8.5 sm:h-9 inline-flex items-center justify-center px-3.5 sm:px-4 rounded-none text-sm sm:text-[15px] font-bold tracking-tight cursor-pointer select-none bg-transparent border-0 active:scale-[0.96] transition-transform duration-150 leading-none shadow-none drop-shadow-[0_2px_8px_rgba(0,0,0,0.85)]"
+            className="group h-8.5 sm:h-9 inline-flex items-center justify-center px-3.5 sm:px-4 rounded-[var(--tai-radius-sm)] text-sm sm:text-[15px] font-bold tracking-tight cursor-pointer select-none bg-transparent border-0 active:scale-[0.96] transition-transform duration-150 leading-none shadow-none drop-shadow-[0_2px_8px_rgba(0,0,0,0.85)]"
           >
             Work
           </WipeButton>
@@ -167,7 +165,7 @@ export function TaiHeader({ onOpenAbout, onOpenContact }: TaiHeaderProps) {
             hoverTextColor="#ffffff"
             borderColor="transparent"
             hoverBorderColor="transparent"
-            className="group h-8.5 sm:h-9 inline-flex items-center justify-center px-3.5 sm:px-4 rounded-none text-sm sm:text-[15px] font-bold tracking-tight cursor-pointer select-none bg-transparent border-0 active:scale-[0.96] transition-transform duration-150 leading-none shadow-none drop-shadow-[0_2px_8px_rgba(0,0,0,0.85)]"
+            className="group h-8.5 sm:h-9 inline-flex items-center justify-center px-3.5 sm:px-4 rounded-[var(--tai-radius-sm)] text-sm sm:text-[15px] font-bold tracking-tight cursor-pointer select-none bg-transparent border-0 active:scale-[0.96] transition-transform duration-150 leading-none shadow-none drop-shadow-[0_2px_8px_rgba(0,0,0,0.85)]"
           >
             Contact
           </WipeButton>
@@ -186,7 +184,7 @@ export function TaiHeader({ onOpenAbout, onOpenContact }: TaiHeaderProps) {
             hoverTextColor="#ffffff"
             borderColor="#ffffff"
             hoverBorderColor="rgba(255, 255, 255, 0.4)"
-            className="group h-8.5 sm:h-9.5 inline-flex items-center justify-center gap-2 sm:gap-2.5 px-3 sm:px-4 rounded-none text-xs sm:text-[13.5px] font-bold cursor-pointer shadow-lg select-none bg-white border border-white active:scale-[0.94] transition-transform duration-150 leading-none shrink-0"
+            className="group h-8.5 sm:h-9.5 inline-flex items-center justify-center gap-2 sm:gap-2.5 px-3 sm:px-4 rounded-[var(--tai-radius-md)] text-xs sm:text-[13.5px] font-bold cursor-pointer shadow-lg select-none bg-white border border-white active:scale-[0.94] transition-transform duration-150 leading-none shrink-0"
           >
             <ButtonTextRoll
               text="Start a project"
@@ -296,10 +294,10 @@ export function TaiHeader({ onOpenAbout, onOpenContact }: TaiHeaderProps) {
                 href="https://hostdeck.thinkai.id.vn"
                 target="_blank"
                 rel="noreferrer"
-                    className="p-3.5 rounded-none bg-white/[0.04] border border-white/[0.08] flex items-center justify-between gap-3 group hover:bg-white/[0.08] transition-colors"
+                    className="p-3.5 rounded-[var(--tai-radius-md)] bg-white/[0.04] border border-white/[0.08] flex items-center justify-between gap-3 group hover:bg-white/[0.08] transition-colors"
               >
                 <div className="flex items-center gap-3 overflow-hidden">
-                  <div className="relative w-12 h-10 rounded-none overflow-hidden border border-white/10 shrink-0 bg-[#161619]">
+                  <div className="relative w-12 h-10 rounded-[var(--tai-radius-sm)] overflow-hidden border border-white/10 shrink-0 bg-[#161619]">
                     <Image
                       src="/images/products/hostdeck-screen.png"
                       alt="HostDeck Console"
@@ -324,8 +322,8 @@ export function TaiHeader({ onOpenAbout, onOpenContact }: TaiHeaderProps) {
             {/* Bottom Grab Bar Handle */}
             <div className="flex justify-center items-center py-2">
               <div className="flex flex-col gap-1 items-center">
-                <div className="w-8 h-[2px] rounded-none bg-neutral-600/80" />
-                <div className="w-8 h-[2px] rounded-none bg-neutral-600/80" />
+                <div className="w-8 h-[2px] rounded-[var(--tai-radius-sm)] bg-neutral-600/80" />
+                <div className="w-8 h-[2px] rounded-[var(--tai-radius-sm)] bg-neutral-600/80" />
               </div>
             </div>
           </motion.div>

@@ -3,8 +3,7 @@
 import React, { useRef, useState } from "react";
 import { motion, AnimatePresence, useReducedMotion } from "motion/react";
 import { Copy, Check, ExternalLink, Mail } from "lucide-react";
-import { ButtonTextRoll } from "./ButtonTextRoll";
-import { WipeButton } from "./WipeButton";
+import { ButtonTextRoll, WipeButton } from "./TaiButton";
 import { useModalFocus } from "@/lib/useModalFocus";
 
 interface ContactModalProps {
@@ -26,7 +25,7 @@ export function ContactModal({ isOpen, onClose }: ContactModalProps) {
 
   const handleCopy = (email: string) => {
     if (navigator.clipboard) {
-      navigator.clipboard.writeText(email);
+      void navigator.clipboard.writeText(email);
       setCopiedEmail(email);
       setTimeout(() => setCopiedEmail(null), 2500);
     }
@@ -94,7 +93,7 @@ export function ContactModal({ isOpen, onClose }: ContactModalProps) {
             data-lenis-prevent="true"
             onWheel={(e) => e.stopPropagation()}
             onTouchMove={(e) => e.stopPropagation()}
-            className="relative w-full max-w-lg bg-[#141417] text-white border border-white/15 rounded-none p-6 sm:p-8 shadow-[0_25px_60px_rgba(0,0,0,0.9)] z-10 space-y-6 overflow-hidden font-sans"
+            className="relative w-full max-w-lg bg-[#141417] text-white border border-white/15 rounded-[var(--tai-radius-lg)] p-6 sm:p-8 shadow-[0_25px_60px_rgba(0,0,0,0.9)] z-10 space-y-6 overflow-hidden font-sans"
           >
             {/* Header: Title + Close Button */}
             <div className="flex items-center justify-between border-b border-white/10 pb-4">
@@ -106,7 +105,7 @@ export function ContactModal({ isOpen, onClose }: ContactModalProps) {
 
               <button
                 onClick={onClose}
-                className="group flex items-center justify-center gap-2 px-3 py-1.5 rounded-none bg-white/10 text-white text-xs font-mono font-bold hover:bg-white/20 transition-colors cursor-pointer"
+                className="group flex items-center justify-center gap-2 px-3 py-1.5 rounded-[var(--tai-radius-sm)] bg-white/10 text-white text-xs font-mono font-bold hover:bg-white/20 transition-colors cursor-pointer"
                 aria-label="Close modal"
               >
                 <ButtonTextRoll text="Close" className="font-mono text-xs font-bold leading-none" />
@@ -120,7 +119,7 @@ export function ContactModal({ isOpen, onClose }: ContactModalProps) {
             </div>
 
             {/* Email Card 1: Primary Studio Mail */}
-            <div className="p-4 rounded-none bg-white/[0.04] border border-white/10 space-y-3">
+            <div className="p-4 rounded-[var(--tai-radius-md)] bg-white/[0.04] border border-white/10 space-y-3">
               <div className="flex items-center justify-between text-[11px] font-mono text-neutral-400 uppercase tracking-wider">
                 <span>(PRIMARY CONTACT)</span>
               </div>
@@ -133,7 +132,7 @@ export function ContactModal({ isOpen, onClose }: ContactModalProps) {
                 <button
                   type="button"
                   onClick={() => handleCopy(primaryEmail)}
-                  className={`inline-flex items-center justify-center gap-1.5 px-3 py-1.5 rounded-none text-xs font-mono font-bold transition-colors shrink-0 cursor-pointer active:opacity-80 ${
+                  className={`inline-flex items-center justify-center gap-1.5 px-3 py-1.5 rounded-[var(--tai-radius-sm)] text-xs font-mono font-bold transition-colors shrink-0 cursor-pointer active:opacity-80 ${
                     copiedEmail === primaryEmail
                       ? "bg-emerald-500 text-black shadow-lg shadow-emerald-500/30"
                       : "bg-white text-black hover:bg-neutral-200"
@@ -166,7 +165,7 @@ export function ContactModal({ isOpen, onClose }: ContactModalProps) {
                 hoverTextColor="#05070a"
                 borderColor="rgba(255, 255, 255, 0.2)"
                 hoverBorderColor="#ffffff"
-                className="p-3 rounded-none bg-white/[0.04] flex items-center justify-center gap-2 text-xs font-mono font-bold cursor-pointer"
+                className="p-3 rounded-[var(--tai-radius-md)] bg-white/[0.04] flex items-center justify-center gap-2 text-xs font-mono font-bold cursor-pointer"
               >
                 <Mail className="w-4 h-4 shrink-0" />
                 <span>Open in Gmail</span>
@@ -181,7 +180,7 @@ export function ContactModal({ isOpen, onClose }: ContactModalProps) {
                 hoverTextColor="#05070a"
                 borderColor="rgba(255, 255, 255, 0.2)"
                 hoverBorderColor="#ffffff"
-                className="p-3 rounded-none bg-white/[0.04] flex items-center justify-center gap-2 text-xs font-mono font-bold cursor-pointer"
+                className="p-3 rounded-[var(--tai-radius-md)] bg-white/[0.04] flex items-center justify-center gap-2 text-xs font-mono font-bold cursor-pointer"
               >
                 <Mail className="w-4 h-4 shrink-0" />
                 <span>Default Mail App</span>

@@ -1,13 +1,13 @@
 {
-  "$schema": "https://ui.thinkai.studio/schema/registry.json",
+  "$schema": "https://ui.thinkai.id.vn/schema/registry.json",
   "name": "thinkai-ui",
-  "homepage": "https://ui.thinkai.studio",
+  "homepage": "https://ui.thinkai.id.vn",
   "items": [
     {
       "name": "tai-button",
       "type": "registry:ui",
       "title": "Tai Button",
-      "description": "0px sharp architectural button with top-inset light sweep, mechanical active compression, and polymorphic slot support.",
+      "description": "12px precision architectural button with top-inset light sweep, mechanical active compression, and polymorphic slot support.",
       "dependencies": [
         "motion",
         "@radix-ui/react-slot",
@@ -24,153 +24,18 @@
       ]
     },
     {
-      "name": "wipe-button",
+      "name": "tai-icon-button",
       "type": "registry:ui",
-      "title": "Wipe Button",
-      "description": "Signature Forward-Wipe interactive button with luxury easing and 0px border geometry.",
-      "dependencies": [
-        "motion",
-        "@radix-ui/react-slot",
-        "clsx",
-        "tailwind-merge"
-      ],
-      "files": [
-        {
-          "path": "ui/WipeButton.tsx",
-          "type": "registry:ui",
-          "target": "components/tai-ui/WipeButton.tsx"
-        }
-      ]
-    },
-    {
-      "name": "arrow-roll",
-      "type": "registry:ui",
-      "title": "Arrow Roll",
-      "description": "Micro-interaction directional arrow roll on hover with spring physics.",
+      "title": "Tai Icon Button",
+      "description": "Accessible icon-only action with a consistent focus target.",
       "dependencies": [
         "motion"
       ],
       "files": [
         {
-          "path": "ui/ArrowRoll.tsx",
+          "path": "ui/TaiIconButton.tsx",
           "type": "registry:ui",
-          "target": "components/tai-ui/ArrowRoll.tsx"
-        }
-      ]
-    },
-    {
-      "name": "button-text-roll",
-      "type": "registry:ui",
-      "title": "Button Text Roll",
-      "description": "Dual-layer kinetic typography tumbler for buttons.",
-      "dependencies": [
-        "motion"
-      ],
-      "files": [
-        {
-          "path": "ui/ButtonTextRoll.tsx",
-          "type": "registry:ui",
-          "target": "components/tai-ui/ButtonTextRoll.tsx"
-        }
-      ]
-    },
-    {
-      "name": "text-roll",
-      "type": "registry:ui",
-      "title": "Text Roll",
-      "description": "Slot-machine text tumbler roll for display headlines.",
-      "dependencies": [
-        "motion"
-      ],
-      "files": [
-        {
-          "path": "ui/TextRoll.tsx",
-          "type": "registry:ui",
-          "target": "components/tai-ui/TextRoll.tsx"
-        }
-      ]
-    },
-    {
-      "name": "product-mockup",
-      "type": "registry:ui",
-      "title": "Product Mockup",
-      "description": "Architectural browser/laptop mockup frame with inset parallax and clip-path reveals.",
-      "dependencies": [
-        "motion"
-      ],
-      "files": [
-        {
-          "path": "ui/ProductMockup.tsx",
-          "type": "registry:ui",
-          "target": "components/tai-ui/ProductMockup.tsx"
-        }
-      ]
-    },
-    {
-      "name": "masked-text-reveal",
-      "type": "registry:ui",
-      "title": "Masked Text Reveal",
-      "description": "Editorial text reveal using geometric clip-path masking.",
-      "dependencies": [
-        "motion"
-      ],
-      "files": [
-        {
-          "path": "ui/MaskedTextReveal.tsx",
-          "type": "registry:ui",
-          "target": "components/tai-ui/MaskedTextReveal.tsx"
-        }
-      ]
-    },
-    {
-      "name": "halftone-banner",
-      "type": "registry:ui",
-      "title": "Halftone Banner",
-      "description": "WebGL ocean caustics banner integrated with ThinkAI Studio logomark.",
-      "dependencies": [
-        "three",
-        "motion"
-      ],
-      "registryDependencies": [
-        "three-halftone-canvas"
-      ],
-      "files": [
-        {
-          "path": "ui/HalftoneBanner.tsx",
-          "type": "registry:ui",
-          "target": "components/tai-ui/HalftoneBanner.tsx"
-        }
-      ]
-    },
-    {
-      "name": "three-halftone-canvas",
-      "type": "registry:ui",
-      "title": "Three Halftone Canvas",
-      "description": "Optimized Three.js WebGL procedural ocean halftone shader canvas with 60/120fps throttle.",
-      "dependencies": [
-        "three"
-      ],
-      "files": [
-        {
-          "path": "ui/ThreeHalftoneCanvas.tsx",
-          "type": "registry:ui",
-          "target": "components/tai-ui/ThreeHalftoneCanvas.tsx"
-        }
-      ]
-    },
-    {
-      "name": "smooth-scroll",
-      "type": "registry:ui",
-      "title": "Smooth Scroll",
-      "description": "Lenis 120Hz smooth scroll provider with anchor interception and touch support.",
-      "dependencies": [
-        "lenis"
-      ],
-      "files": [
-        {
-          "path": "ui/SmoothScroll.tsx",
-          "type": "registry:ui",
-          "target": "components/tai-ui/SmoothScroll.tsx"
+          "target": "components/tai-ui/TaiIconButton.tsx"
         }
       ]
     },
@@ -184,8 +49,7 @@
         "lucide-react"
       ],
       "registryDependencies": [
-        "tai-button",
-        "wipe-button"
+        "tai-button"
       ],
       "files": [
         {
@@ -210,6 +74,29 @@
           "type": "registry:ui",
           "target": "components/tai-ui/AboutDrawer.tsx"
         }
+      ],
+      "registryDependencies": [
+        "tai-button"
+      ]
+    },
+    {
+      "name": "contact-modal",
+      "type": "registry:ui",
+      "title": "Contact Modal",
+      "description": "Sharp geometric contact dialog with instant clipboard actions and toast feedback.",
+      "dependencies": [
+        "motion",
+        "lucide-react"
+      ],
+      "files": [
+        {
+          "path": "ui/ContactModal.tsx",
+          "type": "registry:ui",
+          "target": "components/tai-ui/ContactModal.tsx"
+        }
+      ],
+      "registryDependencies": [
+        "tai-button"
       ]
     },
     {
@@ -230,19 +117,18 @@
       ]
     },
     {
-      "name": "contact-modal",
+      "name": "tech-logos",
       "type": "registry:ui",
-      "title": "Contact Modal",
-      "description": "Sharp geometric contact dialog with instant clipboard actions and toast feedback.",
+      "title": "Tech Logos",
+      "description": "High-contrast inverted tech stack badges with snappy hover lift physics.",
       "dependencies": [
-        "motion",
-        "lucide-react"
+        "motion"
       ],
       "files": [
         {
-          "path": "ui/ContactModal.tsx",
+          "path": "ui/TechLogos.tsx",
           "type": "registry:ui",
-          "target": "components/tai-ui/ContactModal.tsx"
+          "target": "components/tai-ui/TechLogos.tsx"
         }
       ]
     },
@@ -261,222 +147,86 @@
       ]
     },
     {
-      "name": "tech-logos",
+      "name": "three-halftone-canvas",
       "type": "registry:ui",
-      "title": "Tech Logos",
-      "description": "High-contrast inverted tech stack badges with snappy hover lift physics.",
+      "title": "Three Halftone Canvas",
+      "description": "Optimized Three.js WebGL procedural ocean halftone shader canvas with 60/120fps throttle.",
+      "dependencies": [
+        "three"
+      ],
+      "files": [
+        {
+          "path": "ui/ThreeHalftoneCanvas.tsx",
+          "type": "registry:ui",
+          "target": "components/tai-ui/ThreeHalftoneCanvas.tsx"
+        }
+      ]
+    },
+    {
+      "name": "halftone-banner",
+      "type": "registry:ui",
+      "title": "Halftone Banner",
+      "description": "WebGL ocean caustics banner integrated with ThinkAI Studio logomark.",
+      "dependencies": [
+        "three",
+        "motion"
+      ],
+      "registryDependencies": [
+        "three-halftone-canvas"
+      ],
+      "files": [
+        {
+          "path": "ui/HalftoneBanner.tsx",
+          "type": "registry:ui",
+          "target": "components/tai-ui/HalftoneBanner.tsx"
+        }
+      ]
+    },
+    {
+      "name": "masked-text-reveal",
+      "type": "registry:ui",
+      "title": "Masked Text Reveal",
+      "description": "Editorial text reveal using geometric clip-path masking.",
       "dependencies": [
         "motion"
       ],
       "files": [
         {
-          "path": "ui/TechLogos.tsx",
+          "path": "ui/MaskedTextReveal.tsx",
           "type": "registry:ui",
-          "target": "components/tai-ui/TechLogos.tsx"
+          "target": "components/tai-ui/MaskedTextReveal.tsx"
         }
       ]
     },
     {
-      "name": "tai-input",
+      "name": "product-mockup",
       "type": "registry:ui",
-      "title": "Tai Input",
-      "description": "Labelled text input with description and error states.",
-      "dependencies": [],
-      "files": [
-        {
-          "path": "ui/TaiInput.tsx",
-          "type": "registry:ui",
-          "target": "components/tai-ui/TaiInput.tsx"
-        }
-      ]
-    },
-    {
-      "name": "tai-select",
-      "type": "registry:ui",
-      "title": "Tai Select",
-      "description": "Native select with focused visual shell and explicit options.",
-      "dependencies": [
-        "lucide-react"
-      ],
-      "files": [
-        {
-          "path": "ui/TaiSelect.tsx",
-          "type": "registry:ui",
-          "target": "components/tai-ui/TaiSelect.tsx"
-        }
-      ]
-    },
-    {
-      "name": "tai-checkbox",
-      "type": "registry:ui",
-      "title": "Tai Checkbox",
-      "description": "Labelled binary choice with native checkbox semantics.",
-      "dependencies": [
-        "lucide-react"
-      ],
-      "files": [
-        {
-          "path": "ui/TaiCheckbox.tsx",
-          "type": "registry:ui",
-          "target": "components/tai-ui/TaiCheckbox.tsx"
-        }
-      ]
-    },
-    {
-      "name": "tai-switch",
-      "type": "registry:ui",
-      "title": "Tai Switch",
-      "description": "Immediate on/off control with a native switch role.",
-      "dependencies": [],
-      "files": [
-        {
-          "path": "ui/TaiSwitch.tsx",
-          "type": "registry:ui",
-          "target": "components/tai-ui/TaiSwitch.tsx"
-        }
-      ]
-    },
-    {
-      "name": "tai-tabs",
-      "type": "registry:ui",
-      "title": "Tai Tabs",
-      "description": "Tablist with roving keyboard navigation and explicit panels.",
-      "dependencies": [],
-      "files": [
-        {
-          "path": "ui/TaiTabs.tsx",
-          "type": "registry:ui",
-          "target": "components/tai-ui/TaiTabs.tsx"
-        }
-      ]
-    },
-    {
-      "name": "tai-accordion",
-      "type": "registry:ui",
-      "title": "Tai Accordion",
-      "description": "Single-open disclosure list for progressive information density.",
-      "dependencies": [
-        "lucide-react"
-      ],
-      "files": [
-        {
-          "path": "ui/TaiAccordion.tsx",
-          "type": "registry:ui",
-          "target": "components/tai-ui/TaiAccordion.tsx"
-        }
-      ]
-    },
-    {
-      "name": "tai-dialog",
-      "type": "registry:ui",
-      "title": "Tai Dialog",
-      "description": "Restrained modal surface with Escape and backdrop dismissal.",
-      "dependencies": [
-        "motion",
-        "lucide-react"
-      ],
-      "files": [
-        {
-          "path": "ui/TaiDialog.tsx",
-          "type": "registry:ui",
-          "target": "components/tai-ui/TaiDialog.tsx"
-        }
-      ]
-    },
-    {
-      "name": "tai-toast",
-      "type": "registry:ui",
-      "title": "Tai Toast",
-      "description": "Quiet live notification for completed or recoverable actions.",
-      "dependencies": [
-        "motion",
-        "lucide-react"
-      ],
-      "files": [
-        {
-          "path": "ui/TaiToast.tsx",
-          "type": "registry:ui",
-          "target": "components/tai-ui/TaiToast.tsx"
-        }
-      ]
-    },
-    {
-      "name": "text-scramble",
-      "type": "registry:ui",
-      "title": "Text Scramble",
-      "description": "Finite character scramble for known display text transitions.",
+      "title": "Product Mockup",
+      "description": "Architectural browser/laptop mockup frame with inset parallax and clip-path reveals.",
       "dependencies": [
         "motion"
       ],
       "files": [
         {
-          "path": "ui/TextScramble.tsx",
+          "path": "ui/ProductMockup.tsx",
           "type": "registry:ui",
-          "target": "components/tai-ui/TextScramble.tsx"
+          "target": "components/tai-ui/ProductMockup.tsx"
         }
       ]
     },
     {
-      "name": "text-morph",
+      "name": "smooth-scroll",
       "type": "registry:ui",
-      "title": "Text Morph",
-      "description": "Small crossfade and settle for changing a single text value.",
+      "title": "Smooth Scroll",
+      "description": "Lenis 120Hz smooth scroll provider with anchor interception and touch support.",
       "dependencies": [
-        "motion"
+        "lenis"
       ],
       "files": [
         {
-          "path": "ui/TextMorph.tsx",
+          "path": "ui/SmoothScroll.tsx",
           "type": "registry:ui",
-          "target": "components/tai-ui/TextMorph.tsx"
-        }
-      ]
-    },
-    {
-      "name": "text-reveal-block",
-      "type": "registry:ui",
-      "title": "Text Reveal Block",
-      "description": "One-shot block reveal for short headings entering the viewport.",
-      "dependencies": [
-        "motion"
-      ],
-      "files": [
-        {
-          "path": "ui/TextRevealBlock.tsx",
-          "type": "registry:ui",
-          "target": "components/tai-ui/TextRevealBlock.tsx"
-        }
-      ]
-    },
-    {
-      "name": "draw-underline",
-      "type": "registry:ui",
-      "title": "Draw Underline",
-      "description": "Restrained underline draw for a text link or phrase.",
-      "dependencies": [
-        "motion"
-      ],
-      "files": [
-        {
-          "path": "ui/DrawUnderline.tsx",
-          "type": "registry:ui",
-          "target": "components/tai-ui/DrawUnderline.tsx"
-        }
-      ]
-    },
-    {
-      "name": "border-trail",
-      "type": "registry:ui",
-      "title": "Border Trail",
-      "description": "Sparse border highlight for an active showcase surface.",
-      "dependencies": [
-        "motion"
-      ],
-      "files": [
-        {
-          "path": "ui/BorderTrail.tsx",
-          "type": "registry:ui",
-          "target": "components/tai-ui/BorderTrail.tsx"
+          "target": "components/tai-ui/SmoothScroll.tsx"
         }
       ]
     },
@@ -497,206 +247,18 @@
       ]
     },
     {
-      "name": "tai-tooltip",
+      "name": "draw-underline",
       "type": "registry:ui",
-      "title": "Tai Tooltip",
-      "description": "Quiet hover and focus explanation for unfamiliar controls.",
-      "dependencies": [],
-      "files": [
-        {
-          "path": "ui/TaiTooltip.tsx",
-          "type": "registry:ui",
-          "target": "components/tai-ui/TaiTooltip.tsx"
-        }
-      ]
-    },
-    {
-      "name": "tai-popover",
-      "type": "registry:ui",
-      "title": "Tai Popover",
-      "description": "Lightweight anchored surface for secondary context.",
-      "dependencies": [],
-      "files": [
-        {
-          "path": "ui/TaiPopover.tsx",
-          "type": "registry:ui",
-          "target": "components/tai-ui/TaiPopover.tsx"
-        }
-      ]
-    },
-    {
-      "name": "tai-dropdown-menu",
-      "type": "registry:ui",
-      "title": "Tai Dropdown Menu",
-      "description": "Compact menu for a short set of related actions.",
-      "dependencies": [],
-      "files": [
-        {
-          "path": "ui/TaiDropdownMenu.tsx",
-          "type": "registry:ui",
-          "target": "components/tai-ui/TaiDropdownMenu.tsx"
-        }
-      ]
-    },
-    {
-      "name": "tai-alert",
-      "type": "registry:ui",
-      "title": "Tai Alert",
-      "description": "Persistent inline feedback with semantic status roles.",
-      "dependencies": [],
-      "files": [
-        {
-          "path": "ui/TaiAlert.tsx",
-          "type": "registry:ui",
-          "target": "components/tai-ui/TaiAlert.tsx"
-        }
-      ]
-    },
-    {
-      "name": "tai-badge",
-      "type": "registry:ui",
-      "title": "Tai Badge",
-      "description": "Compact factual label for status or category.",
-      "dependencies": [],
-      "files": [
-        {
-          "path": "ui/TaiBadge.tsx",
-          "type": "registry:ui",
-          "target": "components/tai-ui/TaiBadge.tsx"
-        }
-      ]
-    },
-    {
-      "name": "tai-skeleton",
-      "type": "registry:ui",
-      "title": "Tai Skeleton",
-      "description": "Quiet loading placeholder for stable content shapes.",
-      "dependencies": [],
-      "files": [
-        {
-          "path": "ui/TaiSkeleton.tsx",
-          "type": "registry:ui",
-          "target": "components/tai-ui/TaiSkeleton.tsx"
-        }
-      ]
-    },
-    {
-      "name": "tai-separator",
-      "type": "registry:ui",
-      "title": "Tai Separator",
-      "description": "Semantic hairline for related content groups.",
-      "dependencies": [],
-      "files": [
-        {
-          "path": "ui/TaiSeparator.tsx",
-          "type": "registry:ui",
-          "target": "components/tai-ui/TaiSeparator.tsx"
-        }
-      ]
-    },
-    {
-      "name": "tai-avatar",
-      "type": "registry:ui",
-      "title": "Tai Avatar",
-      "description": "Square identity marker with image and initials fallback.",
-      "dependencies": [],
-      "files": [
-        {
-          "path": "ui/TaiAvatar.tsx",
-          "type": "registry:ui",
-          "target": "components/tai-ui/TaiAvatar.tsx"
-        }
-      ]
-    },
-    {
-      "name": "tai-icon-button",
-      "type": "registry:ui",
-      "title": "Tai Icon Button",
-      "description": "Accessible icon-only action with a consistent focus target.",
-      "dependencies": [],
-      "files": [
-        {
-          "path": "ui/TaiIconButton.tsx",
-          "type": "registry:ui",
-          "target": "components/tai-ui/TaiIconButton.tsx"
-        }
-      ]
-    },
-    {
-      "name": "tai-empty-state",
-      "type": "registry:ui",
-      "title": "Tai Empty State",
-      "description": "Calm empty result with explanation and optional next action.",
-      "dependencies": [],
-      "files": [
-        {
-          "path": "ui/TaiEmptyState.tsx",
-          "type": "registry:ui",
-          "target": "components/tai-ui/TaiEmptyState.tsx"
-        }
-      ]
-    },
-    {
-      "name": "fade-in",
-      "type": "registry:ui",
-      "title": "Fade In",
-      "description": "Restrained one-shot entrance for meaningful content groups.",
+      "title": "Draw Underline",
+      "description": "Restrained underline draw for a text link or phrase.",
       "dependencies": [
         "motion"
       ],
       "files": [
         {
-          "path": "ui/FadeIn.tsx",
+          "path": "ui/DrawUnderline.tsx",
           "type": "registry:ui",
-          "target": "components/tai-ui/FadeIn.tsx"
-        }
-      ]
-    },
-    {
-      "name": "blur-reveal",
-      "type": "registry:ui",
-      "title": "Blur Reveal",
-      "description": "Short blur-to-clear reveal for a focal statement or media block.",
-      "dependencies": [
-        "motion"
-      ],
-      "files": [
-        {
-          "path": "ui/BlurReveal.tsx",
-          "type": "registry:ui",
-          "target": "components/tai-ui/BlurReveal.tsx"
-        }
-      ]
-    },
-    {
-      "name": "stagger-group",
-      "type": "registry:ui",
-      "title": "Stagger Group",
-      "description": "Small sequential entrance for a coherent list.",
-      "dependencies": [
-        "motion"
-      ],
-      "files": [
-        {
-          "path": "ui/StaggerGroup.tsx",
-          "type": "registry:ui",
-          "target": "components/tai-ui/StaggerGroup.tsx"
-        }
-      ]
-    },
-    {
-      "name": "highlight",
-      "type": "registry:ui",
-      "title": "Highlight",
-      "description": "Subtle highlight behind a phrase to reinforce emphasis.",
-      "dependencies": [
-        "motion"
-      ],
-      "files": [
-        {
-          "path": "ui/Highlight.tsx",
-          "type": "registry:ui",
-          "target": "components/tai-ui/Highlight.tsx"
+          "target": "components/tai-ui/DrawUnderline.tsx"
         }
       ]
     },
@@ -713,39 +275,6 @@
           "path": "ui/ProgressiveBlur.tsx",
           "type": "registry:ui",
           "target": "components/tai-ui/ProgressiveBlur.tsx"
-        }
-      ]
-    },
-    {
-      "name": "skeleton-shimmer",
-      "type": "registry:ui",
-      "title": "Skeleton Shimmer",
-      "description": "Optional slow shimmer for a known loading placeholder.",
-      "dependencies": [
-        "motion"
-      ],
-      "files": [
-        {
-          "path": "ui/SkeletonShimmer.tsx",
-          "type": "registry:ui",
-          "target": "components/tai-ui/SkeletonShimmer.tsx"
-        }
-      ]
-    },
-    {
-      "name": "tai-bottom-sheet",
-      "type": "registry:ui",
-      "title": "Tai Bottom Sheet",
-      "description": "Mobile-friendly focused surface for short contextual tasks.",
-      "dependencies": [
-        "motion",
-        "lucide-react"
-      ],
-      "files": [
-        {
-          "path": "ui/TaiBottomSheet.tsx",
-          "type": "registry:ui",
-          "target": "components/tai-ui/TaiBottomSheet.tsx"
         }
       ]
     }

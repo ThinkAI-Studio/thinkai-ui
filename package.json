@@ -1,7 +1,7 @@
 {
   "name": "thinkai-ui",
   "version": "1.0.0",
-  "description": "0px sharp architectural UI registry crafted for technical luxury, obsidian monochromatic depth, and precision motion physics.",
+  "description": "12px precision UI registry crafted for technical luxury, pure black depth, and precision motion physics.",
   "private": true,
   "type": "module",
   "scripts": {
@@ -52,7 +52,7 @@
     "thinkai",
     "design-system",
     "ui-registry",
-    "zero-radius",
+    "12px-radius",
     "dark-mode",
     "tailwind",
     "motion",
@@ -61,10 +61,10 @@
     "react"
   ],
   "author": "ThinkAI Studio / Nguyen Huu Binh Minh",
-  "license": "MIT",
+  "license": "BSD-3-Clause",
   "repository": {
     "type": "git",
     "url": "https://github.com/ThinkAI-Studio/thinkai-ui.git"
   },
-  "homepage": "https://ui.thinkai.studio"
+  "homepage": "https://ui.thinkai.id.vn"
 }

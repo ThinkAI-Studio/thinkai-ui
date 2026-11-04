@@ -1,0 +1,171 @@
+{
+  "$schema": "https://ui.thinkai.id.vn/schema/registry.json",
+  "name": "thinkai-ui-deprecated",
+  "description": "Deprecation mapping of retired ThinkAI UI kit primitives to core registry components.",
+  "deprecated": {
+    "wipe-button": {
+      "replacement": "tai-button",
+      "reason": "Folded into tai-button as variant=\"wipe\"."
+    },
+    "arrow-roll": {
+      "replacement": "tai-button",
+      "reason": "Folded into tai-button as kinetic arrow subcomponent."
+    },
+    "button-text-roll": {
+      "replacement": "tai-button",
+      "reason": "Folded into tai-button as rollText variant."
+    },
+    "text-roll": {
+      "replacement": "tai-button",
+      "reason": "Folded into tai-button as typography roll subcomponent."
+    },
+    "tai-input": {
+      "replacement": "@thinkai-studio/ui",
+      "reason": "Generic form primitive retired from core registry; available in package @thinkai-studio/ui."
+    },
+    "tai-select": {
+      "replacement": "@thinkai-studio/ui",
+      "reason": "Generic form primitive retired from core registry; available in package @thinkai-studio/ui."
+    },
+    "tai-checkbox": {
+      "replacement": "@thinkai-studio/ui",
+      "reason": "Generic control primitive retired from core registry; available in package @thinkai-studio/ui."
+    },
+    "tai-switch": {
+      "replacement": "@thinkai-studio/ui",
+      "reason": "Generic control primitive retired from core registry; available in package @thinkai-studio/ui."
+    },
+    "tai-tabs": {
+      "replacement": "tai-header",
+      "reason": "Use tai-header navigation islands or package @thinkai-studio/ui."
+    },
+    "tai-accordion": {
+      "replacement": "about-drawer",
+      "reason": "Use about-drawer progressive disclosure or package @thinkai-studio/ui."
+    },
+    "tai-dialog": {
+      "replacement": "architecture-modal",
+      "reason": "Replaced by architecture-modal and contact-modal overlay primitives."
+    },
+    "tai-toast": {
+      "replacement": "contact-modal",
+      "reason": "Use contact-modal feedback toast or package @thinkai-studio/ui."
+    },
+    "text-scramble": {
+      "replacement": "masked-text-reveal",
+      "reason": "Consolidated into masked-text-reveal."
+    },
+    "text-morph": {
+      "replacement": "masked-text-reveal",
+      "reason": "Consolidated into masked-text-reveal."
+    },
+    "text-reveal-block": {
+      "replacement": "masked-text-reveal",
+      "reason": "Consolidated into masked-text-reveal."
+    },
+    "border-trail": {
+      "replacement": "tai-button",
+      "reason": "Consolidated into tai-button micro-interactions."
+    },
+    "fade-in": {
+      "replacement": "masked-text-reveal",
+      "reason": "Use masked-text-reveal or standard Motion enter transitions."
+    },
+    "blur-reveal": {
+      "replacement": "progressive-blur",
+      "reason": "Consolidated into progressive-blur."
+    },
+    "stagger-group": {
+      "replacement": "tech-logos",
+      "reason": "Consolidated into tech-logos stagger mechanics."
+    },
+    "highlight": {
+      "replacement": "draw-underline",
+      "reason": "Consolidated into draw-underline."
+    },
+    "skeleton-shimmer": {
+      "replacement": "progressive-blur",
+      "reason": "Use progressive-blur or package @thinkai-studio/ui."
+    },
+    "tai-tooltip": {
+      "replacement": "tai-icon-button",
+      "reason": "Use tai-icon-button with accessible title or package @thinkai-studio/ui."
+    },
+    "tai-popover": {
+      "replacement": "contact-modal",
+      "reason": "Use contact-modal or package @thinkai-studio/ui."
+    },
+    "tai-dropdown-menu": {
+      "replacement": "tai-header",
+      "reason": "Consolidated into tai-header dropdown mechanics."
+    },
+    "tai-alert": {
+      "replacement": "contact-modal",
+      "reason": "Use contact-modal telemetry feedback or package @thinkai-studio/ui."
+    },
+    "tai-badge": {
+      "replacement": "tai-button",
+      "reason": "Use tai-button sm/icon variant or package @thinkai-studio/ui."
+    },
+    "tai-skeleton": {
+      "replacement": "product-mockup",
+      "reason": "Use product-mockup container state or package @thinkai-studio/ui."
+    },
+    "tai-separator": {
+      "replacement": "tai-header",
+      "reason": "Use standard border hairlines or tai-header dividers."
+    },
+    "tai-avatar": {
+      "replacement": "about-drawer",
+      "reason": "Use about-drawer portrait frame or package @thinkai-studio/ui."
+    },
+    "tai-empty-state": {
+      "replacement": "product-mockup",
+      "reason": "Use product-mockup fallback layout or package @thinkai-studio/ui."
+    },
+    "tai-bottom-sheet": {
+      "replacement": "about-drawer",
+      "reason": "Consolidated into about-drawer mobile sheet mechanics."
+    },
+    "tai-sparkline": {
+      "replacement": "number-flow",
+      "reason": "Use number-flow numeric animations."
+    },
+    "tai-kpi-tile": {
+      "replacement": "product-mockup",
+      "reason": "Use product-mockup telemetry card."
+    },
+    "tai-status-indicator": {
+      "replacement": "tai-icon-button",
+      "reason": "Use tai-icon-button with LED status indicator."
+    },
+    "tai-code-block": {
+      "replacement": "@thinkai-studio/ui",
+      "reason": "Generic code block primitive moved to package @thinkai-studio/ui."
+    },
+    "tai-kbd": {
+      "replacement": "tai-button",
+      "reason": "Use tai-button sm size or native kbd."
+    },
+    "tai-breadcrumb": {
+      "replacement": "tai-header",
+      "reason": "Use tai-header breadcrumb navigation."
+    },
+    "tai-prompt-input": {
+      "replacement": "@thinkai-studio/ui",
+      "reason": "Prompt input moved to package @thinkai-studio/ui."
+    },
+    "tai-streaming-text": {
+      "replacement": "masked-text-reveal",
+      "reason": "Consolidated into masked-text-reveal kinetic text."
+    },
+    "quantum-matrix-canvas": {
+      "replacement": "three-halftone-canvas",
+      "reason": "Consolidated into three-halftone-canvas WebGL shader."
+    },
+    "kinetic-icons": {
+      "replacement": "ai-brand-icons",
+      "reason": "Consolidated into ai-brand-icons and tai-icon-button."
+    }
+  }
+}

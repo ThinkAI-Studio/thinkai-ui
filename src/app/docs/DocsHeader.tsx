@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { Github, Menu, Search, X } from "lucide-react";
 import { ThemeToggle } from "@/components/theme/ThemeToggle";
+import { RadiusToggle } from "@/components/theme/RadiusToggle";
 
 export function DocsHeader({ searchOpen = false, onSearchToggle, mobileNavOpen = false, onMobileNavToggle }: { searchOpen?: boolean; onSearchToggle?: () => void; mobileNavOpen?: boolean; onMobileNavToggle?: () => void }) {
   const router = useRouter();
@@ -26,6 +27,7 @@ export function DocsHeader({ searchOpen = false, onSearchToggle, mobileNavOpen =
       <div className="flex items-center gap-2 text-tai-muted">
         {onSearchToggle ? <button type="button" onClick={onSearchToggle} aria-expanded={searchOpen} aria-controls="docs-search" aria-label="Search documentation" title="Search documentation" className="inline-flex min-h-11 items-center gap-2 border border-transparent px-2 py-1.5 text-xs transition-colors hover:border-tai-border hover:text-tai-text focus-visible:outline-2 focus-visible:outline-tai-focus"><Search className="h-3.5 w-3.5" /><span className="hidden lg:inline">Search</span><kbd className="hidden border border-tai-border bg-tai-surface px-1 font-mono text-[9px] lg:inline">⌘ K</kbd></button> : <Link href="/docs" aria-label="Search documentation" title="Search documentation" className="inline-flex min-h-11 items-center gap-2 border border-transparent px-2 py-1.5 text-xs transition-colors hover:border-tai-border hover:text-tai-text focus-visible:outline-2 focus-visible:outline-tai-focus"><Search className="h-3.5 w-3.5" /><span className="hidden lg:inline">Search</span><kbd className="hidden border border-tai-border bg-tai-surface px-1 font-mono text-[9px] lg:inline">⌘ K</kbd></Link>}
         <a href="https://github.com/ThinkAI-Studio/thinkai-ui" target="_blank" rel="noreferrer" aria-label="ThinkAI UI on GitHub" className="hidden border border-transparent p-2 transition-colors hover:border-tai-border hover:text-tai-text focus-visible:outline-2 focus-visible:outline-tai-focus sm:inline-flex"><Github className="h-4 w-4" /></a>
+        <RadiusToggle />
         <ThemeToggle />
         {onMobileNavToggle && <button type="button" onClick={onMobileNavToggle} aria-expanded={mobileNavOpen} aria-controls="docs-mobile-sidebar" aria-label={mobileNavOpen ? "Close documentation menu" : "Open documentation menu"} title={mobileNavOpen ? "Close documentation menu" : "Open documentation menu"} className="inline-flex h-9 w-9 shrink-0 items-center justify-center border border-transparent text-tai-muted transition-colors hover:border-tai-border hover:text-tai-text focus-visible:outline-2 focus-visible:outline-tai-focus md:hidden">
           {mobileNavOpen ? <X className="h-4 w-4" aria-hidden="true" /> : <Menu className="h-4 w-4" aria-hidden="true" />}

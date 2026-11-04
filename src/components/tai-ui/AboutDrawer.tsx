@@ -4,8 +4,7 @@ import React, { useRef } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence, useReducedMotion } from "motion/react";
 import { ArrowUpRight } from "lucide-react";
-import { ButtonTextRoll } from "./ButtonTextRoll";
-import { WipeButton } from "./WipeButton";
+import { ButtonTextRoll, WipeButton } from "./TaiButton";
 import { TAI_SPRING, TAI_EASE } from "@/lib/motion";
 import { useModalFocus } from "@/lib/useModalFocus";
 
@@ -69,13 +68,13 @@ export function AboutDrawer({ isOpen, onClose, lang }: AboutDrawerProps) {
                 {/* Header: Bullet label + Close Button */}
                 <motion.div {...getRevealProps(0.18)} className="flex items-center justify-between pb-2">
                   <div className="flex items-center gap-2.5 text-sm font-extrabold text-[#0a0a0c]">
-                    <span className="w-2.5 h-2.5 rounded-none bg-[#52525b]" />
+                    <span className="w-2.5 h-2.5 rounded-[var(--tai-radius-sm)] bg-[#52525b]" />
                     <span>About the engineer & studio</span>
                   </div>
 
                   <button
                     onClick={onClose}
-                    className="group flex items-center justify-center gap-2 px-3.5 py-1.5 rounded-none bg-[#0a0a0c] text-white text-xs font-mono font-bold hover:bg-neutral-800 transition-colors cursor-pointer shadow-sm select-none"
+                    className="group flex items-center justify-center gap-2 px-3.5 py-1.5 rounded-[var(--tai-radius-md)] bg-[#0a0a0c] text-white text-xs font-mono font-bold hover:bg-neutral-800 transition-colors cursor-pointer shadow-sm select-none"
                     style={{ backgroundColor: "#0a0a0c", color: "#ffffff" }}
                   >
                     <ButtonTextRoll
@@ -88,7 +87,7 @@ export function AboutDrawer({ isOpen, onClose, lang }: AboutDrawerProps) {
 
                 {/* Founder Identity Header */}
                 <motion.div {...getRevealProps(0.24)} className="flex items-center gap-6">
-                  <div className="relative w-24 h-24 sm:w-28 sm:h-28 rounded-none overflow-hidden border-2 border-black/10 shadow-md bg-white shrink-0 group">
+                  <div className="relative w-24 h-24 sm:w-28 sm:h-28 rounded-[var(--tai-radius-md)] overflow-hidden border-2 border-black/10 shadow-md bg-white shrink-0 group">
                     <Image
                       src="/images/binhminh-sketch.jpg"
                       alt="Nguyen Binh Minh - DevOps Engineer"
@@ -106,7 +105,7 @@ export function AboutDrawer({ isOpen, onClose, lang }: AboutDrawerProps) {
                       DevOps Engineer · ThinkAI Studio
                     </div>
                     <div className="text-[11px] font-mono text-neutral-600 flex items-center gap-1.5 pt-0.5 font-medium">
-                      <span className="w-2 h-2 rounded-none bg-emerald-600 animate-pulse" />
+                      <span className="w-2 h-2 rounded-[var(--tai-radius-sm)] bg-emerald-600 animate-pulse" />
                       <span>HCMC, Vietnam · Available for Engineering & Projects</span>
                     </div>
                   </div>
@@ -134,7 +133,7 @@ export function AboutDrawer({ isOpen, onClose, lang }: AboutDrawerProps) {
                 {/* Section 1: Flagship Products */}
                 <motion.div {...getRevealProps(0.48)} className="border-t-2 border-black/[0.08] pt-7 grid grid-cols-12 gap-6 items-baseline">
                   <div className="col-span-4 flex items-center gap-2.5 text-base font-extrabold text-[#0a0a0c]">
-                    <span className="w-2 h-2 rounded-none bg-[#52525b]" />
+                    <span className="w-2 h-2 rounded-[var(--tai-radius-sm)] bg-[#52525b]" />
                     <span>Products</span>
                   </div>
                   <div className="col-span-8 space-y-1.5 text-base font-bold text-[#0a0a0c] tracking-tight">
@@ -147,7 +146,7 @@ export function AboutDrawer({ isOpen, onClose, lang }: AboutDrawerProps) {
                 {/* Section 2: Core Stack */}
                 <motion.div {...getRevealProps(0.54)} className="border-t-2 border-black/[0.08] pt-7 grid grid-cols-12 gap-6 items-baseline">
                   <div className="col-span-4 flex items-center gap-2.5 text-base font-extrabold text-[#0a0a0c]">
-                    <span className="w-2 h-2 rounded-none bg-[#52525b]" />
+                    <span className="w-2 h-2 rounded-[var(--tai-radius-sm)] bg-[#52525b]" />
                     <span>Stack</span>
                   </div>
                   <div className="col-span-8 space-y-1.5 text-base font-bold text-[#0a0a0c] tracking-tight">
@@ -163,7 +162,7 @@ export function AboutDrawer({ isOpen, onClose, lang }: AboutDrawerProps) {
                 {/* Section 3: Education & Recognition */}
                 <motion.div {...getRevealProps(0.6)} className="border-t-2 border-black/[0.08] pt-7 grid grid-cols-12 gap-6 items-baseline">
                   <div className="col-span-4 flex items-center gap-2.5 text-base font-extrabold text-[#0a0a0c]">
-                    <span className="w-2 h-2 rounded-none bg-[#52525b]" />
+                    <span className="w-2 h-2 rounded-[var(--tai-radius-sm)] bg-[#52525b]" />
                     <span>Education</span>
                   </div>
                   <div className="col-span-8 space-y-2 text-base font-bold text-[#0a0a0c] tracking-tight">
@@ -185,7 +184,7 @@ export function AboutDrawer({ isOpen, onClose, lang }: AboutDrawerProps) {
                 {/* Section 4: Principles */}
                 <motion.div {...getRevealProps(0.66)} className="border-t-2 border-black/[0.08] pt-7 grid grid-cols-12 gap-6 items-baseline">
                   <div className="col-span-4 flex items-center gap-2.5 text-base font-extrabold text-[#0a0a0c]">
-                    <span className="w-2 h-2 rounded-none bg-[#52525b]" />
+                    <span className="w-2 h-2 rounded-[var(--tai-radius-sm)] bg-[#52525b]" />
                     <span>Principles</span>
                   </div>
                   <div className="col-span-8 space-y-1.5 text-base font-bold text-[#0a0a0c] tracking-tight">
@@ -220,7 +219,7 @@ export function AboutDrawer({ isOpen, onClose, lang }: AboutDrawerProps) {
                     hoverTextColor="#ffffff"
                     borderColor="rgba(0, 0, 0, 0.15)"
                     hoverBorderColor="#0a0a0c"
-                    className="px-3.5 py-1.5 rounded-none bg-black/[0.05] flex items-center gap-1 text-xs font-mono font-bold cursor-pointer select-none border border-black/15 shadow-sm"
+                    className="px-3.5 py-1.5 rounded-[var(--tai-radius-md)] bg-black/[0.05] flex items-center gap-1 text-xs font-mono font-bold cursor-pointer select-none border border-black/15 shadow-sm"
                   >
                     <span>GitHub</span>
                     <ArrowUpRight className="w-3.5 h-3.5" />
@@ -235,7 +234,7 @@ export function AboutDrawer({ isOpen, onClose, lang }: AboutDrawerProps) {
                     hoverTextColor="#ffffff"
                     borderColor="rgba(0, 0, 0, 0.15)"
                     hoverBorderColor="#0a0a0c"
-                    className="px-3.5 py-1.5 rounded-none bg-black/[0.05] flex items-center gap-1 text-xs font-mono font-bold cursor-pointer select-none border border-black/15 shadow-sm"
+                    className="px-3.5 py-1.5 rounded-[var(--tai-radius-md)] bg-black/[0.05] flex items-center gap-1 text-xs font-mono font-bold cursor-pointer select-none border border-black/15 shadow-sm"
                   >
                     <span>LinkedIn</span>
                     <ArrowUpRight className="w-3.5 h-3.5" />

@@ -6,6 +6,7 @@ import Link from "next/link";
 import { motion } from "motion/react";
 import { Search, Github, Menu, X, ArrowUpRight } from "lucide-react";
 import { ThemeToggle } from "@/components/theme/ThemeToggle";
+import { RadiusToggle } from "@/components/theme/RadiusToggle";
 import { TAI_EASE } from "@/lib/motion";
 
 interface StudioHeaderProps {
@@ -97,7 +98,8 @@ export function StudioHeader({ onOpenCommandMenu }: StudioHeaderProps) {
                 <Search className="w-3.5 h-3.5" />
                 <kbd className="px-1 py-0.2 bg-tai-surface border border-tai-border text-[9px] text-tai-subtle">⌘K</kbd>
               </button>
-              <div className="px-1">
+              <div className="flex items-center gap-1.5 px-1">
+                <RadiusToggle />
                 <ThemeToggle />
               </div>
             </div>
@@ -122,6 +124,8 @@ export function StudioHeader({ onOpenCommandMenu }: StudioHeaderProps) {
             transition={{ duration: 0.45, ease: TAI_EASE.luxury, delay: 0 }}
             className="pointer-events-auto md:hidden flex items-center gap-2 px-3 py-2 bg-tai-sheet/90 backdrop-blur-xl border border-tai-border text-tai-text"
           >
+            <RadiusToggle />
+            <ThemeToggle />
             <button
               onClick={onOpenCommandMenu}
               className="p-1 text-tai-muted hover:text-tai-text"

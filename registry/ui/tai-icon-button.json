@@ -1,15 +1,17 @@
 {
-  "$schema": "https://ui.thinkai.studio/schema/registry-item.json",
+  "$schema": "https://ui.thinkai.id.vn/schema/registry-item.json",
   "name": "tai-icon-button",
   "type": "registry:ui",
   "title": "Tai Icon Button",
   "description": "Accessible icon-only action with a consistent focus target.",
-  "dependencies": [],
+  "dependencies": [
+    "motion"
+  ],
   "registryDependencies": [],
   "files": [
     {
       "name": "TaiIconButton.tsx",
-      "content": "import * as React from \"react\";\nimport { cn } from \"@/lib/utils\";\n\nexport const TaiIconButton = React.forwardRef<HTMLButtonElement, React.ButtonHTMLAttributes<HTMLButtonElement> & { label: string }>(\n  ({ label, className, children, ...props }, ref) => <button ref={ref} type=\"button\" aria-label={label} title={label} className={cn(\"inline-grid h-11 w-11 place-items-center border border-tai-border text-tai-muted transition-colors hover:border-tai-border-strong hover:text-tai-text focus-visible:outline-2 focus-visible:outline-tai-focus disabled:cursor-not-allowed disabled:opacity-40\", className)} {...props}>{children}</button>,\n);\nTaiIconButton.displayName = \"TaiIconButton\";\n"
+      "content": "\"use client\";\n\nimport * as React from \"react\";\nimport { motion } from \"motion/react\";\nimport { cn } from \"@/lib/utils\";\nimport { useReducedMotion, TAI_PHYSICS } from \"@/lib/motion\";\n\nexport interface TaiIconButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {\n  label: string;\n}\n\nconst FRAME_VARIANTS = {\n  idle: { scale: 1, y: 0 },\n  hover: { scale: 1.015, y: -0.5 },\n  tap: { scale: 0.988, y: 1 },\n};\n\nconst ICON_VARIANTS = {\n  idle: { rotate: 0, scale: 1 },\n  hover: { rotate: 0.75, scale: 1.02 },\n  tap: { rotate: -0.5, scale: 0.98 },\n};\n\nexport const TaiIconButton = React.forwardRef<HTMLButtonElement, TaiIconButtonProps>(\n  ({ label, className, children, disabled, onKeyDown, onKeyUp, ...props }, ref) => {\n    const prefersReduced = useReducedMotion();\n    const [isKeyPressed, setIsKeyPressed] = React.useState(false);\n\n    const handleKeyDown = (e: React.KeyboardEvent<HTMLButtonElement>) => {\n      if ((e.key === \" \" || e.key === \"Enter\") && !disabled) {\n        setIsKeyPressed(true);\n      }\n      onKeyDown?.(e);\n    };\n\n    const handleKeyUp = (e: React.KeyboardEvent<HTMLButtonElement>) => {\n      if (e.key === \" \" || e.key === \"Enter\") {\n        setIsKeyPressed(false);\n      }\n      onKeyUp?.(e);\n    };\n\n    return (\n      <motion.button\n        ref={ref}\n        type=\"button\"\n        aria-label={label}\n        title={label}\n        disabled={disabled}\n        animate={isKeyPressed ? \"tap\" : undefined}\n        whileHover={prefersReduced || disabled ? undefined : \"hover\"}\n        whileTap={prefersReduced || disabled ? undefined : \"tap\"}\n        initial=\"idle\"\n        variants={FRAME_VARIANTS}\n        transition={TAI_PHYSICS.microswitch}\n        onKeyDown={handleKeyDown}\n        onKeyUp={handleKeyUp}\n        className={cn(\n          \"inline-grid h-11 w-11 place-items-center border border-tai-border bg-tai-sheet text-tai-muted transition-colors hover:border-tai-border-strong hover:text-tai-text focus-visible:outline-2 focus-visible:outline-tai-focus disabled:cursor-not-allowed disabled:opacity-40 select-none\",\n          className\n        )}\n        style={{ borderRadius: \"var(--tai-radius-md)\" }}\n        {...(props as any)}\n      >\n        <motion.span\n          className=\"grid place-items-center\"\n          variants={ICON_VARIANTS}\n          transition={TAI_PHYSICS.microswitch}\n        >\n          {children}\n        </motion.span>\n      </motion.button>\n    );\n  }\n);\n\nTaiIconButton.displayName = \"TaiIconButton\";\n"
     }
   ]
 }

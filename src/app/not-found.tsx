@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { WipeButton } from "@/components/tai-ui/WipeButton";
+import { WipeButton } from "@/components/tai-ui/TaiButton";
 import { ArrowRight, Terminal } from "lucide-react";
 
 export default function NotFound() {

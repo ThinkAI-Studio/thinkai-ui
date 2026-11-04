@@ -4,6 +4,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import { Analytics } from "@vercel/analytics/react";
 import { MotionConfig } from "motion/react";
 import { ThemeProvider } from "@/components/theme/ThemeProvider";
+import { RadiusProvider } from "@/components/theme/RadiusProvider";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -141,16 +142,18 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} font-sans bg-tai-bg text-tai-text antialiased min-h-screen`}
       >
-        <Script id="thinkai-theme-init" strategy="beforeInteractive">{`(() => { try { const saved = localStorage.getItem('thinkai-ui-theme'); const system = matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark'; const theme = saved === 'light' || saved === 'dark' ? saved : system; document.documentElement.dataset.theme = theme; document.documentElement.style.colorScheme = theme; } catch (_) {} })()`}</Script>
+        <Script id="thinkai-theme-init" strategy="beforeInteractive">{`(() => { try { const saved = localStorage.getItem('thinkai-ui-theme'); const system = matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark'; const theme = saved === 'light' || saved === 'dark' ? saved : system; document.documentElement.dataset.theme = theme; document.documentElement.style.colorScheme = theme; const savedRadius = localStorage.getItem('thinkai-ui-radius'); const radius = savedRadius === '0' || savedRadius === 'sharp' ? '0' : '12'; document.documentElement.dataset.radius = radius; } catch (_) {} })()`}</Script>
         <script
           id="thinkai-jsonld"
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c") }}
         />
         <ThemeProvider>
-          <div className="relative min-h-screen flex flex-col tai-grain">
-            <MotionConfig reducedMotion="user">{children}</MotionConfig>
-          </div>
+          <RadiusProvider>
+            <div className="relative min-h-screen flex flex-col tai-grain">
+              <MotionConfig reducedMotion="user">{children}</MotionConfig>
+            </div>
+          </RadiusProvider>
         </ThemeProvider>
         <Analytics />
       </body>

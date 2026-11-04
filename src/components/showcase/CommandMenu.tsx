@@ -77,7 +77,7 @@ export function CommandMenu({
   if (!isOpen) return null;
 
   const copyCommand = (slug: string) => {
-    navigator.clipboard.writeText(`npx thinkai-ui add ${slug}`);
+    void navigator.clipboard.writeText(`npx thinkai-ui add ${slug}`);
     setCopiedSlug(slug);
     setTimeout(() => {
       setCopiedSlug(null);

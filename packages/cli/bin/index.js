@@ -107,7 +107,7 @@ export const TAI_SPRING = {
     // 3. Create components.json
     const configPath = path.join(cwd, "components.json");
     const configContent = {
-      "$schema": "https://ui.thinkai.studio/schema.json",
+      "$schema": "https://ui.thinkai.id.vn/schema.json",
       "style": "default",
       "rsc": true,
       "tsx": true,
