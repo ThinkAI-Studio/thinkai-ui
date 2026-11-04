@@ -1,5 +1,5 @@
 {
-  "$schema": "https://ui.thinkai.studio/schema/registry-item.json",
+  "$schema": "https://ui.thinkai.id.vn/schema/registry-item.json",
   "name": "button-text-roll",
   "type": "registry:ui",
   "title": "Button Text Roll",

@@ -1,9 +1,9 @@
 {
-  "$schema": "https://ui.thinkai.studio/schema/registry-item.json",
+  "$schema": "https://ui.thinkai.id.vn/schema/registry-item.json",
   "name": "kinetic-icons",
   "type": "registry:ui",
   "title": "Kinetic Icons",
-  "description": "Architectural 0px kinetic interface icons with spring-driven physics and micro-interactions.",
+  "description": "12px precision kinetic interface icons with spring-driven physics and micro-interactions.",
   "dependencies": [
     "motion"
   ],

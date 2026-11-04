@@ -1,9 +1,9 @@
 {
-  "$schema": "https://ui.thinkai.studio/schema/registry-item.json",
+  "$schema": "https://ui.thinkai.id.vn/schema/registry-item.json",
   "name": "wipe-button",
   "type": "registry:ui",
   "title": "Wipe Button",
-  "description": "Signature Forward-Wipe interactive button with luxury easing and 0px border geometry.",
+  "description": "Signature Forward-Wipe interactive button with luxury easing and 12px precision border geometry.",
   "dependencies": [
     "motion",
     "@radix-ui/react-slot",

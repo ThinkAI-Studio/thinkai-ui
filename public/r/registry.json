@@ -1,13 +1,13 @@
 {
-  "$schema": "https://ui.thinkai.studio/schema/registry.json",
+  "$schema": "https://ui.thinkai.id.vn/schema/registry.json",
   "name": "thinkai-ui",
-  "homepage": "https://ui.thinkai.studio",
+  "homepage": "https://ui.thinkai.id.vn",
   "items": [
     {
       "name": "tai-button",
       "type": "registry:ui",
       "title": "Tai Button",
-      "description": "0px sharp architectural button with top-inset light sweep, mechanical active compression, and polymorphic slot support.",
+      "description": "12px precision architectural button with top-inset light sweep, mechanical active compression, and polymorphic slot support.",
       "dependencies": [
         "motion",
         "@radix-ui/react-slot",
@@ -27,7 +27,7 @@
       "name": "wipe-button",
       "type": "registry:ui",
       "title": "Wipe Button",
-      "description": "Signature Forward-Wipe interactive button with luxury easing and 0px border geometry.",
+      "description": "Signature Forward-Wipe interactive button with luxury easing and 12px precision border geometry.",
       "dependencies": [
         "motion",
         "@radix-ui/react-slot",
@@ -764,7 +764,7 @@
       "name": "tai-sparkline",
       "type": "registry:ui",
       "title": "Tai Sparkline",
-      "description": "Zero-dependency SVG micro trend chart with gradient area fill and 0px endpoints.",
+      "description": "Zero-dependency SVG micro trend chart with gradient area fill and calibrated endpoints.",
       "dependencies": [],
       "files": [
         {
@@ -794,7 +794,7 @@
       "name": "tai-status-indicator",
       "type": "registry:ui",
       "title": "Tai Status Indicator",
-      "description": "0px square system health beacon with radiant ping pulse wave and status labels.",
+      "description": "12px calibrated system health beacon with radiant ping pulse wave and status labels.",
       "dependencies": [],
       "files": [
         {
@@ -808,7 +808,7 @@
       "name": "tai-code-block",
       "type": "registry:ui",
       "title": "Tai Code Block",
-      "description": "0px developer snippet frame with filename header, language badge, line numbering, and copy feedback.",
+      "description": "12px precision developer snippet frame with filename header, language badge, line numbering, and copy feedback.",
       "dependencies": [
         "lucide-react"
       ],
@@ -824,7 +824,7 @@
       "name": "tai-kbd",
       "type": "registry:ui",
       "title": "Tai Kbd",
-      "description": "Mechanical 0px hardware keyboard keycap with tactile bevel and pressed state.",
+      "description": "Mechanical 12px hardware keyboard keycap with tactile bevel and pressed state.",
       "dependencies": [],
       "files": [
         {
@@ -838,7 +838,7 @@
       "name": "tai-breadcrumb",
       "type": "registry:ui",
       "title": "Tai Breadcrumb",
-      "description": "Technical hierarchy path navigation primitive with configurable 0px separators.",
+      "description": "Technical hierarchy path navigation primitive with configurable separators.",
       "dependencies": [
         "lucide-react"
       ],
@@ -886,7 +886,7 @@
       "name": "kinetic-icons",
       "type": "registry:ui",
       "title": "Kinetic Icons",
-      "description": "Architectural 0px kinetic interface icons with spring-driven physics and micro-interactions.",
+      "description": "12px precision kinetic interface icons with spring-driven physics and micro-interactions.",
       "dependencies": [
         "motion"
       ],

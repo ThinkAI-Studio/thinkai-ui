@@ -1,9 +1,9 @@
 {
-  "$schema": "https://ui.thinkai.studio/schema/registry-item.json",
+  "$schema": "https://ui.thinkai.id.vn/schema/registry-item.json",
   "name": "tai-sparkline",
   "type": "registry:ui",
   "title": "Tai Sparkline",
-  "description": "Zero-dependency SVG micro trend chart with gradient area fill and 0px endpoints.",
+  "description": "Zero-dependency SVG micro trend chart with gradient area fill and calibrated endpoints.",
   "dependencies": [],
   "registryDependencies": [],
   "files": [

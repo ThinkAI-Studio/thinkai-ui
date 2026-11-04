@@ -14,6 +14,8 @@ for (const dir of [REGISTRY_UI_DIR, PUBLIC_R_DIR]) {
 
 const registryIndexPath = path.resolve('registry/registry.json');
 const registryIndex = JSON.parse(fs.readFileSync(registryIndexPath, 'utf-8'));
+registryIndex.$schema = "https://ui.thinkai.id.vn/schema/registry.json";
+registryIndex.homepage = "https://ui.thinkai.id.vn";
 
 // Copy registry.json to public/r/registry.json
 fs.writeFileSync(
@@ -29,7 +31,7 @@ for (const item of registryIndex.items) {
   if (fs.existsSync(sourcePath)) {
     const content = fs.readFileSync(sourcePath, 'utf-8');
     const itemManifest = {
-      $schema: "https://ui.thinkai.studio/schema/registry-item.json",
+      $schema: "https://ui.thinkai.id.vn/schema/registry-item.json",
       name: item.name,
       type: item.type,
       title: item.title,

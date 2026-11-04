@@ -1,9 +1,9 @@
 {
-  "$schema": "https://ui.thinkai.studio/schema/registry-item.json",
+  "$schema": "https://ui.thinkai.id.vn/schema/registry-item.json",
   "name": "tai-button",
   "type": "registry:ui",
   "title": "Tai Button",
-  "description": "0px sharp architectural button with top-inset light sweep, mechanical active compression, and polymorphic slot support.",
+  "description": "12px precision architectural button with top-inset light sweep, mechanical active compression, and polymorphic slot support.",
   "dependencies": [
     "motion",
     "@radix-ui/react-slot",

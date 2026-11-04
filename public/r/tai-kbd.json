@@ -1,9 +1,9 @@
 {
-  "$schema": "https://ui.thinkai.studio/schema/registry-item.json",
+  "$schema": "https://ui.thinkai.id.vn/schema/registry-item.json",
   "name": "tai-kbd",
   "type": "registry:ui",
   "title": "Tai Kbd",
-  "description": "Mechanical 0px hardware keyboard keycap with tactile bevel and pressed state.",
+  "description": "Mechanical 12px hardware keyboard keycap with tactile bevel and pressed state.",
   "dependencies": [],
   "registryDependencies": [],
   "files": [

@@ -1,9 +1,9 @@
 {
-  "$schema": "https://ui.thinkai.studio/schema/registry-item.json",
+  "$schema": "https://ui.thinkai.id.vn/schema/registry-item.json",
   "name": "tai-status-indicator",
   "type": "registry:ui",
   "title": "Tai Status Indicator",
-  "description": "0px square system health beacon with radiant ping pulse wave and status labels.",
+  "description": "12px calibrated system health beacon with radiant ping pulse wave and status labels.",
   "dependencies": [],
   "registryDependencies": [],
   "files": [

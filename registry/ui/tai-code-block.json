@@ -1,9 +1,9 @@
 {
-  "$schema": "https://ui.thinkai.studio/schema/registry-item.json",
+  "$schema": "https://ui.thinkai.id.vn/schema/registry-item.json",
   "name": "tai-code-block",
   "type": "registry:ui",
   "title": "Tai Code Block",
-  "description": "0px developer snippet frame with filename header, language badge, line numbering, and copy feedback.",
+  "description": "12px precision developer snippet frame with filename header, language badge, line numbering, and copy feedback.",
   "dependencies": [
     "lucide-react"
   ],

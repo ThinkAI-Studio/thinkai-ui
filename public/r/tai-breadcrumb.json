@@ -1,9 +1,9 @@
 {
-  "$schema": "https://ui.thinkai.studio/schema/registry-item.json",
+  "$schema": "https://ui.thinkai.id.vn/schema/registry-item.json",
   "name": "tai-breadcrumb",
   "type": "registry:ui",
   "title": "Tai Breadcrumb",
-  "description": "Technical hierarchy path navigation primitive with configurable 0px separators.",
+  "description": "Technical hierarchy path navigation primitive with configurable separators.",
   "dependencies": [
     "lucide-react"
   ],
