@@ -36,7 +36,7 @@ interface RadiusContextType {
 
 const RadiusContext = React.createContext<RadiusContextType | null>(null);
 
-export function RadiusProvider({ children }: { children: React.ReactNode }) {
+export function RadiusProvider({ children }: Readonly<{ children: React.ReactNode }>) {
   const radius = React.useSyncExternalStore(
     subscribeToRadius,
     getPreference,
@@ -53,8 +53,10 @@ export function RadiusProvider({ children }: { children: React.ReactNode }) {
     radiusListeners.forEach((listener) => listener());
   }, []);
 
+  const value = React.useMemo(() => ({ radius, setRadius: updateRadius }), [radius, updateRadius]);
+
   return (
-    <RadiusContext.Provider value={{ radius, setRadius: updateRadius }}>
+    <RadiusContext.Provider value={value}>
       {children}
     </RadiusContext.Provider>
   );

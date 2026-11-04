@@ -54,21 +54,25 @@ export function ThemeToggle() {
           });
 
           // W3C View Transitions Animation API on incoming view
-          transition.ready.then(() => {
-            document.documentElement.animate(
-              {
-                clipPath: [
-                  `inset(${top}px ${right}px ${bottom}px ${left}px)`,
-                  `inset(0px 0px 0px 0px)`,
-                ],
-              },
-              {
-                duration: 480,
-                easing: "cubic-bezier(0.16, 1, 0.3, 1)",
-                pseudoElement: "::view-transition-new(root)",
-              }
-            );
-          });
+          void transition.ready
+            .then(() => {
+              document.documentElement.animate(
+                {
+                  clipPath: [
+                    `inset(${top}px ${right}px ${bottom}px ${left}px)`,
+                    `inset(0px 0px 0px 0px)`,
+                  ],
+                },
+                {
+                  duration: 480,
+                  easing: "cubic-bezier(0.16, 1, 0.3, 1)",
+                  pseudoElement: "::view-transition-new(root)",
+                }
+              );
+            })
+            .catch(() => {
+              // Transition animation interrupted or cancelled
+            });
 
           await transition.finished;
           return;

@@ -26,7 +26,7 @@ export function HomeHeroAsymmetric() {
   };
 
   const handleCopy = () => {
-    navigator.clipboard.writeText(getCommand());
+    void navigator.clipboard.writeText(getCommand());
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);
   };

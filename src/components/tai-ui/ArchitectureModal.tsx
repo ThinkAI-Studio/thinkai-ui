@@ -274,7 +274,7 @@ export function ArchitectureModal({ projectId, onClose, lang }: ArchitectureModa
                 <div className="space-y-4">
                   <div className="space-y-3">
                     {project.evidence.repository.map((item, idx) => (
-                      <div key={idx} className="flex min-w-0 flex-col items-start justify-between gap-4 p-4 bg-[#141418] border border-white/[0.08] rounded-[var(--tai-radius-md)] sm:flex-row sm:items-center">
+                      <div key={item.url} className="flex min-w-0 flex-col items-start justify-between gap-4 p-4 bg-[#141418] border border-white/[0.08] rounded-[var(--tai-radius-md)] sm:flex-row sm:items-center">
                         <div className="min-w-0 space-y-1">
                           <span className="font-mono text-[10px] text-neutral-500 uppercase">CLAIM EVIDENCE 0{idx + 1}</span>
                           <p className="text-white text-xs font-light">{item.claim}</p>

@@ -25,7 +25,7 @@ export function ContactModal({ isOpen, onClose }: ContactModalProps) {
 
   const handleCopy = (email: string) => {
     if (navigator.clipboard) {
-      navigator.clipboard.writeText(email);
+      void navigator.clipboard.writeText(email);
       setCopiedEmail(email);
       setTimeout(() => setCopiedEmail(null), 2500);
     }

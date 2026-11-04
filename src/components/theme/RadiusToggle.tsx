@@ -16,7 +16,7 @@ const RADIUS_OPTIONS: readonly RadiusOption[] = [
   { value: "12", label: "12", tooltip: "Fillet (12px) — Default Precision Fillet" },
 ];
 
-export function RadiusToggle({ className = "" }: { className?: string }) {
+export function RadiusToggle({ className = "" }: Readonly<{ className?: string }>) {
   const { radius, setRadius } = useRadius();
   const mounted = React.useSyncExternalStore(
     () => () => undefined,

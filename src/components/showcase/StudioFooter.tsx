@@ -32,7 +32,7 @@ export function StudioFooter() {
   const isInView = useInView(ref, { once: true, margin: "-40px" });
 
   const copyCli = () => {
-    navigator.clipboard.writeText("npx thinkai-ui init");
+    void navigator.clipboard.writeText("npx thinkai-ui init");
     setCopiedCli(true);
     setTimeout(() => setCopiedCli(false), 2000);
   };

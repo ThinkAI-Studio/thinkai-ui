@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useRef, type ElementType } from "react";
+import React, { useState, type ElementType } from "react";
 import { motion, useReducedMotion } from "motion/react";
 import { Slot } from "@radix-ui/react-slot";
 import { cva, type VariantProps } from "class-variance-authority";
@@ -16,7 +16,7 @@ export interface ArrowRollProps {
   size?: "sm" | "md" | "lg";
 }
 
-export function ArrowRoll({ className = "", size = "md" }: ArrowRollProps) {
+export function ArrowRoll({ className = "", size = "md" }: Readonly<ArrowRollProps>) {
   const sizeClasses = {
     sm: "w-4.5 h-4.5 text-[11px]",
     md: "w-6 h-6 text-xs",
@@ -54,7 +54,7 @@ export function ButtonTextRoll({
   text,
   className = "",
   stagger = 0,
-}: ButtonTextRollProps) {
+}: Readonly<ButtonTextRollProps>) {
   if (stagger === 0) {
     return (
       <span
@@ -76,7 +76,11 @@ export function ButtonTextRoll({
     );
   }
 
-  const letters = Array.from(text);
+  const letterNodes = Array.from(text).map((char, index) => ({
+    id: `btn-char-${index}`,
+    char: char === " " ? "\u00A0" : char,
+    delay: index * stagger,
+  }));
   return (
     <span
       className={cn(
@@ -85,13 +89,13 @@ export function ButtonTextRoll({
       )}
     >
       <span className="inline-flex items-center leading-none">
-        {letters.map((char, index) => (
+        {letterNodes.map((item) => (
           <span
-            key={index}
-            style={{ transitionDelay: `${index * stagger}ms` }}
+            key={item.id}
+            style={{ transitionDelay: `${item.delay}ms` }}
             className="inline-block transform transition-transform duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:-translate-y-[135%]"
           >
-            {char === " " ? "\u00A0" : char}
+            {item.char}
           </span>
         ))}
       </span>
@@ -99,13 +103,13 @@ export function ButtonTextRoll({
         aria-hidden="true"
         className="absolute inset-0 flex items-center leading-none translate-y-[135%]"
       >
-        {letters.map((char, index) => (
+        {letterNodes.map((item) => (
           <span
-            key={index}
-            style={{ transitionDelay: `${index * stagger}ms` }}
+            key={item.id}
+            style={{ transitionDelay: `${item.delay}ms` }}
             className="inline-block transform transition-transform duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:translate-y-0"
           >
-            {char === " " ? "\u00A0" : char}
+            {item.char}
           </span>
         ))}
       </span>
@@ -123,7 +127,6 @@ export interface TextRollProps {
   as?: ElementType;
   stagger?: number;
   duration?: number;
-  rolls?: number;
 }
 
 export function TextRoll({
@@ -132,9 +135,8 @@ export function TextRoll({
   as: Component = "span",
   stagger = 0.02,
   duration = 0.85,
-}: TextRollProps) {
+}: Readonly<TextRollProps>) {
   const prefersReduced = useReducedMotion();
-  const letters = Array.from(text);
 
   if (prefersReduced) {
     return (
@@ -144,16 +146,21 @@ export function TextRoll({
     );
   }
 
+  const letterNodes = Array.from(text).map((char, index) => ({
+    id: `roll-char-${index}`,
+    char: char === " " ? "\u00A0" : char,
+    delay: index * (stagger * 1000),
+  }));
   return (
     <Component className={cn("relative inline-flex overflow-hidden leading-none select-none group", className)}>
       <span className="inline-flex">
-        {letters.map((char, index) => (
+        {letterNodes.map((item) => (
           <span
-            key={index}
-            style={{ transitionDelay: `${index * (stagger * 1000)}ms`, transitionDuration: `${duration}s` }}
+            key={item.id}
+            style={{ transitionDelay: `${item.delay}ms`, transitionDuration: `${duration}s` }}
             className="inline-block transform transition-transform ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:-translate-y-[135%]"
           >
-            {char === " " ? "\u00A0" : char}
+            {item.char}
           </span>
         ))}
       </span>
@@ -161,13 +168,13 @@ export function TextRoll({
         aria-hidden="true"
         className="absolute inset-0 flex translate-y-[135%]"
       >
-        {letters.map((char, index) => (
+        {letterNodes.map((item) => (
           <span
-            key={index}
-            style={{ transitionDelay: `${index * (stagger * 1000)}ms`, transitionDuration: `${duration}s` }}
+            key={item.id}
+            style={{ transitionDelay: `${item.delay}ms`, transitionDuration: `${duration}s` }}
             className="inline-block transform transition-transform ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:translate-y-0"
           >
-            {char === " " ? "\u00A0" : char}
+            {item.char}
           </span>
         ))}
       </span>
@@ -234,18 +241,19 @@ export const WipeButton = React.forwardRef<HTMLButtonElement, WipeButtonProps>(
       );
     }
 
+    let wipeX = "-102%";
+    if (wipeState === "in") {
+      wipeX = "0%";
+    } else if (wipeState === "out") {
+      wipeX = "102%";
+    }
+
     const innerContent = (
       <>
         {!prefersReduced && (
           <motion.div
             initial={{ x: "-102%" }}
-            animate={
-              wipeState === "in"
-                ? { x: "0%" }
-                : wipeState === "out"
-                ? { x: "102%" }
-                : { x: "-102%" }
-            }
+            animate={{ x: wipeX }}
             transition={{
               duration: 0.42,
               ease: TAI_EASE.luxury,

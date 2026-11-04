@@ -15,11 +15,13 @@ import {
   Maximize2,
   Layers,
 } from "lucide-react";
-import { TaiButton } from "@/components/tai-ui/TaiButton";
-import { WipeButton } from "@/components/tai-ui/TaiButton";
-import { ArrowRoll } from "@/components/tai-ui/TaiButton";
-import { ButtonTextRoll } from "@/components/tai-ui/TaiButton";
-import { TextRoll } from "@/components/tai-ui/TaiButton";
+import {
+  TaiButton,
+  WipeButton,
+  ArrowRoll,
+  ButtonTextRoll,
+  TextRoll,
+} from "@/components/tai-ui/TaiButton";
 import { MaskedTextReveal } from "@/components/tai-ui/MaskedTextReveal";
 import { TechLogo } from "@/components/tai-ui/TechLogos";
 import { OpenAiIcon, GeminiIcon, ClaudeIcon, PerplexityIcon, ManusIcon } from "@/components/tai-ui/AiBrandIcons";
@@ -298,7 +300,7 @@ export function StudioWorkbench({
   };
 
   const handleCopy = (text: string) => {
-    navigator.clipboard.writeText(text);
+    void navigator.clipboard.writeText(text);
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);
   };

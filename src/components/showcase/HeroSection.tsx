@@ -3,17 +3,19 @@
 import { useState } from "react";
 import { Terminal, Copy, Check, Box, Search } from "lucide-react";
 import Link from "next/link";
-import { WipeButton } from "@/components/tai-ui/TaiButton";
+import {
+  WipeButton,
+  ButtonTextRoll,
+  ArrowRoll,
+} from "@/components/tai-ui/TaiButton";
 import { ThreeHalftoneCanvas } from "@/components/tai-ui/ThreeHalftoneCanvas";
-import { ButtonTextRoll } from "@/components/tai-ui/TaiButton";
-import { ArrowRoll } from "@/components/tai-ui/TaiButton";
 import { catalogItems } from "@/data/catalog";
 
 export function HeroSection({ onOpenCommandMenu }: { onOpenCommandMenu: () => void }) {
   const [copiedInit, setCopiedInit] = useState(false);
 
   const copyCommand = (cmd: string) => {
-    navigator.clipboard.writeText(cmd);
+    void navigator.clipboard.writeText(cmd);
     setCopiedInit(true);
     setTimeout(() => setCopiedInit(false), 2000);
   };

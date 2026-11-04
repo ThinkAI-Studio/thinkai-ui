@@ -2,11 +2,13 @@
 
 import { useState } from "react";
 import { Copy, Check, Terminal, Code, Eye } from "lucide-react";
-import { TaiButton } from "@/components/tai-ui/TaiButton";
-import { WipeButton } from "@/components/tai-ui/TaiButton";
-import { ArrowRoll } from "@/components/tai-ui/TaiButton";
-import { ButtonTextRoll } from "@/components/tai-ui/TaiButton";
-import { TextRoll } from "@/components/tai-ui/TaiButton";
+import {
+  TaiButton,
+  WipeButton,
+  ArrowRoll,
+  ButtonTextRoll,
+  TextRoll,
+} from "@/components/tai-ui/TaiButton";
 import { MaskedTextReveal } from "@/components/tai-ui/MaskedTextReveal";
 import { TechLogo } from "@/components/tai-ui/TechLogos";
 import { OpenAiIcon, GeminiIcon, ClaudeIcon, PerplexityIcon, ManusIcon } from "@/components/tai-ui/AiBrandIcons";
@@ -41,7 +43,7 @@ export function ComponentPlayground() {
   const [contactOpen, setContactOpen] = useState(false);
 
   const copyCli = (name: string) => {
-    navigator.clipboard.writeText(`npx thinkai-ui add ${name}`);
+    void navigator.clipboard.writeText(`npx thinkai-ui add ${name}`);
     setCopiedId(name);
     setTimeout(() => setCopiedId(null), 2000);
   };

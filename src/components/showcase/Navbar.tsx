@@ -8,7 +8,7 @@ export function Navbar({ onOpenCommandMenu }: { onOpenCommandMenu: () => void })
   const [copied, setCopied] = useState(false);
 
   const copyInitCommand = () => {
-    navigator.clipboard.writeText("npx thinkai-ui init");
+    void navigator.clipboard.writeText("npx thinkai-ui init");
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);
   };
