@@ -33,12 +33,12 @@
 
 :root,
 :root[data-theme="dark"] {
-  --tai-dark-bg: #111315;
+  --tai-dark-bg: #000000;
   --tai-light-bg: #f1f0eb;
   --tai-bg: var(--tai-dark-bg);
-  --tai-sheet: #1b1e22;
-  --tai-card: #272b30;
-  --tai-surface: #343940;
+  --tai-sheet: #0a0a0c;
+  --tai-card: #121316;
+  --tai-surface: #1a1c20;
   --tai-border: rgba(255, 255, 255, 0.16);
   --tai-border-strong: rgba(255, 255, 255, 0.34);
   --tai-text: #f4f4f5;

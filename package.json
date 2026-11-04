@@ -61,7 +61,7 @@
     "react"
   ],
   "author": "ThinkAI Studio / Nguyen Huu Binh Minh",
-  "license": "MIT",
+  "license": "BSD-3-Clause",
   "repository": {
     "type": "git",
     "url": "https://github.com/ThinkAI-Studio/thinkai-ui.git"
